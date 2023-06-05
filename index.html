@@ -117,7 +117,7 @@
 					<section>
 						<h3>The observational approach</h3>
 						<p>
-							To perform an observational study, we might select 24 CCCTI students and interview them. We might ask a number of questions but two questions key to the study would be:
+							To perform an observational study, we might select 14 CCCTI students and interview them. We might ask a number of questions but two questions key to the study would be:
 						</p>
 						<ul>
 							<li>How much caffeinated coffee do you drink (in cups)?</li>
@@ -376,8 +376,174 @@
 						   <li><strong>Randomization</strong>: The groups should be chosen <em>randomly</em> to prevent bias and to even out confounding factors.</li>
 						   <li><strong>Replication</strong>: The results should be reproducible</li>
 						</ul>
-						<p>If we find differences between the groups we can examine whether they are <a href="https://marksmath.org/classes/Spring2022Stat185/tools/basic_data_explorer.html"><em>statistically significant</em></a> or not.</p>
+						<p>If we find differences between the groups we can examine whether they
+							are <a href="https://marksmath.org/classes/Spring2022Stat185/tools/basic_data_explorer.html" target="_blank" rel="noopener noreferrer"><em>statistically significant</em></a> or not.</p>
 					</section>
+				</section>
+
+					<section>
+						<section>
+							<h1>Chapter 3 Definitions</h1>
+					    <p>At this point we've met several parameters that describe numerical data, including</p>
+					    <ul>
+					       <li>The mean,</li>
+					       <li>The median,</li>
+					       <li>percentiles, and</li>
+					       <li>the standard deviation</li>
+					    </ul>
+					    <p>Let's take a look at how these quantities are actually defined.</p>
+							<p class="fragment">
+								Before we go through these, it's worth pointing out that the mean and standard deviation are the most important to understand thoroughly. <br />
+								It's worth understanding percentiles from a conceptual standpoint, but we will rarely compute them directly. We will compute mean and standard deviation.
+							</p>
+						</section>
+
+						<section>
+							<h3>The mean</h3>
+							<p>The <em>mean</em> is a measure of where the data is centered.  It is computed by simply  averaging the numbers.</p>
+							<p>
+								For example, our data might be:
+									$$2,8,2,4,7.$$
+								The mean of the data is then:
+								$$\frac{2+8+2+4+7}{5} = \frac{23}{5} = 4.6.$$
+							</p>
+						</section>
+
+						<section>
+							<h3 id="The-median">The median</h3>
+							<p>Like the mean, the <em>median</em> is a measure of where  the data is centered.</p>
+							<p>Roughly speaking, it represents the middle value. They way  it is computed depends on  how many numbers are in your list.</p>
+							<div class="fragment">
+		            <p>If the number of terms in  your data is odd, then the median is simply the middle entry.</p>
+		            <p>For example, if the data is
+		               $$1,3,4,8,9,$$
+		               then the median is $4$.
+		            </p>
+							</div>
+							<div class="fragment">
+								<p>If the number of terms in  your data is even, then the median is simply the average of the middle two entries.</p>
+								<p>For example, if the data is
+								   $$1,3,8,9,$$
+								   then the median is $(3+8)/2 = 5.5$.
+								</p>
+							<div>
+						</section>
+
+						<section>
+						   <div class="cell border-box-sizing text_cell rendered">
+						      <div class="inner_cell">
+						         <div class="text_cell_render border-box-sizing rendered_html">
+						            <h3 id="Percentiles-(also-called-quantiles)">Percentiles (also called quantiles)</h3>
+						            <ul>
+						               <li>The median is a special case of a percentile - 50% of the population lies below the median and 50% lies above. </li>
+						               <li>Similarly, 25% of the population lies below the first <em>quartile</em> and 75% lies above. </li>
+						               <li>Also, 75% of the population lies below the third <em>quartile</em> and 25% lies above. </li>
+						               <li>The second quartile is just another name for the median.</li>
+						               <li>The inter-quartile range is the difference between the third and first quartile.</li>
+						               <li>One reasonable definition of an outlier is a data point that lies more than 3 inter-quartile ranges from the median.</li>
+						            </ul>
+						         </div>
+						      </div>
+						   </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h4 id="Example">Example</h4>
+						        <p>Suppose our data is
+						          $$4, 5, 9, 7, 6, 10, 2, 1, 5.$$
+						          To find percentiles, it helps to sort the data:
+						          $$1,2,4,5,5,6,7,9,10.$$
+						        </p>
+						        <ul>
+						          <li>The median is definitely 5,</li>
+						          <li>the $25^{\text{th}}$ percentile might be 4, </li>
+						          <li>the $75^{\text{th}}$ percentile could be 7,</li>
+						          <li>and the inter-quartile range would be 3. </li>
+						        </ul>
+						        <p>There are differing conventions on how you interpolate when the number of terms doesn't work well with the percentile, but these differences diminish with sample size.</p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Variance-and-standard-deviation">Variance and standard deviation</h3>
+						        <ul>
+						          <li>The interquartile range forms a measure of the spread of a population or sample related to the <em>median</em> of that population or sample.</li>
+						          <li>The standard deviation forms a measure of the spread of a population or sample related to the <em>mean</em> of the population or sample.</li>
+						          <li>Roughly, the standard deviation measures how far the individuals deviate from the mean on average.</li>
+						          <li>The variance is defined to be the square of the standard deviation. Thus, if the standard deviation is $s$, then the variance is $s^2$.</li>
+						        </ul>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Definitions">Definitions</h3>
+						        <ul>
+						          <li>If we have a sample of $n$ observations
+						            $$x_1,x_2,x_3, \ldots, x_n,$$
+						            then the sample variance is defined by
+						            $$s^2 = \frac{(x_1 - \bar{x})^2 + (x_2-\bar{x})^2 +\cdots+(x_n-\bar{x})^2}{n-1}.$$
+						          </li>
+						          <li>If $s^2$ is the variance, then $s$ is the standard deviation.</li>
+						        </ul>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Example">Example</h3>
+						        <p>Suppose our sample is
+						          $$1,2,3,4.$$
+						          Then, the mean is $2.5$ and the variance is
+						          $$s^2=\frac{(-3/2)^2 + (-1/2)^2 + (1/2)^2 + (3/2)^2}{3} = \frac{5}{3}.$$
+						          The standard deviation is
+						          $$s = \sqrt{5/3} \approx 1.290994.$$
+						        </p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Sample-variance-vs-population-variance">Sample variance vs population variance</h3>
+						        <ul>
+						          <li>You might see the definition
+						            $$s^2 = \frac{(x_1 - \bar{x})^2 + (x_2-\bar{x})^2 +\cdots+(x_n-\bar{x})^2}{n}.$$
+						          </li>
+						          <li>The difference in the definition is the $n$ in the denominator, rather than $n-1$.</li>
+						          <li>
+						            The difference arises because
+						            <ul>
+						              <li>The definition with the $n$ in the denominator is applied to <em>populations</em> and</li>
+						              <li>The definition with the $n-1$ in the denominator is applied to <em>samples</em>.</li>
+						            </ul>
+						          </li>
+						          <li>To make things clear, we will sometimes refer to <em>sample variance</em> vs <em>population variance</em>.</li>
+						        </ul>
+						        <p>More often than not, we will be computing <em>sample</em> variance and the corresponding standard deviation.</p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
 				</section>
 
 			</div>
@@ -387,6 +553,8 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -395,7 +563,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
 			});
 		</script>
 	</body>
