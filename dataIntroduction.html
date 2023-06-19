@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Chapter 2 and 3</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Getting and explaing data</h1>
+					<h2>from Studies or Experiments</h2>
+					<p>
+						Last time, we learned some data basics with a focus on data tables, which neatly organize data into rows of observations and columns of variables.
+						Today, we'll take a <span class='it'>brief</span> look tpyes of studies and describing data numerically and graphically.
+					</p>
+					<p>
+						This is all based on chapters 2 and 3 in the book.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Observational studies vs controlled experiments</h2>
+						<p>There are two main techniques to systematically collect data:</p>
+						<ul>
+						   <li>Observational studies and</li>
+						   <li>Controlled experiments</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Observational studies</h3>
+						<p>An <em>observational study</em> is one where the data collection does not interfere with how the data arises. Examples include</p>
+						<ul>
+						   <li>Surveys,</li>
+						   <li>Review of records,</li>
+						   <li>Simple measurements</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Controlled experiments</h3>
+						<p>
+							In an <em>experiment</em>, researchers actively work with the samples applying treatments and observing effects.
+						</p>
+						<ul>
+							<li>
+								Often (if not always), the intention is to explore a relationship or even a causal effect between two variable.
+							</li>
+							<li>
+								For that reason, it's often important to distinguish between an <em>explanatory variable</em> and a <em>response variable</em>.
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>An observational example</h2>
+						<p>
+							Suppose we are interested in the following question:
+						</p>
+						<blockquote>
+							Does caffeine consumed through coffee affect GPA among CCCTI students?
+						</blockquote>
+					</section>
+					<section>
+						<h3>The observational approach</h3>
+						<p>
+							To perform an observational study, we might select 14 CCCTI students and interview them. We might ask a number of questions but two questions key to the study would be:
+						</p>
+						<ul>
+							<li>How much caffeinated coffee do you drink (in cups)?</li>
+							<li>What is your GPA?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>The resulting data</h3>
+						<p>
+							If we interview 14 of the 3876 students at CCCTI, we might generate a table that looks something like so:
+						</p>
+						<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-oklf{border-color:inherit;font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;font-size:12px;
+  text-align:left;vertical-align:top}
+.tg .tg-ruuw{font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;font-size:12px;text-align:left;
+  vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-oklf">ID<br></th>
+    <th class="tg-oklf">Daily Coffee intake (cups)<br></th>
+    <th class="tg-oklf">Current GPA<br></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-oklf">1<br></td>
+    <td class="tg-oklf">2</td>
+    <td class="tg-oklf">4.0</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">2</td>
+    <td class="tg-ruuw">1</td>
+    <td class="tg-ruuw">4.0</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">3</td>
+    <td class="tg-ruuw">1</td>
+    <td class="tg-ruuw">4.0</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">4</td>
+    <td class="tg-ruuw">4</td>
+    <td class="tg-ruuw">3.8</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">5</td>
+    <td class="tg-ruuw">2</td>
+    <td class="tg-ruuw">3.3</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">6</td>
+    <td class="tg-ruuw">3</td>
+    <td class="tg-ruuw">3.1</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">7</td>
+    <td class="tg-ruuw">2</td>
+    <td class="tg-ruuw">2.8</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">8</td>
+    <td class="tg-ruuw">4</td>
+    <td class="tg-ruuw">3.1</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">9</td>
+    <td class="tg-ruuw">7</td>
+    <td class="tg-ruuw">2.3</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">10<br></td>
+    <td class="tg-ruuw">0</td>
+    <td class="tg-ruuw">3.1</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">11</td>
+    <td class="tg-ruuw">1</td>
+    <td class="tg-ruuw">4.0</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">12</td>
+    <td class="tg-ruuw">4</td>
+    <td class="tg-ruuw">1.8</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">13</td>
+    <td class="tg-ruuw">2</td>
+    <td class="tg-ruuw">2.1</td>
+  </tr>
+  <tr>
+    <td class="tg-ruuw">14</td>
+    <td class="tg-ruuw">3</td>
+    <td class="tg-ruuw">3.7</td>
+  </tr>
+</tbody>
+</table>
+					</section>
+					<section>
+						<h3>Visualization</h3>
+						<p>We might visualize the data with a <span class="it">scatter plot</span>.</p>
+						<div style="text-align: center">
+							<img src="image1.png" alt=""  width="700" height="500">
+						</div>
+					</section>
+					<section>
+						<h3>Analysis</h3>
+						<p>
+							The numbers and picture kinda <span class="it">appear</span> to support the idea that caffeinated coffee consumption improves GPA.
+							Of course, we ultimately hope to be able to quantify that type of analysis more precisely.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Sample/population for the coffee example</h3>
+						<p>
+							In the coffee example (where we interviewed 14 of the 3876 students at CCCTI),
+						</p>
+						<ul>
+							<li>
+								The <em>sample</em> is the 14 students we interviewed.
+							</li>
+							<li>
+								The <em>population</em> is the set of all 3876 CCCTI students. <br />
+								<span class="it">(The extent to which the conclusion might extend to all college students anywhere might be a point of discussion and further research.)</span>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Statistic/parameter for the coffee example</h3>
+						<p>
+							Suppose we find that, of the 14 students in our sample, the students drink 2.57 cups of coffee a day on average.
+						</p>
+						<ul>
+							<li>
+								That average number 2.57 computed from the sample is a <em>statistic</em>.
+							</li>
+							<li>
+								If we could somehow determine the average number of cups of coffee consumed by <em>all</em> 3876 CCCTI students, that number would be a <em>parameter</em>.
+							</li>
+						</ul>
+						<p>
+							Typically, it's not necessarily feasible to compute a parameter from an entire population. Thus, we <em>estimate</em> population parameters from sample statistics. A key question is:
+						</p>
+						<blockquote>
+							How close can we expect a computed statistic to be to the corresponding population parameter?
+						</blockquote>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Some important issues</h2>
+						<ul>
+							<li>Confounding variables</li>
+							<li>Causation vs correlation</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Confounding variables</h3>
+						<p>
+							A <em>confounding variable</em> is a variable (often unknown) that influences two or more other variables and causes a spurious association.
+						</p>
+						<p>
+							In the coffee GPA example, a confounding variable might be the amount of time the student studies. If they study a lot, the might find themselves drinking more coffee <em>and</em> increase their GPA.
+						</p>
+						<p>
+							The term <em>lurking variable</em> is a synonym for confounding variable.
+						</p>
+					</section>
+					<section>
+						<h3>Causation vs correlation</h3>
+						<p>
+							In statistics, we are often interested in the effect of one variable on another. In the context of the coffee study - does the consumption of caffeinated coffee improve GPA?
+						</p>
+						<p>
+							Due to the potential presence of unknown confounding variables, whether there is a relationship between two variables - and <em>not</em> whether there is a causal relationship.
+						</p>
+						<p>
+							This is sometimes phrased as
+						</p>
+						<blockquote>
+							correlation does not imply causation.
+						</blockquote>
+						<p>
+							To establish a causal relationship, you've really got to set up and experiment.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>An experimental example</h2>
+						<p>
+							In an experiment (more specifically, a <em>controlled experiment</em>), researchers actively work with the samples applying treatments and controls and observing effects.
+						</p>
+						<p>
+							Let's outline an experimental approach to our another GPA question:
+						</p>
+						<blockquote>
+							Does 8 or more hours of sleep each night affect GPA among college students?
+						</blockquote>
+					</section>
+					<section>
+						<h3>The experimental approach</h3>
+						<p>
+							To explore this question via a controlled experiment, we would start with a large, simple random sample of participating college students. We would <em>randomly</em>
+							assign the each student into one of two groups:
+						</p>
+						<ul>
+							<li>The treatment group, who would be required get 8 or more hours of sleep each night and</li>
+							<li>the control group, who would get less than 8 or at least they are not required to get 8 hours.</li>
+						</ul>
+						<p>
+							After some pre-specified amount of time, we would check and compare the grades earned by the two groups.
+						</p>
+					</section>
+					<section>
+						<h3>Results</h3>
+						<p>
+							If there were 250 participants in our sample, perhaps our results might look something like so:
+						</p>
+						<table class="centered" style="width: 250px">
+							<tr>
+								<th></th><th>Treatment</th> <th>Control</th>
+							</tr>
+							<tr>
+								<th>N</th><td>119</td><td>131</td>
+							</tr>
+							<tr>
+								<th>GPA</th><td>3.7</td><td>2.9</td>
+							</tr>
+						</table>
+						<p>
+							This looks like it might be compelling evidence that 8 hours of sleep boosts GPA. We would ultimately like to be able to quantify that statement.
+						</p>
+					</section>
+					<section>
+						<h3>Some key principles of experiments</h3>
+						<ul>
+						   <li>
+						      <strong>Control</strong>: We split the group of patients into two groups:
+						      <ul>
+						         <li>A treatment group that receives the treatment</li>
+						         <li>A control group that receives a placebo.</li>
+						      </ul>
+						   </li>
+						   <li><strong>Randomization</strong>: The groups should be chosen <em>randomly</em> to prevent bias and to even out confounding factors.</li>
+						   <li><strong>Replication</strong>: The results should be reproducible</li>
+						</ul>
+						<p>If we find differences between the groups we can examine whether they
+							are <a href="https://marksmath.org/classes/Spring2022Stat185/tools/basic_data_explorer.html" target="_blank" rel="noopener noreferrer"><em>statistically significant</em></a> or not.</p>
+					</section>
+				</section>
+
+					<section>
+						<section>
+							<h1>Chapter 3 Definitions</h1>
+					    <p>At this point we've met several parameters that describe numerical data, including</p>
+					    <ul>
+					       <li>The mean,</li>
+					       <li>The median,</li>
+					       <li>percentiles, and</li>
+					       <li>the standard deviation</li>
+					    </ul>
+					    <p>Let's take a look at how these quantities are actually defined.</p>
+							<p class="fragment">
+								Before we go through these, it's worth pointing out that the mean and standard deviation are the most important to understand thoroughly. <br />
+								It's worth understanding percentiles from a conceptual standpoint, but we will rarely compute them directly. We will compute mean and standard deviation.
+							</p>
+						</section>
+
+						<section>
+							<h3>The mean</h3>
+							<p>The <em>mean</em> is a measure of where the data is centered.  It is computed by simply  averaging the numbers.</p>
+							<p>
+								For example, our data might be:
+									$$2,8,2,4,7.$$
+								The mean of the data is then:
+								$$\frac{2+8+2+4+7}{5} = \frac{23}{5} = 4.6.$$
+							</p>
+						</section>
+
+						<section>
+							<h3 id="The-median">The median</h3>
+							<p>Like the mean, the <em>median</em> is a measure of where  the data is centered.</p>
+							<p>Roughly speaking, it represents the middle value. They way  it is computed depends on  how many numbers are in your list.</p>
+							<div class="fragment">
+		            <p>If the number of terms in  your data is odd, then the median is simply the middle entry.</p>
+		            <p>For example, if the data is
+		               $$1,3,4,8,9,$$
+		               then the median is $4$.
+		            </p>
+							</div>
+							<div class="fragment">
+								<p>If the number of terms in  your data is even, then the median is simply the average of the middle two entries.</p>
+								<p>For example, if the data is
+								   $$1,3,8,9,$$
+								   then the median is $(3+8)/2 = 5.5$.
+								</p>
+							<div>
+						</section>
+
+						<section>
+						   <div class="cell border-box-sizing text_cell rendered">
+						      <div class="inner_cell">
+						         <div class="text_cell_render border-box-sizing rendered_html">
+						            <h3 id="Percentiles-(also-called-quantiles)">Percentiles (also called quantiles)</h3>
+						            <ul>
+						               <li>The median is a special case of a percentile - 50% of the population lies below the median and 50% lies above. </li>
+						               <li>Similarly, 25% of the population lies below the first <em>quartile</em> and 75% lies above. </li>
+						               <li>Also, 75% of the population lies below the third <em>quartile</em> and 25% lies above. </li>
+						               <li>The second quartile is just another name for the median.</li>
+						               <li>The inter-quartile range is the difference between the third and first quartile.</li>
+						               <li>One reasonable definition of an outlier is a data point that lies more than 3 inter-quartile ranges from the median.</li>
+						            </ul>
+						         </div>
+						      </div>
+						   </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h4 id="Example">Example</h4>
+						        <p>Suppose our data is
+						          $$4, 5, 9, 7, 6, 10, 2, 1, 5.$$
+						          To find percentiles, it helps to sort the data:
+						          $$1,2,4,5,5,6,7,9,10.$$
+						        </p>
+						        <ul>
+						          <li>The median is definitely 5,</li>
+						          <li>the $25^{\text{th}}$ percentile might be 4, </li>
+						          <li>the $75^{\text{th}}$ percentile could be 7,</li>
+						          <li>and the inter-quartile range would be 3. </li>
+						        </ul>
+						        <p>There are differing conventions on how you interpolate when the number of terms doesn't work well with the percentile, but these differences diminish with sample size.</p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Variance-and-standard-deviation">Variance and standard deviation</h3>
+						        <ul>
+						          <li>The interquartile range forms a measure of the spread of a population or sample related to the <em>median</em> of that population or sample.</li>
+						          <li>The standard deviation forms a measure of the spread of a population or sample related to the <em>mean</em> of the population or sample.</li>
+						          <li>Roughly, the standard deviation measures how far the individuals deviate from the mean on average.</li>
+						          <li>The variance is defined to be the square of the standard deviation. Thus, if the standard deviation is $s$, then the variance is $s^2$.</li>
+						        </ul>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Definitions">Definitions</h3>
+						        <ul>
+						          <li>If we have a sample of $n$ observations
+						            $$x_1,x_2,x_3, \ldots, x_n,$$
+						            then the sample variance is defined by
+						            $$s^2 = \frac{(x_1 - \bar{x})^2 + (x_2-\bar{x})^2 +\cdots+(x_n-\bar{x})^2}{n-1}.$$
+						          </li>
+						          <li>If $s^2$ is the variance, then $s$ is the standard deviation.</li>
+						        </ul>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Example">Example</h3>
+						        <p>Suppose our sample is
+						          $$1,2,3,4.$$
+						          Then, the mean is $2.5$ and the variance is
+						          $$s^2=\frac{(-3/2)^2 + (-1/2)^2 + (1/2)^2 + (3/2)^2}{3} = \frac{5}{3}.$$
+						          The standard deviation is
+						          $$s = \sqrt{5/3} \approx 1.290994.$$
+						        </p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+
+						<section>
+						  <div class="cell border-box-sizing text_cell rendered">
+						    <div class="inner_cell">
+						      <div class="text_cell_render border-box-sizing rendered_html">
+						        <h3 id="Sample-variance-vs-population-variance">Sample variance vs population variance</h3>
+						        <ul>
+						          <li>You might see the definition
+						            $$s^2 = \frac{(x_1 - \bar{x})^2 + (x_2-\bar{x})^2 +\cdots+(x_n-\bar{x})^2}{n}.$$
+						          </li>
+						          <li>The difference in the definition is the $n$ in the denominator, rather than $n-1$.</li>
+						          <li>
+						            The difference arises because
+						            <ul>
+						              <li>The definition with the $n$ in the denominator is applied to <em>populations</em> and</li>
+						              <li>The definition with the $n-1$ in the denominator is applied to <em>samples</em>.</li>
+						            </ul>
+						          </li>
+						          <li>To make things clear, we will sometimes refer to <em>sample variance</em> vs <em>population variance</em>.</li>
+						        </ul>
+						        <p>More often than not, we will be computing <em>sample</em> variance and the corresponding standard deviation.</p>
+						      </div>
+						    </div>
+						  </div>
+						</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
