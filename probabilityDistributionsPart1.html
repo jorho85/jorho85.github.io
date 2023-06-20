@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>chapter 5</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+					<section id="fragments">
+						<h1>Discrete random variables</h1>
+						<p>In chapter 5 we are going to look at discrete random variables and thier distributions.</p>
+						<p class="fragment">As we go through you will see that we will be using our material on basic probability as well.</p>
+						<p><span class="fragment">Our primary goal is to understand data. While some of this material may seem a bit abstract, these are the tools we use to model data and make predictions.</span>
+							<span class="fragment">Thus, understanding the model will leads us to understanding our data.</span></p>
+					</section>
+
+				<section>
+					<section id="fragments">
+						<h1>What are discrete random variables?</h1>
+						<p>Remember that a <i>random variable</i>, $X$, is derived from a random process with some numerical outcome. Our book notes that "In many cases the random variable is what you are measuring, but
+							when it comes to discrete random variables, it is usually what you are counting." (p. 157) So, let's look at some examples to make this clear what we mean by discrete random variables.</p>
+							<ul>
+								<li>Example 1: Choose $X$ to be the sum of the scores of the next 5 Steelers home games</li>
+								<li>Example 2: Filp a coin and write Down <ul>
+									<li>$X = 1$ if the coin lands on heads</li>
+									<li>$X = 0$ if the coin lands on tails</li>
+								</ul> </li>
+								<li>Example 3: Let X be the size of a household in the US in 2023. That is the number of current residents.</li>
+								<li>Example 4: Let X be the number of cylinders a car's engine has.</li>
+							</ul>
+							<p class="fragments">All these examples only produce integer values. In the language of
+								probability theory that we developed last week, we would say that the sample sapce is the set of integers</p>
+					</section>
+					<section>
+						<h1>Distributions for discrete random variables</h1>
+						<p>Our book says, "A <i>probability distribution</i> is an assignment of probabilities to the values of the random variable" (p. 157).</p>
+						<p>The book uses a good example from the 2010 US Census as seen below:</p>
+						<p><img src="housetable1.png" alt="housetable1.png"></p>
+						<p>Note that all the probabilities should be non-negative and they should add up to one. For a discrete random variable, the distribution is created by listing out the probabilities
+						that the random variable has for each specific value. Such as there being a 0.336 or 33.6% probabily a house randomly selected from the census would have $2$ members living in it.</p>
+					</section>
+					<section>
+						<h1>Functional notation</h1>
+						<p>We will also see that information from the chart displayed in functional notation. For example we could list some values from the previous table:</p>
+						<p><ul>
+							<li>$P(X = 1) = 0.267$</li>
+							<li>$P(X \geq 7) = 0.015$</li>
+							<li>$P(X > 3) = 0.603$</li>
+						</ul> </p>
+					</section>
+				</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
