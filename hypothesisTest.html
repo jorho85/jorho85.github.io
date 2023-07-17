@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>chapter 7</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Inferential statistics (Hypothesis Testing)</h2>
+					<p>Often in statistics we want to answer a simple yes or no question, or make guesses about how large or small something might be. The the two key tools we will use
+					to answer these kinds of questions are <b>hypothesis testing</b> and <b>confidence intervals</b></p>
+					<ul>
+						<li> <b>Hypothesis Testing:</b> making a yes or no decision on a population parameter based on a given sample from that population</li>
+						<li> <b>Confidence Interval:</b> estimating a range or value of a populations' parameter(s) based on a statistic(s) from a sample</li>
+					</ul>
+					<p>Notice how both require you to use a information from a sample to calculate the answer. In chapter 7 we will look at how to preform a hypothesis test for means and proportions.</p>
+				</section>
+
+
+				<section>
+					<section>
+						<h1>The basics</h1>
+						<p> What kinds of questions can Hypothesis test help with: </p>
+						<ul>
+							<li>Does my bank have higher complains of identiy theft?</li>
+							<li>Do polyphenols reduce inflimation markers in macropages?</li>
+							<li>Does this new study method help students do better on exams?</li>
+						</ul>
+						<p>Using the mathematical ideas of probability distributions we derived in the last chapter we want to: </p>
+						<ol>
+							<li>Define a null and alrenative hypothesis based on our question of interest.</li>
+							<li>Find the test statistic to use to assess the probability that the null hypothesis happens.</li>
+							<li>Use that information to determine if we have evidence to support our claim.</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Using the "Claim" to make your hypotheses</h2>
+						<p>Suppose that you read on the back of a battery pack that this specific brand has an average life of 500 days with a standard devation of 25 days. But having used these
+						batteries for years, you have a feeling the average is a bit less than 500. So, you spend the next few years collecting data on 300 of these batteries and find the average to be
+						490 days... so what now?</p>
+						<p>We have two hypotheses we can make here, which we want to think of as guesses i.e. the claim on the back of the box and our claim. In statistics we have names for these claims:</p>
+						<ul>
+							<li> <b>null hypotheses</b> $H_0$: historical value, claim, or product specification. (Always has equality)</li>
+							<li> <b>alternative hypotheses</b> $H_A$: typically what you want to prove. ($<$, $>$ , or $\neq$)</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Example</h1>
+						<p>For the battery example we would say:</p>
+						<p>$H_0: \mu = 500$ days, since the manufacturer claims the mean life of a battery is 500 days</p>
+						<p>$H_A: \mu < 500$ days, since the you claim like the mean life of a battery is less than 500 days</p>
+						<p>Ok, now that we have our claims how do we "test them"?</p>
+					</section>
+					<section>
+						<h1>Finding the p-value</h1>
+						<p>The book (p.232) defines the p-value to be the "probability that the test statistic will take on more extreme values than the observed test statistic,
+							given that the null hypothesis is true."</p>
+						<p> In other words, we are looking to see the chances that we got our sample with its specific statics from a population that has the given parameters. In our battery example
+						we want to test to find the probability that a sample of size 300 would be to have a average life of 490 days, given that the populations average is 500 days. To do this we
+					we can use the ideas from the central limit therom and z-scores.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Historical aside - (the first p-value)</h1>
+						<p>While at the time there was no formal math called statistics <a href="https://en.wikipedia.org/wiki/John_Arbuthnot" target="_blank">John Arbuthnot</a>
+						is credited with calculating the first p-value as we define it today. His question was:</p>
+						<p> <b>Are males and females born at equal ratios?</b> </p>
+						<p>After looking at over 80 years of birth records he found that in almost every year more males were born. Under the equla ratio assumption we would expect to see
+						more females half the time. So it should be very unlikely that there would be more males born every year.</p>
+					</section>
+					<section>
+						<h1>Calculating and quantifying the unlikely</h1>
+						<p>Let's look at how unlikely this even really was by looking at what Arbuthnot argued: The probability that more males are
+						born in any particualr year is $\frac{1}{2}$. Thus, the probabiliyt of getting more males 82 years in a row would be... </p>
+						<div>
+							$$(\frac{1}{2})^{82} \approx 2.06795 \times 10^{-25}$$
+						</div>
+						<p>This is a very small probability, so it seem to support the idea that our assumption about equal ratios was incorrect.</p>
+					</section>
+					<section>
+						<h1>Let's modernize this example</h1>
+						<p>In this example we can set up our two hypotheses as:</p>
+						<p>$H_0: p = 0.5$ because we expect there to be equal numbers of males and females</p>
+						<p>$H_A: p \neq 0.5$ because this would mean that one of the genders is more likely</p>
+						<p>Notice that in this case our claim would be the null, because this is the one we expect to see.</p>
+					</section>
+					<section>
+						<h1>Critical values</h1>
+						<p>We will need to use the z-score to get a normalized value for our test and so we can plug this z-score into
+							the <a href="https://onlinestatbook.com/2/calculators/normal_dist.html" target="_blank">standard normal calculator</a>. The formula for a z-score
+						calculated for a proportion is:</p>
+						$$z = \frac{\hat{p}-p}{\sqrt{\frac{pq}{n}}}$$
+						<p>Where</p>
+						<ul>
+							<li>$\hat{p}$ is the observed probability of success from the sample</li>
+							<li>$p$ is the stated probability of success</li>
+							<li>$q = 1 - p$</li>
+							<li>$n$ is the sample size</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Back to our example</h1>
+						<p>Let's assume that he saw $80$ of the $82$ years have more males than females. Then $\hat{p} = \frac{80}{82} = 0.975097561$ and</p>
+						$$\sqrt{(0.5 * 0.5)/82} \approx 0.0555215763074$$
+						<p>Now we can use these values in calculating our critical z value:</p>
+						$$\frac{0.975097561 - 0.5}{0.0555215763074} \approx 8.613659352$$
+					</section>
+					<section>
+						<h1>Gettng our p-value</h1>
+						<p>Now that we have our critical z value we can use our <a href="https://onlinestatbook.com/2/calculators/normal_dist.html" target="_blank">standard normal calculator</a>
+						to find the p-value.</p>
+						<div>
+							<img src="proportionTest.PNG" alt="proportionTest.PNG" style="height: 25vw; max-height: 350px">
+						</div>
+						<p>Notice how this is a two tailed test because we used not equals. Also, notice that our p-value is very small. Here is a helpful phrase to remember what this means "if the p is low then
+							the null must go", so we reject the null hypothesis claim that the ratios are equal.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>What about means?</h1>
+						<p>You might be looking back at the first example and wondering how all this works with means like we were given in the batter example. Well we need a slightly different
+							formula for our critical z value:</p>
+							$$z = \frac{\bar{x} - \mu}{\sigma /\sqrt{n}}$$
+						<p>Where</p>
+						<ul>
+							<li>$\bar{x}$ is the mean of your sample</li>
+							<li>$\mu$ is the populations mean</li>
+							<li>$\sigma$ is the standard deviation of the population</li>
+							<li>$n$ is the size of the sample</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Back to the batteries</h1>
+						<p>Let's look our our battery example where you should recall: $\bar{x} = 490$, $\mu = 500$, $\sigma = 25$ and $n = 300$. So</p>
+						$$z = \frac{490 - 500}{25/ \sqrt{300}} = -6.928$$
+						<p>Then we can use that value in our standard normal calculator just like we did in the last problem. In fact the only different in these test will typically be the calculation of the
+							test statistic.</p>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
