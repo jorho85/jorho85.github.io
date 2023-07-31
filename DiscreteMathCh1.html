@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>MAT 167 Chapter 1</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Inroduction to Algorithms</h1>
+					<p>Algorithms play a very important role in computer science, and thus mathematics plays a
+					very important role in computer science. Programs and apps use algorithms to perfore all the task that we
+					often take for guarantee. Programers know that decided and outlining an algorithm is the first step in writing
+					comptuer programs. Even AI works on algorithms.</p>
+					<p>In this chapter we will define what an algorithm, and look at how to design different algorithms to do different task. There will be
+					a lot of definitions and examples using python.</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>What is an algorithm?</h1>
+						<p>An <b>algorithm</b> is a finite sequence of <b>well-defined</b> steps to preform some task such that</p>
+						<ul>
+							<li>each step is a clear instruction that can be done in a finite amount of time</li>
+							<li>the sequence in which the steps are done is clear</li>
+							<li>the process is guaranteed to stop after a finite number of steps have been done</li>
+						</ul>
+						<p>When we say well-defined we mean that their can be no ambugity about what must be done on this step. That is we either add 2 or we don't. When we implement
+						an algorithm in some programming language we have made a basic comptuer program. When we implemnt an algorithm to solve a real world physical problem we have
+						defined a basic math problem. Let's look at an example of implementing an algorithm.</p>
+					</section>
+					<section>
+						<h1>example - volume of a cube</h1>
+						<p>We will use <b>pseudocode</b>, or algorithms writen in plan english, to make algoritms a little easier for those with no code background. Let's
+						say we wanted to come up with a process for finding the volume of a cube</p>
+						<pre>
+							<code>
+								Algorithm: Find the volume of a cube with side lenght l.
+
+									1. Input l. (l is the lenght of the cube)
+									2. Set volume to $l^3$
+									3. Output volume
+							</code>
+						</pre>
+						<p>Note that each step is well-defined because we have no ambugity about what to do at any signle step. Let's look at some real code</p>
+					</section>
+					<section>
+						<p>Start by typing import numpy as np, then <b>shift + enter</b>, then we want to reproduce the algorithm from before in python.</p>
+						<iframe src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&toolbar=1" width="100%" height="500px"></iframe>
+					</section>
+					<section>
+						<h1>Now let's look at the math</h1>
+						<p>In mathematics we could use a <b>function</b> to define this algorithm.</p>
+						$$f(x) = x^3$$
+						<p>In math, functions and variables are often just given letters for names, but notice in the python program we called $f(x)$ volume. Notice that we do
+						not have to worry about our program taking to many steps, but some algorithms do have a more sophisticated control structures.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Control Structures</h1>
+
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
