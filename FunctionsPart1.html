@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Functions part 1</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+			.box {
+    	float:left;
+    	margin-right:20px;
+
+			}
+			.clear {
+    	clear:both;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+					<h1>Introduction to Functions</h1>
+					<p>A mathematical model is an abstract concept through which we use mathematical language and notation to describe a phenomenon in the world around us.
+						One example of a mathematical model is found in <a href="https://en.wikipedia.org/wiki/Dolbear%27s_law" target="_blank">Dolbear's Law</a>. In the late 1800s,
+						the physicist Amos Dolbear was listening to crickets chirp
+						and noticed a pattern: how frequently the crickets chirped seemed to be connected to the outside temperature. If we let $T$
+						represent the temperature in degrees Fahrenheit and $N$ the number of chirps per minute, we can summarize Dolbear's observations in the following table.</p>
+						<table>
+							<tr>
+								<th>T (temp in F)</th>
+								<td>50</td>
+								<td>60</td>
+								<td>70</td>
+								<td>80</td>
+							</tr>
+							<tr>
+								<th>N (chirps per min)</th>
+								<td>40</td>
+								<td>80</td>
+								<td>120</td>
+								<td>160</td>
+							</tr>
+						</table>
+						<p>We can think of the temperature as an input value $x$, and then $f(x) = N$ is a function that produces the number of chirps. In other words, we assume
+						 must be some mathematical equation that tells me how to take the input, temp in Fahrenheit, and use math operations to produce the output, the number of chirps
+					   per miniute. For a mathematical model, we often seek an algebraic formula that captures observed behavior accurately and can be used to predict behavior
+						 not yet observed. Let's translate our chart into a set of ordered pairs.</p>
+					 </section>
+					 <section>
+					 	<h2>Relationship or Function</h2>
+						<p>Using the previous chart we can set up the set of order pairs as so:</p>
+						$$\{(50,40),(60,80),(70,120),(80,160)\}$$
+						<p>A <b>relation</b> is a set of ordered pairs.
+							The set of the first components of each ordered pair is called the <b>domain</b> and the set of the second components of each ordered pair is called the <b>range</b>.
+						We list them as sets of numbers or intervals, for our relationship</p>
+						<ul>
+							<li>Domain: $\{50,60,70,80\}$</li>
+							<li>Range: $\{40,80,120,160\}$</li>
+						</ul>
+						<p>Note that each value in the domain is also known as an input value, or <b>independent variable</b>, and is often labeled with the lowercase letter $x$.
+   				   Each value in the range is also known as an output value, or <b>dependent variable</b>, and is often labeled lowercase letter $y$. While it is true all
+					 functions are relationships, that is they take inputs and produce outputs using math, there one key feature that sets functions apart from relationships...</p>
+					 </section>
+					 <section>
+					 	<h2>More on what makes a functions</h2>
+						<p>A function $f$ is a relation that assigns a single value in the range to each value in the domain. In other words, no $x$-values are repeated.
+							In our previous example we see that no $x$-value take on more than one $y$-value. But let's look at a new one:</p>
+							$$\{(1,1),(1,2),(1,3),(1,4),(1,5)\}$$
+							<p>Notice that our domain is the singleton set $\{1\}$ is not paired with exactly one element in the range, $\{1,2,3,4,5\}$, but instead
+							 is paired with all of the values in the range. Take note it only takes one repeat for a relationship to lose it statis as a funtions.</p>
+					 </section>
+					 <section>
+					 	<h2>The technical definition of a function</h2>
+						<p> <b>Def 1.1</b> A <b>function</b> is a process that may be applied to a collection of input values to produce
+							a corresponding collection of output values in such a way that the process produces one and only one output value for any single input value.</p>
+							<p>In technical math writing you will often see $F: A \rightarrow B$ which is just a short way of saying the function $F$ maps the domain $A$
+								to values in the range $B$. In our class $A$ will almost always be the real number line or segments of the real number line.</p>
+					 </section>
+					 <section>
+					 	<h2>A general visualization of what makes a function</h2>
+						<img src="functionRelationship.PNG" alt="functionRelationship.PNG" height="400px" width="100%">
+						<p>(a) This relationship is a function because each input is associated with a single output. Note that input $q$ and  $r$ both give output $n$.
+							(b) This relationship is also a function. In this case, each input is associated with a single output.
+							(c) This relationship is not a function because input $q$ is associated with two different outputs.</p>
+					 </section>
+					 <section>
+					 	<h2>Looking at our previous examples</h2>
+						<div class="box">
+							<iframe src="https://www.desmos.com/calculator/jvrph3ktaw?embed" width="120%" height="500" align="left" style="border: 1px solid #ccc" frameborder=0></iframe>
+						</div>
+						<div class="box">
+							<iframe src="https://www.desmos.com/calculator/pq9qhtzbph?embed" width="120%" height="500" align="right" style="border: 1px solid #ccc" frameborder=0></iframe>
+						</div>
+						<span> <p>In the graph on the left we see the Dolbear example, and the one on the right is of our non-function relation.</p> <p><b>Key Idea:</b>
+						notice that the the non-function relation on the right forms a vertical line. This will be important soon for our testing of functions!</p> </span>
+					 </section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Using Function Notation</h1>
+						<p>We have spent time working on determing if a relation is a fucntion, now lets look at the mathematical notation:</p>
+						$$y = f(x)$$
+						<p>This defines a function named $f$. We are free to name our functions what we want, but the most common names in math are $f,g,h$.
+							The letter $x$ represents the input value, or independent variable. The letter $y$, or $f(x)$, represents the output value, or dependent variable.
+							In this course we will be studying several familes of functions. That is functions whose equations have simular charactistics. Here is a few examples,
+							see if you can guess which ones belong to the same family. </p>
+						<ul>
+							<li>$f(x) = x^2$</li>
+							<li>$f(x) = 3$</li>
+							<li>$f(x) = 3x^3 + 7$</li>
+							<li>$f(x) = e^{x-1}$</li>
+							<li>$f(x) = \frac{x+1}{x^2 - 3x + 4}$</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Evaluating functions</h2>
+						<p>Often in this class you will be asked to evaluate a function for a given value. This means that you are to "plug" that value into
+						your defined equation and get the output. For example let's say we have defined the function $f(x) = 2x^2 + 2$ and I ask you to evaluate that
+					  function at the value $x=4$ then: </p>
+						$$f(2) = 2(4)^2 + 2 = 2(16) + 2 = 32 + 2 = 34$$
+						<p>Notice that everywhere I had an x, I replaced it with the value of 2. Then I just preformed arithmetic. But what if I said evaluate at $x = z + 2$:</p>
+						$$f(z+2) = 2(z+2)^2 + 2 =$$
+						$$2(z^2 + 2z + 4) + 2 = 2z^2 + 4z + 8 + 2 = 2z^2 + 4z + 10$$
+						<p>We can evaluate functions at specific values, but we can also evaluate functions with other functions. The process of
+						evaluating functions with other functions is called <b>composition</b> and we will study it in more depth later.</p>
+					</section>
+					<section id="fragments">
+						<h2>You try</h2>
+						<p>Evaluate the following function at $x = 5$</p>
+						$$f(x) = \frac{\sqrt{3x + 1}}{2}$$
+						<p style="text-align: center;" class="fragment">$f(5) = \frac{\sqrt{3(5) + 1}}{2}$</p>
+						<p style="text-align: center;" class="fragment">$ = \frac{\sqrt{15 + 1}}{2}$</p>
+						<p style="text-align: center;" class="fragment">$ = \frac{\sqrt{16}}{2}$</p>
+						<p style="text-align: center;" class="fragment">$ = \frac{4}{2} = 2$</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Our first property and test</h1>
+						<p>Some functions have a given output value that corresponds to two or more input values. However, some functions have only one input value for each output value,
+							as well as having only one output for each input. We call these functions one-to-one functions.</p>
+							<table>
+								<tr>
+									<th>Letter Grade</th>
+									<th>Grade point average</th>
+								</tr>
+								<tr>
+									<td>A</td>
+									<td>4.0</td>
+								</tr>
+								<tr>
+									<td>B</td>
+									<td>3.0</td>
+								</tr>
+								<tr>
+									<td>C</td>
+									<td>2.0</td>
+								</tr>
+								<tr>
+									<td>D</td>
+									<td>1.0</td>
+								</tr>
+							</table>
+							<p>This grading system represents a one-to-one function,
+								because each letter input yields one particular grade point average output and each grade point average corresponds to one input letter.</p>
+							<p>The grading system is also a descrete function because its domain and range are finite sets. In this course we will be looking mostly at
+							continous functions. These are best visualized on desmos.</p>
+					</section>
+					<section>
+						<h2>Vertical line test examples</h2>
+						<iframe src="https://www.desmos.com/calculator/qtzl8tegez" width="100%" height="500px" style="min-height:200px"></iframe>
+						<p>Inspect the graph to see if any vertical line drawn would intersect the curve more than once.
+							If there is any such line, determine that the graph does not represent a function.</p>
+					</section>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Domain and Range</h2>
+						<p> <b>Def 1.2</b> Let $F$ be a function from $A$ to $B$. The set $A$ of
+							possible inputs $F$ is called the <b>domain</b> of $F$; the set $B$ of potential outputs
+						 	from $F$ is called the <b>codomain</b> of $F$.</p>
+						<p class="fragment">Notice that $B$ is not technically the range, there is a more specific definition for the range:</p>
+						<p class="fragment"> <b>Def 1.3</b> Let $F$ be a function from $A$ to $B$. The <b>range</b> of
+ 						is the collection of all actual outputs of the function. That is, the range is the collectio of all elements $y$ in $B$
+ 						for which it is possible to find an element $x$ in $A$ such that $F(x) = y$</p>
+						<p class="fragment">In many situations, the range of a function is much more challenging to determine than its codomain.</p>
+						<div class="fragment">
+							<img src="domandrang.PNG" alt="domandrang.PNG" height="200px" width="100%">
+						</div>
+						<p class="fragment" >We can visualize the domain as a “holding area” that
+							contains “raw materials” for a “function machine” and the range as another “holding area” for the machine’s products.</p>
+					</section>
+					<section>
+						<h2>Interval notation</h2>
+						<p>We can write the domain and range in interval notation, which uses values within brackets to describe a set of numbers. In interval notation, we use a square bracket
+							$[$ when the set includes the endpoint and a parenthesis $($ to indicate that the endpoint is either not included or the interval is unbounded.
+						 	Infinity will always get a $($ because it is not a number. Here are some visual examples:</p>
+						<div>
+							<img src="intervalexamples.PNG" alt="intervalexamples.PNG" height="400px" width="100%">
+						</div>
+						<p>What do you think a number line with Infinity in it would look like?</p>
+					</section>
+					<section>
+						<h2>Examples with Infinity</h2>
+						<img src="moreintevals.PNG" alt="moreintevals.PNG" height="500px" width="100%">
+					</section>
+					<section>
+						<h2>The conventions of interval notation:</h2>
+						<ul>
+							<li>The smallest term from the interval is written first.</li>
+							<li>The largest term in the interval is written second, following a comma.</li>
+							<li>Parentheses, $($ or $)$, are used to signify that an endpoint is not included, called exclusive.</li>
+							<li>Brackets, $[$ or $]$, are used to indicate that an endpoint is included, called inclusive.</li>
+						</ul>
+						<p>A lot of functions have the set of all real numbers, $\mathbb{R}$, as both it's domain and range. Often when
+							determing the domain and range, it is best to start with the assumption that it is all real numbers, then work though the possible restirction:</p>
+							<ul>
+								<li>We can not have negative values inside of radicals</li>
+								<li>We can not divide by zero</li>
+							</ul>
+						<p>Another helpful thing to do is to look at a visual of the graph when determing the domain and range.</p>
+					</section>
+					<section>
+						<h2>Looking at our example graphs again</h2>
+						<iframe src="https://www.desmos.com/calculator/qtzl8tegez" width="100%" height="500px" style="min-height:200px"></iframe>
+						<p>Determine which values are being used as inputs from the $x$ axis as the domain, and which values are being
+							used as outputs from the $y$ axis as the range. Write you answer in interval notation.</p>
+					</section>
+					<section>
+						<h2>Answers to previous slide</h2>
+						<ul>
+							<li>$x^2$ D: $(-\infty,\infty)$ R: $[0,\infty)$</li>
+							<li>$e^x$ D: $(-\infty,\infty)$ R: $(0,\infty)$</li>
+							<li>$\log{x}$ D: $(0,\infty)$ R: $(-\infty,\infty)$</li>
+							<li>$\sqrt{x}$ D: $(0,\infty)$ R: $(0,\infty)$</li>
+						</ul>
+						<p>Notice that if we do not restrict the domain for $\sqrt{x}$ then we would not have a function. Domain restriction are yours to control
+							to insure that some math relationship is actually a function, but the range is determined by the domain and the realtionship, thus you can not
+							directly <i>determine</i> or set the values of the range. You must see or find what values are produced when you imput the domain into the
+							mathematical formula.</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Summary and support</h2>
+					<p>A function is a process that generates a relationship between two collections of quantities.
+						The function associates each member of a collection of input values with one and only one member of the collection of output values.
+						A function can be described or defined by words, by a table of values, by a graph, or by a formula.</p>
+					<p>Here are some helpful links to video examples of finding domain and range:</p>
+					<p>Examples of finding the domain of functions that need restrictions: <a href="https://youtu.be/djT6-YamHaA">LINK</a></p>
+					<p>Examples of finding the range of a fucntion: <a href="https://youtu.be/Si2vmzUWfJE">LINK</a></p>
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
