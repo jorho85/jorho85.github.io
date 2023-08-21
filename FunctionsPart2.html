@@ -251,11 +251,62 @@
 						<p class="fragment">We sometimes call the $g$ “inner function” and $f$ the “outer function”. Notice from the definition, our new function has the domain
 							of the inner funtion, and range of the outer function.</p>
 					</section>
-					<section>
+					<section id="fragments">
 						<h2>Example from table</h2>
+						<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0lax">$x$<br></th>
+    <th class="tg-0lax">1</th>
+    <th class="tg-0lax">2</th>
+    <th class="tg-0lax">3</th>
+    <th class="tg-0lax">4</th>
+    <th class="tg-0lax">5</th>
+    <th class="tg-0lax">6</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">$g(x)$</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">$f(x)$</td>
+    <td class="tg-0lax">1<br></td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">6<br></td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">2</td>
+  </tr>
+</tbody>
+</table>
+<p class="fragment">Find $(f + g)(5)$ and $(f o g)(5)$:</p>
+<p class="fragment"> <span class="fragment">$(f + g)(5) =$</span> <span class="fragment">$f(5) + g(5) = 3 + 4 = 7$</span> </p>
+<p class="fragment"> <span class="fragment">$(f o g)(5) =$</span> <span class="fragment">$f(g(5)) = f(3) = 5$</span> </p>
+<p class="fragment">Notice that with composition, I needed to evaluate g first then f. With arithmitic we can evaluate immediately and just work with the numbers!</p>
 					</section>
-					<section>
+					<section id="fragments">
 						<h2>Example when given two equations</h2>
+						<p>Suppose $f(x) = \sqrt{3x + 10}$  and $g(x) = \frac{1}{7x + 10}$, find $(f o g)(x)$</p>
+						<p class="fragment">$$(f o g)(x) = f(g(x))$$</p>
+						<p class="fragment">$$ = f(\frac{1}{7x + 10})$$</p>
+						<p class="fragment">$$ = \sqrt{3(\frac{1}{7x + 10}) + 10}$$</p>
+						<p class="fragment">Notice that for MOM, quzzes and exams you do not need to simplify, but for those who want the challenge, our answer simplifies to: </p>
+						<p class="fragment">$$\sqrt{\frac{70x + 103}{7x + 10}}$$</p>
 					</section>
 				</section>
 
@@ -264,7 +315,9 @@
 					<h4>Summary</h4>
 					<p>Given any function we can find it's rate of change using $$\text{Avg rate of change} = \frac{y_2 - y_1}{x_2 - x_1}$$</p>
 					<p>This rate of change is related to the slope of the function, and tells us if the function is increasing or decreasing on the interval</p>
-					<p></p>
+					<p>Another example video of finding average rate of change: <a href="https://youtu.be/f_Q0qlwlclQ">LINK</a> </p>
+					<p>We can combine functions using standard arithmitic or we can compose funtions with other functions</p>
+					<p>Here is another example of function composition: <a href="https://youtu.be/ZFPkQkURSxk" target="_blank">LINK</a> </p>
 				</section>
 
 
