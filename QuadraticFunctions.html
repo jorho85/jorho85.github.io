@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Introduction to Polynomials</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+			.box {
+    	float:left;
+    	margin-right:20px;
+
+			}
+			.clear {
+    	clear:both;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+    			<h1>Exploring Quadratic Functions</h1>
+
+    			<p>A quadratic function is a fundamental mathematical function that plays a significant role in various fields. It is defined by the general form:</p>
+
+    			<p class="fragment">\(f(x) = ax^2 + bx + c\)</p>
+
+    			<p class="fragment">Quadratic functions have a <strong>degree of 2</strong>, and they produce a curve known as a <strong>parabola</strong> when graphed.</p>
+
+    			<p class="fragment">Let's discover the versatility of quadratic functions and explore some of their many real-world applications:</p>
+
+    			<ul>
+        		<li class="fragment">1. <strong>Physics:</strong> Quadratic functions describe the motion of objects under the influence of gravity, such as projectiles and falling objects.</li>
+        		<li class="fragment">2. <strong>Engineering:</strong> Quadratic equations are used in designing bridges and structures to analyze forces and stresses.</li>
+        		<li class="fragment">3. <strong>Economics:</strong> Quadratic functions model cost, revenue, and profit in business and economics.</li>
+        		<li class="fragment">4. <strong>Geometry:</strong> Quadratic equations are used to solve problems related to shapes, areas, and volumes.</li>
+        		<li class="fragment">5. <strong>Computer Graphics:</strong> Quadratic functions help create realistic 3D graphics and animations.</li>
+        		<li class="fragment">6. <strong>Natural Sciences:</strong> Quadratic equations are applied in modeling physical and biological phenomena.</li>
+    		</ul>
+				</section>
+
+				<section>
+					<section>
+    				<h1>The Vertex Form: \(f(x) = a(x - h)^2 + k\)</h1>
+
+    			<p>In the vertex form of a quadratic function, \(h\) represents the horizontal shift or displacement of the vertex along the \(x\)-axis.
+						It determines the <strong>horizontal position of the vertex</strong>. $h = \frac{-b}{2a}$</p>
+
+    			<p class="fragment">To find the <strong>vertical position of the vertex (\(k\))</strong>, we can simply plug the \(h\) value into the function.</p>
+
+    			<p class="fragment">So, if \(h\) is the \(x\)-coordinate of the vertex, then \(k = f(h)\) represents the \(y\)-coordinate of the vertex.</p>
+
+    			<p class="fragment">For example, if \(f(x) = 2(x - 3)^2 + 5\), then \(h = 3\) tells us that the vertex is horizontally shifted 3 units to the right.
+						To find \(k\), we calculate \(k = f(3) = 2(3 - 3)^2 + 5 = 5\).</p>
+					</section>
+					<section>
+						<h1>Exploring both Form's of the quadratic graphicially</h1>
+						<iframe src="https://www.desmos.com/calculator/ylamjy6bqh" width=100% height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+    <h1>The Importance of Finding Zeros of Quadratic Functions</h1>
+
+    <p>Finding the <strong>zeros</strong> (also known as <strong>roots</strong> or <strong>x-intercepts</strong>) of quadratic functions is a fundamental concept in algebra and has significant practical importance. Here's why it matters:</p>
+
+    <ul>
+        <li class="fragment">1. <strong>Solving Equations:</strong> Quadratic equations often arise in real-world problems. Finding the zeros helps us solve these equations and determine when certain conditions are met.</li>
+        <li class="fragment">2. <strong>Graphical Analysis:</strong> Zeros correspond to the points where the graph of the quadratic function intersects the x-axis. This information is vital for understanding the behavior of the function.</li>
+        <li class="fragment">3. <strong>Real-World Applications:</strong> Zeros represent important values in various fields such as physics, engineering, economics, and biology. For example, they help find the time when a projectile hits the ground or when a business breaks even.</li>
+        <li class="fragment">4. <strong>Factoring and Simplification:</strong> Zeros are essential for factoring quadratic expressions and simplifying complex expressions. This simplification can lead to more manageable forms for further analysis.</li>
+        <li class="fragment">5. <strong>Geometry and Quadratic Forms:</strong> Zeros are key in geometry when dealing with parabolas and quadratic equations that describe shapes, areas, and volumes.</li>
+        <li class="fragment">6. <strong>Optimization:</strong> In optimization problems, finding the zeros helps determine the maximum or minimum values of quadratic functions, which is valuable for making optimal decisions.</li>
+    </ul>
+</section>
+<section>
+    <h1>Solving Quadratic Equations by Completing the Square</h1>
+
+    <p>When you have a quadratic equation in the form \(ax^2 + bx + c = 0\), you can solve it by completing the square. Here's a step-by-step process:</p>
+
+    <p class="fragment">1. <strong>Make sure the coefficient of \(x^2\) (\(a\)) is 1.</strong> If it's not, divide the entire equation by \(a\) to make it equal to 1.</p>
+
+    <p class="fragment">2. <strong>Move the constant term (\(c\)) to the other side of the equation:</strong></p>
+
+    <p class="fragment">\[x^2 + \frac{b}{a}x = -c\]</p>
+
+    <p class="fragment">3. <strong>Take half of the coefficient of \(x\) (\(b/2\)) and square it (\((b/2)^2\)). Add and subtract this value inside the parentheses:</strong></p>
+
+    <p class="fragment">\[ax^2 + bx + \left(\frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 = -c\]</p>
+
+    <p class="fragment">4. <strong>Factor the perfect square trinomial on the left side:</strong></p>
+
+    <p class="fragment">\[a\left(x^2 + \frac{b}{a}x + \left(\frac{b}{2a}\right)^2\right) - \left(\frac{b}{2}\right)^2 = -c\]</p>
+
+    <p class="fragment">5. <strong>Write the perfect square trinomial as \((x + \frac{b}{2a})^2\):</strong></p>
+
+    <p class="fragment">\[a\left(x + \frac{b}{2a}\right)^2 - \left(\frac{b}{2}\right)^2 = -c\]</p>
+
+    <p class="fragment">6. <strong>Isolate the perfect square term on the left side:</strong></p>
+
+    <p class="fragment">\[a\left(x + \frac{b}{2a}\right)^2 = \left(\frac{b}{2}\right)^2 - c\]</p>
+
+    <p class="fragment">7. <strong>Take the square root of both sides:</strong></p>
+
+    <p class="fragment">\[x + \frac{b}{2a} = \pm \sqrt{\frac{b^2}{4a^2} - \frac{c}{a}}\]</p>
+
+    <p class="fragment">8. <strong>Isolate \(x\):</strong></p>
+
+    <p class="fragment">\[x = -\frac{b}{2a} \pm \sqrt{\frac{b^2}{4a^2} - \frac{c}{a}}\]</p>
+
+    <p class="fragment">These are the solutions to the quadratic equation \(ax^2 + bx + c = 0\) obtained by completing the square.</p>
+</section>
+<section>
+	<h1>The 3 primary method of finding zero's of a quadratic</h1>
+
+	<ul>
+		<li>Factoring</li>
+		<li>The quadratic formual</li>
+		<li>Graphing</li>
+	</ul>
+
+	<p class="fragment">While the quadratic formula and graphing are the easy way to find zero's, they are typically numerical approxmations of the real answer.
+	The only way to get the exact answer would be to use a factoring method or reduce the results of the quadratic formula by hand or with algebra software. </p>
+</section>
+<section>
+    <h1>Reducing the Expression: \(\frac{60 + \sqrt{100}}{30}\)</h1>
+
+    <p>We can simplify the given expression by breaking it down into smaller steps:</p>
+
+    <p class="fragment">Step 1: Recognize that \(\sqrt{100} = 10\).</p>
+
+    <p class="fragment">So, the expression becomes: \(\frac{60 + 10}{30}\).</p>
+
+    <p class="fragment">Step 2: Simplify the numerator by adding \(60\) and \(10\):</p>
+
+    <p class="fragment">\(\frac{70}{30}\).</p>
+
+    <p class="fragment">Step 3: Reduce the fraction by dividing both the numerator and denominator by their greatest common divisor (in this case, \(10\)):</p>
+
+    <p class="fragment">\(\frac{7}{3}\).</p>
+
+    <p class="fragment">So, the simplified form of the expression \(\frac{60 + \sqrt{100}}{30}\) is \(\frac{7}{3}\).</p>
+</section>
+				</section>
+
+				<section>
+<section>
+	<h1>Rocket Science</h1>
+
+	<p>We saw earlier that one of the aplications of was tracking projectiles. Quadratic functions model the behavior of a projectile acting under Newtonian gravity. Here is an example:</p>
+	<p>NASA launches a rocket at $t = 0$ seconds. Its height, in meters above sea - level, as a function of time is given by $h(t) = -4.9t^2 + 37t + 409$</p>
+	<p class="fragment">Can we use that function to find out how long the rocket was in flight?</p>
+	<p class="fragment">Can we use the function to find out the maximum height of the rocket?</p>
+</section>
+
+					<section>
+	    <h1>Finding the Landing Time and Maximum Height</h1>
+
+	    <p>We have a rocket launched by NASA with a height function \(h(t) = -4.9t^2 + 37t + 409\), where \(t\) is time in seconds and \(h(t)\) is the height above sea level in meters.</p>
+
+	    <p class="fragment">To find when the rocket lands and its maximum height, we need to solve for \(t\) when \(h(t) = 0\):</p>
+
+	    <p class="fragment">1. Set \(h(t) = 0\):</p>
+
+	    <p class="fragment">\(-4.9t^2 + 37t + 409 = 0\).</p>
+
+	    <p class="fragment">2. Use the quadratic formula \(t = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\) to solve for \(t\), where \(a = -4.9\), \(b = 37\), and \(c = 409\):</p>
+
+	    <p class="fragment">\[t = \frac{-37 \pm \sqrt{37^2 - 4(-4.9)(409)}}{2(-4.9)}\]</p>
+
+	    <p class="fragment">Calculating this expression will give us the time(s) when the rocket lands.</p>
+
+	    <p class="fragment">3. To find the maximum height, we can use the formula for the vertex of a parabola: \(h_{\text{max}} = -\frac{b}{2a}\).</p>
+
+	    <p class="fragment">Plug in the values of \(a\) and \(b\) from the original equation:</p>
+
+	    <p class="fragment">\[h_{\text{max}} = -\frac{37}{2(-4.9)}\]</p>
+
+	    <p class="fragment">Now, calculate \(h_{\text{max}}\) to find the maximum height reached by the rocket.</p>
+	</section>
+
+
+				</section>
+
+					<!-- Slide N: Review Slide -->
+					<section>
+							<h1>Review</h1>
+							<p>Topics Covered:</p>
+							<ul>
+								  <li>Algebraic forms of the quadratic formula</li>
+									<li>Completing the square</li>
+									<li>The quadratic formula</li>
+									<li>finding zeros of quadratic functions</li>
+									<li>Using what we know about quadratic function to solve rocket problems</li>
+							</ul>
+
+					</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
