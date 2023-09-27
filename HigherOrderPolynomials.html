@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Higher Order Polynomials</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+			.box {
+    	float:left;
+    	margin-right:20px;
+
+			}
+			.clear {
+    	clear:both;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+    <h1>Higher-Order Polynomials in Computer Graphics</h1>
+
+    		<p>In computer graphics, higher-order polynomials play a crucial role in creating visually stunning and realistic scenes. One fascinating example is the use of <strong>Bézier curves</strong>.</p>
+
+    		<p class="fragment">Bézier curves are parametric curves defined by higher-order polynomials, typically cubic (degree 3) or quadratic (degree 2).</p>
+
+    		<p class="fragment">Here's why Bézier curves are fascinating:</p>
+
+    			<ul>
+        		<li class="fragment">1. <strong>Smooth Curves:</strong> Cubic Bézier curves are perfect for creating smooth, elegant curves that connect two endpoints while allowing control over the curve's shape.</li>
+        		<li class="fragment">2. <strong>Bezier Splines:</strong> Multiple Bézier curves can be connected to form splines, enabling the creation of complex shapes, such as fonts, car bodies, and animations.</li>
+        		<li class="fragment">3. <strong>Animation:</strong> Bézier curves are used in animation software to define motion paths, allowing objects to move smoothly and realistically.</li>
+        		<li class="fragment">4. <strong>3D Modeling:</strong> In 3D modeling, Bézier surfaces (an extension of curves) are used to define complex shapes and surfaces with precision.</li>
+        		<li class="fragment">5. <strong>Graphic Design:</strong> Graphic designers use Bézier curves in software like Adobe Illustrator to create vector graphics with precise curves and shapes.</li>
+        		<li class="fragment">6. <strong>Game Development:</strong> Game engines utilize Bézier curves to design character movements, camera paths, and terrain generation.</li>
+    			</ul>
+ 					</section>
+					<section>
+						<h1>Example of Bézier curves</h1>
+						<iframe src="https://www.desmos.com/calculator/k7lyu7iv5a" width=100% height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+						<p>These curves are great examples of the power simple mathematical expressions have over our everyday world.</p>
+					</section>
+					<section>
+    <h1>Polynomials: General Definition and Characteristics</h1>
+
+    <p>A polynomial is a mathematical expression of the form:</p>
+
+    <p class="fragment">\(P(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_2x^2 + a_1x + a_0\)</p>
+
+    <p class="fragment">where:</p>
+
+    <ul>
+        <li class="fragment"><strong>\(P(x)\)</strong> is the polynomial function.</li>
+        <li class="fragment"><strong>\(x\)</strong> is the variable or independent variable.</li>
+        <li class="fragment"><strong>\(a_n, a_{n-1}, \ldots, a_2, a_1, a_0\)</strong> are coefficients, where \(a_n \neq 0\) and \(n\) is a non-negative integer.</li>
+        <li class="fragment">The highest power of \(x\) (the highest \(n\)) is the <strong>degree</strong> of the polynomial.</li>
+    </ul>
+
+    <p class="fragment">Now, let's explore some characteristics of polynomials:</p>
+
+    <ul>
+        <li class="fragment">- The <strong>domain</strong> of a polynomial is all real numbers (\(x \in \mathbb{R}\)) because it covers all possible values of the independent variable \(x\).</li>
+        <li class="fragment">- The <strong>range</strong> depends on the specific polynomial function and its degree. It may be limited or extend to \((-\infty, +\infty)\).</li>
+        <li class="fragment">- The polynomial may have a <strong>maximum</strong> or <strong>minimum</strong> value, depending on its degree and leading coefficient. Higher-degree polynomials can have multiple extrema.</li>
+        <li class="fragment">- The <strong>intercepts</strong> of a polynomial are the points where it intersects the x-axis (\(y = 0\)). These are the <strong>x-intercepts</strong> or <strong>zeros</strong>. The <strong>y-intercept</strong> is the point where it intersects the y-axis (\(x = 0\)).</li>
+    </ul>
+</section>
+</section>
+<section>
+<section>
+    <h1>Determining End Behavior of a Polynomial</h1>
+
+    <p>The end behavior of a polynomial describes how the polynomial behaves as the independent variable (\(x\)) approaches positive or negative infinity. To determine the end behavior, follow these steps:</p>
+
+    <ul>
+        <li class="fragment">1. <strong>Examine the Degree (\(n\)):</strong> Determine the degree of the polynomial, which is the highest power of \(x\) in the polynomial's leading term.</li>
+        <li class="fragment">2. <strong>Identify the Leading Coefficient (\(a_n\)):</strong> Find the coefficient of the term with the highest power of \(x\).</li>
+        <li class="fragment">3. <strong>Consider Two Cases:</strong></li>
+    </ul>
+
+    <div class="fragment">
+        <p>a. <strong>Even Degree (\(n\) is even):</strong></p>
+        <ul>
+            <li class="fragment">- If the leading coefficient (\(a_n\)) is positive, both ends of the graph will rise as \(x\) goes to both positive and negative infinity.</li>
+            <li class="fragment">- If \(a_n\) is negative, both ends of the graph will fall as \(x\) goes to both positive and negative infinity.</li>
+        </ul>
+    </div>
+
+    <div class="fragment">
+        <p>b. <strong>Odd Degree (\(n\) is odd):</strong></p>
+        <ul>
+            <li class="fragment">- If the leading coefficient (\(a_n\)) is positive, one end of the graph will rise as \(x\) goes to positive infinity, and the other end will fall as \(x\) goes to negative infinity.</li>
+            <li class="fragment">- If \(a_n\) is negative, one end of the graph will fall as \(x\) goes to positive infinity, and the other end will rise as \(x\) goes to negative infinity.</li>
+        </ul>
+    </div>
+
+    <p class="fragment">Keep in mind that "rise" means the graph approaches positive infinity, and "fall" means the graph approaches negative infinity.</p>
+</section>
+<section>
+    <h1>Odd and Even Degrees of Polynomials and Their Symmetry</h1>
+
+    <p>The degree of a polynomial has a direct connection to its symmetry, or lack thereof. Let's explore how odd and even degrees of polynomials relate to symmetry:</p>
+
+    <div class="fragment">
+        <p>1. <strong>Odd-Degree Polynomials (n is odd):</strong></p>
+        <ul>
+            <li class="fragment">- These polynomials often <strong>orgin symmetry</strong>.</li>
+            <li class="fragment">- As \(x\) approaches both positive and negative infinity, one end of the graph rises while the other falls, creating a <strong>skew or slant symmetry</strong>.</li>
+            <li class="fragment">- The graph may have a <strong>one or many x-intercept</strong>.</li>
+            <li class="fragment">- Example: \(f(x) = x^3 + 2x^2 - x - 3\)</li>
+        </ul>
+    </div>
+
+    <div class="fragment">
+        <p>2. <strong>Even-Degree Polynomials (n is even):</strong></p>
+        <ul>
+            <li class="fragment">- These polynomials often exhibit <strong>y-axis symmetry</strong>.</li>
+            <li class="fragment">- As \(x\) approaches both positive and negative infinity, both ends of the graph rise or fall together, creating a <strong>mirror symmetry</strong> about the y-axis.</li>
+            <li class="fragment">- The graph may have <strong>none or multiple x-intercepts</strong> and can resemble a parabola or more complex shapes.</li>
+            <li class="fragment">- Example: \(f(x) = x^4 - 4x^2 + 4\)</li>
+        </ul>
+    </div>
+
+    <p class="fragment">Understanding the degree of a polynomial can provide insights into its symmetry characteristics, aiding in graph analysis and interpretation.</p>
+</section>
+				</section>
+				<section>
+					<section>
+						<h1>Small note on complex numbers</h1>
+						<p>Complex number are the large set of numbers that the real number exist as a part of, and they are made of a real part and an imaginary part.</p>
+						<p class="fragment">If we let $\sqrt{-1} = i$ then we open up solutions to $x^2 + 1 = 0$ that just cant exist in the real number system.</p>
+						<p class="fragment">While not a direct object of study for this course, it is important that pre-calculus students are aware of these numbers.</p>
+						<p class="fragment">For those who are interested here is a medium article on how to find the three answers to $x^3 - 1 = 0$ <a href="https://medium.com/math-simplified/how-many-cubes-roots-of-1-are-there-22d6b564a3f" target="_blank">Link to article</a>.</p>
+						<p class="fragment">The most important take away from this is that polynomials when set equal to zero can give answers that go beyond the real numbers,
+							but we only have real number in our codomain to make ranges out of and therefor we will not get them as solutions. They are still important because...</p>
+					</section>
+					<section>
+    		<h1>The Fundamental Theorem of Algebra</h1>
+
+    		<p>The Fundamental Theorem of Algebra is a fundamental result in complex analysis and algebra that has profound implications for polynomial equations. It states:</p>
+
+    		<p class="fragment">"Every non-constant polynomial equation with complex coefficients has at least one complex root."</p>
+
+    		<p class="fragment">Key points to understand:</p>
+
+    		<ul>
+        	<li class="fragment">- "Non-constant polynomial equation" refers to equations with terms of the form \(ax^n\), where \(a\) is a complex coefficient and \(n\) is a positive integer.</li>
+        	<li class="fragment">- "Complex coefficients" means that both the coefficients of the polynomial and the roots can be complex numbers.</li>
+        	<li class="fragment">- "Complex root" indicates that even if the polynomial equation doesn't have real solutions, it will always have complex solutions in the form \(x = a + bi\), where \(a\) and \(b\) are real numbers and \(i\) is the imaginary unit (\(i^2 = -1\)).</li>
+    		</ul>
+
+    		<p class="fragment">The Fundamental Theorem of Algebra is a powerful result that ensures that every polynomial equation can be completely factored into linear and irreducible quadratic terms with complex roots.</p>
+				</section>
+				<section>
+					<h1>What does this mean for us?</h1>
+					<p>This theorem implies that we can create any polynomial we want by multiplication of simple (linear or quadratic) </p>
+					<iframe src="https://www.desmos.com/calculator/2pu1syyopx" width=100% height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+				</section>
+				<section>
+    <h1>Example: Polynomial with Zeros and Always Decreasing</h1>
+
+    <p>Let's construct a polynomial equation that has zeros at \(x = 1\), \(x = 2\), and \(x = -3\) and is always decreasing.</p>
+
+    <p class="fragment">1. Start with the factored form of the polynomial using its zeros:</p>
+
+    <p class="fragment">\[P(x) = a(x - 1)(x - 2)(x + 3)\]</p>
+
+    <p class="fragment">2. To ensure that the polynomial is always decreasing, let's assume \(a = -1\):</p>
+
+    <p class="fragment">\[P(x) = -(x - 1)(x - 2)(x + 3)\]</p>
+
+    <p class="fragment">3. Now, we have a polynomial equation that meets your criteria:</p>
+
+    <p class="fragment">\[P(x) = -(x - 1)(x - 2)(x + 3)\]</p>
+
+    <p class="fragment">This polynomial equation has zeros at \(x = 1\), \(x = 2\), and \(x = -3\),
+			and it's always decreasing because its leading coefficient is negative (-1).</p>
+			<p class="fragment">Note that we could have found a value for $a$ if we had another point. But, it super important to remember that
+				this numbers sign determines the end behaviour.</p>
+			</section>
+			<section>
+			    <h1>Average Rate of Change of a Polynomial</h1>
+
+			    <p>The average rate of change of a polynomial function over an interval measures how the function's values change on average between two points. It can provide insights into the function's behavior over that interval.</p>
+
+			    <p class="fragment">To calculate the average rate of change between \(x = a\) and \(x = b\) for a polynomial function \(P(x)\), use the following formula:</p>
+
+			    <p class="fragment">\[ \text{Average Rate of Change} = \frac{P(b) - P(a)}{b - a} \]</p>
+
+			    <p class="fragment">Key points to understand:</p>
+
+			    <ul>
+			        <li class="fragment">- The numerator \(P(b) - P(a)\) represents the change in the function's values between \(x = a\) and \(x = b\).</li>
+			        <li class="fragment">- The denominator \(b - a\) is the length of the interval over which you are calculating the average rate of change.</li>
+			        <li class="fragment">- The result is a measure of the average slope or rate of change of the function over that interval.</li>
+			    </ul>
+
+			    <p class="fragment">The average rate of change can help analyze trends and behavior of the polynomial function, such as whether it's increasing, decreasing, or constant over the interval.
+						For linear polynomial's the rate of change is the slope coefficient.</p>
+			</section>
+				</section>
+				<section>
+					<section>
+    <h1>Introduction to Polynomial Division</h1>
+
+    <p>Polynomial division is a fundamental concept in algebra that allows us to divide one polynomial by another. It plays a crucial role in simplifying, factoring, and solving polynomial equations.</p>
+
+    <p class="fragment">Key points to understand:</p>
+
+    <ul>
+        <li class="fragment">- Polynomial division involves dividing a polynomial, known as the <strong>dividend</strong>, by another polynomial, known as the <strong>divisor</strong>.</li>
+        <li class="fragment">- The goal is to find a <strong>quotient</strong> polynomial and a <strong>remainder</strong> polynomial, if any.</li>
+        <li class="fragment">- Polynomial division is analogous to long division with numbers, but we use algebraic techniques.</li>
+    </ul>
+
+    <p class="fragment">We use polynomial division to:</p>
+
+    <ul>
+        <li class="fragment">- Simplify complex expressions by factoring.</li>
+        <li class="fragment">- Find roots or zeros of polynomials.</li>
+        <li class="fragment">- Perform partial fraction decomposition.</li>
+        <li class="fragment">- Divide polynomials to solve equations.</li>
+    </ul>
+
+    <p class="fragment">In this course, we will explore the process of polynomial division and its applications.</p>
+</section>
+<section>
+    <h1>Example: Dividing polynomial example</h1>
+
+    <p>Let's walk through the process of dividing the polynomial \(x^3 + 4x^2 + x - 6\) by \(x + 3\).</p>
+
+    <p class="fragment">Step 1: Set up the long division:</p>
+
+    <pre class="fragment">
+
+    ___________________
+x + 3 | x^3 + 4x^2 + x - 6
+    </pre>
+
+    <p class="fragment">Step 2: Divide the first term of the dividend (\(x^3\)) by the first term of the divisor (\(x\)). This gives \(x^2\).</p>
+
+    <p class="fragment">Step 3: Multiply the divisor (\(x + 3\)) by the result from Step 2 (\(x^2\)), and write it below the dividend. Subtract this result from the dividend.</p>
+
+    <pre class="fragment">
+          x^2
+    ___________________
+x + 3 | x^3 + 4x^2 + x - 6
+          -(x^3 + 3x^2)
+          ---------------
+                 x^2 + x
+    </pre>
+
+    <p class="fragment">Step 4: Repeat the process. Divide the first term of the new dividend (\(x^2\)) by the first term of the divisor (\(x\)). This gives \(x\).</p>
+</section>
+<section>
+	<h2>cont.</h2>
+    <p class="fragment">Step 5: Multiply the divisor (\(x + 3\)) by the result from Step 4 (\(x\)), and write it below the remaining part of the dividend. Subtract this result from the previous remainder.</p>
+
+    <pre class="fragment">
+          x^2 + x
+    ___________________
+x + 3 | x^3 + 4x^2 + x - 6
+          -(x^3 - 3x^2)
+          ---------------
+                 x^2 + x
+                 -(x^2 - 3x)
+                ------------
+                        4x - 6
+    </pre>
+
+    <p class="fragment">Step 6: Repeat the process again. Divide the first term of the new dividend (\(4x\)) by the first term of the divisor (\(x\)). This gives \(4\).</p>
+
+    <p class="fragment">Step 7: Multiply the divisor (\(x + 3\)) by the result from Step 6 (\(4\)), and write it below the remaining part of the dividend. Subtract this result from the previous remainder.</p>
+</section>
+<section>
+	<h2>cont.</h2>
+    <pre class="fragment">
+          x^2 + x - 2
+    ___________________
+x + 3 | x^3 + 4x^2 + x - 6
+          -(x^3 - 3x^2)
+          ---------------
+                 x^2 + x
+                 -(x^2 - 3x)
+                ------------
+                        4x - 6
+                        -(4x -6)
+                    ------------
+                              0
+    </pre>
+
+    <p class="fragment">Step 8: We have reached a constant term (0), which is <strong>less than the divisor's degree (\(x + 3\))</strong>. This is the remainder, and we can stop here.</p>
+
+    <p class="fragment">The result of dividing \(x^3 + 4x^2 + x - 6\) by \(x + 3\) is \(x^2 + x - 2\) with a remainder of 0.</p>
+</section>
+<section>
+	<h1>The remainder and its contection to the fundamental theorem of algebra</h1>
+	<p>If the remainder is a 0, then our divisor is a factor of the other polynomial.
+		This also means that setting the divisor equal to zero and solving will produce a zero of the other polynomial.</p>
+	<p class="fragment">So we should try to divided by polynomials that we think are factors, this could help us break down larger polynomials into small
+		parts that we can find key information about our function quickly.</p>
+	<p class="fragment">If only there were a test to help us check...</p>
+</section>
+<section>
+    <h1>The Rational Zero Test</h1>
+
+    <p>The Rational Zero Test, also known as the Rational Root Theorem, is a powerful tool for finding possible rational solutions (zeros) of a polynomial equation. It helps narrow down the search for roots.</p>
+
+    <p class="fragment">Key points to understand:</p>
+
+    <ul>
+        <li class="fragment">- The Rational Zero Test applies to polynomial equations of the form \(P(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_2x^2 + a_1x + a_0\), where all coefficients \(a_i\) are integers.</li>
+        <li class="fragment">- Possible rational roots are of the form \(x = \frac{p}{q}\), where \(p\) is a factor of the constant term \(a_0\) and \(q\) is a factor of the leading coefficient \(a_n\).</li>
+        <li class="fragment">- The Rational Zero Test provides a list of possible rational roots to test, reducing the search space for polynomial zeros.</li>
+    </ul>
+
+    <p class="fragment">The steps to apply the Rational Zero Test:</p>
+
+    <ol>
+        <li class="fragment">1. List all the factors of the constant term \(a_0\).</li>
+        <li class="fragment">2. List all the factors of the leading coefficient \(a_n\).</li>
+        <li class="fragment">3. Form all possible fractions \(\frac{p}{q}\) where \(p\) is a factor of \(a_0\) and \(q\) is a factor of \(a_n\).</li>
+        <li class="fragment">4. Test each possible root using synthetic division or long division to find actual roots.</li>
+    </ol>
+
+    <p class="fragment">The Rational Zero Test is a valuable tool for efficiently finding rational roots of polynomial equations, simplifying the root-finding process.</p>
+</section>
+				</section>
+
+				<section>
+					<h1>Summary</h1>
+					<ul>
+						<li>Look at the leading coefficient to determine the end behavior of the polynomial.</li>
+						<li>The average rate of change of a polynomial does help</li>
+						<li>The Fundamental Theorem of Algebra let's us write equations of polynomials by multiplication of linear and quadratic functions.</li>
+						<li>The Fundamental Theorem of Algebra allows us to divide polynomials by possible factors to test if they are indeed a factor.</li>
+					</ul>
+					<p>Here is a video on the fundamental theorem of algebra: <a href="https://youtu.be/shEk8sz1oOw?si=TFkoKTnuYKJc96v_" target="_blank">LINK</a></p>
+					<p>Here is a video on polynomial division: <a href="https://youtu.be/-q-vjfXrLqA?si=Bjx5PYd2eB-AiJ6z">LINK</a> </p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>
