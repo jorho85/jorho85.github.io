@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>chapter 5</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/black.css">
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section id="fragments">
+                    <h1>
+                        Discrete random variables
+                    </h1>
+                    <p>
+                        In chapter 5 we are going to look at discrete random variables and their distributions.
+                    </p>
+                    <p class="fragment">
+                        As we go through you will see that we will be using our material on basic probability as well.
+                    </p>
+                    <p>
+                        <span class="fragment">Our primary goal is to understand data. While some of this material may seem a bit abstract, these are the tools we use to model data and make predictions.
+                        </span>
+                        <span class="fragment">
+                            Thus, understanding the model will leads us to understanding our data.
+                        </span>
+                    </p>
+                </section>
+                <section>
+                    <section id="fragment">
+                        <h1>
+                            What are discrete random variables?
+                        </h1>
+                        <p>
+                            Remember that a <i>random variable</i>, $X$, is derived from a random process with some numerical outcome. Our book notes that "In many cases the random variable is what you are measuring, but
+							when it comes to discrete random variables, it is usually what you are counting." (p. 157) So, let's look at some examples to make this clear what we mean by discrete random variables.
+                        </p>
+                        <ul>
+                            <li>Example 1: Choose $X$ to be the sum of the scores of the next 5 Steelers home games</li>
+                            <li>Example 2: Filp a coin and write Down 
+                                <ul>
+                                    <li>$X = 1$ if the coin lands on heads</li>
+                                    <li>$X = 0$ if the coin lands on tails</li>
+								</ul>
+                            </li>
+                            <li>
+                                Example 3: Let X be the size of a household in the US in 2023. That is the number of current residents.
+                            </li>
+                            <li>Example 4: Let X be the number of cylinders a car's engine has.</li>
+                        </ul>
+                        <p class="fragment">
+                            All these examples only produce integer values. In the language of
+                            probability theory that we developed last week, we would say that the sample sapce is the set of integers
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            Distributions for discrete random variables
+                        </h1>
+                        <p>
+                            Our book says, "A <i>probability distribution</i> is an assignment of probabilities to the values of the random variable" (p. 157).
+                        </p>
+                        <p>
+                            The book uses a good example from the 2010 US Census as seen below:
+                        </p>
+                        <p>
+                            <img src="images/housetable1.png" alt="housetable1.png">
+                        </p>
+                        <p>
+                            Note that all the probabilities should be non-negative and they should add up to one. For a discrete random variable, the distribution is created by listing out the probabilities that the random variable has for each specific value. Such as there being a 0.336 or 33.6% probabily a house randomly selected from the census would have $2$ members living in it.
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            Functional notation
+                        </h1>
+                        <p>
+                            We will also see that information from the chart displayed in functional notation. For example we could list some values from the previous table:
+                        </p>
+                        <p>
+                        <ul>
+                            <li>$P(X = 1) = 0.267$</li>
+							<li>$P(X \geq 7) = 0.015$</li>
+							<li>$P(X > 3) = 0.137 + 0.063 + 0.024 + 0.015 = 0.239$ or about 23 percent</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>
+                            What about the Mean of the distribution?
+                        </h1>
+                        <p>
+                            The mean or expected value of a discrete random variable $X$, symbolized as $E(X)$, is often referred to as the long-term average or mean (symbolized as $μ$).
+							This means that over the long term of doing an experiment over and over, you would expect this average. The mean of a discrete distribtuion is calculated using the folloing formula
+                        </p>
+                        <div>
+                            $$E(x) = \mu = \Sigma{(x * P(x))}$$
+						</div>
+                        <p>
+                            In our household example we could get a mean
+                        </p>
+$$\mu = 1*P(x=1) + ... + 6*P(X=6) + ...$$
+$$= 1*(0.267) + 2*(0.336) + ... \approx 2.5$$
+                        <p>
+                            Note that we had to extimate 1.7% to be close to 7, so our 2.5 is an underestimate.
+                        </p>
+                    </section>
+                    <section id="fragment">
+                        <h1>
+                            Pictorial representation
+                        </h1>
+                        <p>
+                            A fianl way to represent a discrete distribtuion is with a a plot that looks like a histogram:
+                        </p>
+                        <div class="row">
+                            <div class="column">
+								<img src="images/coinFlipDist.PNG" alt="coinFlipDist.png">
+							</div>
+							<div class="column">
+								<img src="images/cavietyData.PNG" alt="cavietyData.png">
+							</div>
+                        </div>
+                        <p class="fragment">
+                            The graph of the left can represent a fair coin flip, what about the one on the right?
+                        </p>
+                        <p class="fragment">
+                            This represent the distribution for X ~ 1 if an adult over 20 has a caviety, otherwise 0.<a href="https://www.cdc.gov/oralhealth/fast-facts/cavities/index.html#:~:text=Among%20adults%20aged%2020%20and,had%20at%20least%20one%20cavity.&text=1%20in%204%20adults%20aged,has%20at%20least%20one%20cavity.">SOURCE</a>
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            The discrete, uniform distribution
+                        </h1>
+                        <p>
+                            If the sample space of a discrete distribution consists of $n$ consecutive integers, each of which has probability $1/n$, then the distribution is said to be <em>uniform</em>. For example we might look at a 6 sided die:
+                        </p>
+$$P(X=i) = \begin{cases} 0.166667 &amp; \text{if } 1 \leq i \leq 6 \\
+0 &amp; \mbox{otherwise.} \end{cases}$$
+                        <p>
+                            We can look at the graph:
+                        </p>
+                        <img src="images/uniformDist.PNG" alt="uniformDist.png" style="height: 10vw; min-height: 75px;">
+                        <p>
+                            The roll of a six-sided die or the flip of a coin can each be represented with a discrete uniform distribution.
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            What about discrete, non-uniform distribtuions?
+                        </h1>
+                        <div class="row">
+                            <div class="column">
+                                <p>
+                                    Notice how this is different from our uniform distribution. If this were a distribtuion for a 6 sided die, which number do expect to come up the most
+                                </p>
+                            </div>
+                            <div class="column">
+                                <img src="images/notDiceRoll.PNG" alt="notDiceRoll.png">
+							</div>
+						</div>
+						<div class="row">
+							<div class="column">
+								<img src="images/largeNumbers.PNG" alt="largeNumber.png">
+							</div>
+                            <div class="column">
+								<p>
+                                    Pictorial representations of discrete distributions make particular sense when there are a large number of possibilities.
+									The image portrays a discrete distribution where the sample space is the set of integers between 1 and 100 and smaller numbers are more likely to be chosen than larger numbers.
+                                </p>
+							</div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section id="fragment">
+                        <h1>
+                            Properties of a Bernoulli trail
+                        </h1>
+                        <p>
+                            Now we are going to look at Bernoulii trials (binomial experiments), so that we can better understand the binomial distirbution. First we want to be able to recognize when we have a Bernoulii trail. Here are some key concepts to look for in identifying a binomial experiment:
+                        </p>
+                        <p class="fragment">
+                            Fixed number of trials, $n$, which means that the experiment is repeated a specific number of times.
+                        </p>
+                        <p class="fragment">
+                            The $n$ trials are independent, which means that what happens on one trial does not influence the outcomes of other trials.
+                        </p>
+                        <p class="fragment">
+                            There are only two outcomes, which are called a success and a failure.
+                        </p>
+                        <p class="fragment">
+                            The probability of a success doesn’t change from trial to trial, where $p$ = probability of success and q = probability of failure, $q = 1-p$.
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            The binomial distribution
+                        </h1>
+                        <p>
+                            If you know you have a binomial experiment, then yuo can calculate binomial probabilities. When you list these out in a table or graph you have created a binomial distribton.
+                        </p>
+                        <p>
+                            The binomial distribution is a discrete distribution that plays a special role in statistics for many reasons. Importantly for us,
+							the binomial distribution allows us to see how a bell curve (in fact the normal curve) arises as a limit of other types of distributions.
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            Looking at an example:
+                        </h1>
+                        <p>
+                            This example come from the book on page 170 - 174. I will be using this <a href="https://onlinestatbook.com/2/calculators/binomial_dist.html" target="_blank">calculator</a> but you are free to use which ever calculator you want. Desmos can help with both the formula and the direct calculation and has a simular imput command as the ti-84.
+                        </p>
+                        <p>
+                            When looking at a person’s eye color, it turns out that $1$% of people in the world has green eyes ("What percentage of," 2013). Consider a group of $20$ people.
+                        </p>
+                        <ul>
+							<li>State the random variable.</li>
+							<li>Find the probability that none have green eyes.</li>
+							<li>Find the probability that nine have green eyes.</li>
+							<li>Find the probability that at most three have green eyes.</li>
+							<li>Find the probability that at most two have green eyes.</li>
+							<li>Find the probability that at least four have green eyes.</li>
+						</ul>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="js/reveal.js"></script>
+		<script src="js/notes.js"></script>
+		<script src="js/markdown.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+    </body>
+</html>

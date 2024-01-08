@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>chapter 4</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/black.css">
+        <style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+		</style>
+    </head>
+    <body>
+        <div class="reveal">
+			<div class="slides">
+					<section>
+						<h1>
+                            Probability Theory
+                        </h1>
+						<p>
+                            Probability theory is the mathematical foundation for statistics and is covered in chapter 4 of our text.
+                        </p>
+					</section>
+                <section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h2 id="What-is-probability?">
+                                        What is <em>probability</em>?
+                                    </h2>
+                                    <ul>
+                                        <li>
+                                            A <em>random event</em> is an event where we know which possible outcomes <em>can</em> occur but we don't know which specific outcome <em>will</em> occur.
+                                        </li>
+                                        <li>
+                                            The set of all the possible outcomes is called the <em>sample space</em>.
+                                        </li>
+                                        <li>
+                                            If we observe a large number of independent repetitions of a random event, then the proportion $\hat{p}$ of occurrences with a particular outcome converges to the <em>probability</em> $p$ of that outcome.
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        That last bullet point is called the <em>Law of Large Numbers</em> and is a pillar of probability theory.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="The-Law-of-Large-Numbers">
+                                        The Law of Large Numbers
+                                    </h3>
+                                    <p>
+                                        The Law of Large Numbers can be written symbolically as
+                                    </p>
+                                    $$P(A) \approx \frac{\# \text{ of occurrences of } A}{\# \text{ of trials}}.$$
+                                    <p>
+                                        More importantly, the error in the approximation approaches zero as the number of trials approaches $\infty$.
+                                    </p>
+                                    <p>
+                                        Again, this is a <em>symbolic</em> representation where:
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            The symbol $A$ represents a set of possible outcome contained in the sample space. Such a set is often called an <em>event</em>.
+                                        </li>
+                                        <li>
+                                            The symbol $P$ represents a function that computes probability. 
+                                        </li>
+                                        <li>
+                                            Thus, $P(A)$ tells us the probability that the event $A$ occurs.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Visualizing-LLN">
+                                        Visualizing LLN
+                                    </h3>
+                                    <p>
+                                        In the vizualization linked below, $n$ represents the number of experiments, $p$ represents the probability of success and the graph shows the proportion of successes in the first $k$ experiments. As  $n$ increases, that proportion should converge to $p$. Visualization created by Dr. Mark McClure
+                                    </p>
+                                    <h2>
+                                        <a href="https://observablehq.com/@mcmcclur/law-of-large-numbers" target="_blank">Link to visualization</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="The-role-of-Independence">
+                                        The role of Independence
+                                    </h3>
+                                    <p>
+                                        It's important to understand that observations made in the Law of Large numbers are <em>independent</em> - the separate occurrences have nothing to do with one another and prior events cannot influence future events.
+                                    </p>
+                                    <h4 id="Example-questions">
+                                        Example questions
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            I flip a fair coin 5 times and it happens to come up heads each time. What is the probability that I get a tail on the next flip?
+                                        </li>
+                                        <li>
+                                            I flip a fair coin 10 times and it happens to come up heads each time. About how many heads and how many tails do I expect to get in my next 10 flips
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h2 id="Computing-probabilities">
+                                        Computing probabilities
+                                    </h2>
+                                    <p>
+                                        We now turn to the question of how to compute the probabily of certain types of events, which is not so bad, once you understand a few formulae and basic principles.
+                                    </p>
+                                    <p>
+                                        The serious, mathematical study of probability theory has its origins in the $17^{\text{th}}$ century in the writings of <a href="https://en.wikipedia.org/wiki/Blaise_Pascal">Blaise Pascal</a> who studied - gambling. Many elmentary examples in probability theory are still commonly phrased in terms of gambling. As a result, it's long standing tradition to use coin flips, dice rolls and playing cards to illustrate the basic principles of probability. Thus, it does help to have a basic familiarity with these things.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Cards">
+                                        Cards
+                                    </h3>
+                                    <p>
+                                        A standard deck of playing cards consists of 52 cards divided into 13 ranks each of which is further divided into 4 suits
+                                    </p>
+                                    <ul>
+                                        <li>13 ranks: A,2,3,4,5,6,7,8,9,10,J,K,Q</li>
+                                        <li>4 suits: hearts, diamonds, clubs, spades</li>
+                                    </ul>
+                                    <p>
+                                        <img src="images/cardsImage.PNG" width="80%" />
+                                    </p>
+                                    <p>
+                                        When we speak of a "well shuffled deck" we mean that, when we draw one card, each card is equally likely to be drawn. Similarly, when we speak of a fair coin or a fair die, we mean each outcome produced (heads/tails or 1-6) is equally likely to occur.
+                                    </p>
+                                    <p>
+                                        That brings us our first formula for computing probabilities!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Equal-likelihoods">
+                                        Equal likelihoods
+                                    </h3>
+                                    <p>
+                                        When when the sample space is a finite set and all the individual outcomes are all equally likely, then the probability of an event $A$ can be computed by
+                                    </p>
+                                    $$P(A) = \frac{\# \text{ of possibilities in } A}{\text{total } \# \text{ of possibilities}}.$$
+                                    <h4 id="Examples">
+                                        Examples
+                                    </h4>
+                                    <p>Suppose we draw a card from a well shuffled standard deck of 52 playing cards.</p>
+                                    <ul>
+                                        <li>What's the probability that we draw the four of hearts?</li>
+                                        <li>What's the probability that we draw a four?</li>
+                                        <li>What's the probability that we draw a club?</li>
+                                        <li>What's the probability that we draw a red king?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Mutually-exclusive-events">
+                                        Mutually exclusive events
+                                    </h3>
+                                    <p>
+                                        The events $A$ and $B$ are called <em>mutually exclusive</em> if only one of them can occur. Another term for this same concept is <em>disjoint</em>. If we know the probability that $A$ occurs and we know the probability that $B$ occurs, then we can compute the probability that $A$ or $B$ occurs by simply adding the probabilities. Symbolically,
+                                    </p>
+                                    $$P(A \text{ or } B) = P(A) + P(B).$$
+                                    <p>
+                                        I emphasize, this formula is <em>only valid under the assumption of disjointness</em>.
+                                    </p>
+                                    <h4 id="Examples">
+                                        Examples
+                                    </h4>
+                                    <p>
+                                        We again draw a card from a well shuffled standard deck of 52 playing cards.
+                                    </p>
+                                    <ul>
+                                        <li>What is the probability that we get an odd numbered playing card?</li>
+                                        <li>What is the probability that we get a face card?</li>
+                                        <li>
+                                            What is the probability that we get an odd numbered playing card <em>or</em> get a face card?
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="A-more-general-addition-rule">
+                                        A more general addition rule
+                                    </h3>
+                                    <p>
+                                        If two events are not mutually exclusive, we have to account for the possibility that both occur. Symbolically:
+                                    </p>
+                                    $$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B).$$
+                                    <h4 id="Examples">
+                                        Examples
+                                    </h4>
+                                    <p>
+                                        Yet again, we draw a card from a well shuffled standard deck of 52 playing cards.
+                                    </p>
+                                    <ul>
+                                        <li>What is the probability that we get a face card or we get a red card?</li>
+                                        <li>What is the probability that we get an odd numbered card or we get a club?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h5 id="Computation">
+                                        Computation
+                                    </h5>
+                                    <p>
+                                        Now, things are getting a little tougher so let's include the computation for that second one right here. Let's define our symbols and say
+                                    </p>
+\begin{align*}
+A &amp;= \text{we draw an odd numbered card}\\
+B &amp;= \text{we draw a club}.
+\end{align*}
+                                    <p>
+                                        In a standard deck, there are four odd numbers we can draw: 3, 5, 7, and 9; and four of each of those for a total of 16 odd numbered cards. Thus, $$P(A) = \frac{16}{52} = \frac{4}{13}.$$ There are also 13 clubs so that $$P(B) = \frac{13}{52} = \frac{1}{4}.$$
+                                    </p>
+                                    <p>
+                                        Now, there are four odd numbered cards that are clubs - the 3 of clubs, the 5 of
+                                        clubs, the 7 of clubs, and the 9 of clubs. Thus, the probability of drawing an
+                                        odd numbered card that is also a club is
+                                        $$P(A \text{ and } B) = \frac{4}{52} = \frac{1}{13}.$$
+                                        Putting this all together, we get
+                                        $$P(A \text{ or } B) = \frac{4}{13} + \frac{1}{4} - \frac{1}{13} = \frac{25}{52}.$$
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+
+                                    <h3 id="Independent-events">
+                                        Independent events
+                                    </h3>
+                                    <p>
+                                        When two events are independent, we can compute the probability that both occur by multiplying their probabilities. Symbolically, $$P(A \text{ and } B) = P(A)P(B).$$
+                                    </p>
+
+                                    <h4 id="Examples">
+                                        Examples<a class="anchor-link" href="#Examples">&#182;</a>
+                                    </h4>
+                                    <p>
+                                        Suppose I flip a fair coin twice.
+                                    </p>
+                                    <ul>
+                                        <li>What's the probability that I get 2 heads?</li>
+                                        <li>What's the probability that I get a head and a tail?</li>
+                                        <li>
+                                            Now suppose I flip the coin 4 times. What's the probability that I get 4 heads?
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Conditional-probability">
+                                        Conditional probability<a class="anchor-link" href="#Conditional-probability">&#182;</a>
+                                    </h3>
+                                    <p>
+                                        When two events $A$ and $B$ are not independent, we can use a generalized form of the multiplication rule to compute the probability that both occur, namely $$P(A \text{ and } B) = P(A)P(B|A).$$ That last term, $P(B|A)$, denotes the conditional probability that $B$ occurs <em>under the assumption</em> that $A$ occurs.
+                                    </p>
+                                    <h4 id="Example">
+                                        Example<a class="anchor-link" href="#Example">&#182;</a>
+                                    </h4>
+                                    <p>
+                                        We draw two cards from a well-shuffled deck. What is the probability that both are hearts?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h4 id="Example-(continued)">
+                                        Example (continued)<a class="anchor-link" href="#Example-(continued)">&#182;</a>
+                                    </h4>
+                                    <p>We draw two cards from a well-shuffled deck. What is the probability that both are hearts?
+                                    </p>
+                                    <h5 id="Computation">
+                                        Computation<a class="anchor-link" href="#Computation">&#182;</a>
+                                    </h5>
+                                    <p>
+                                        The probability of that the first is a heart is $13/52=1/4$. The probability that the second card is a heart is different because we now have a deck with 51 cards and 12 hearts. Thus, the probability of getting a second heart is $12/51 = 4/17$. Thus, the answer to the question is $$\frac{1}{4}\times\frac{4}{17} = \frac{1}{17}.$$ To write this symbolically, we might let
+                                    </p>
+                                    <ul>
+                                        <li>$A$ denote the event that the first draw is a heart and</li>
+                                        <li>$B$ denote the event that the second draw is a heart.</li>
+                                    </ul>
+                                    <p>
+                                        Then, we express the above as $$P(A \text{ and } B) = P(A)P(B\,|\,A) = \frac{1}{4}\times\frac{4}{17} = \frac{1}{17}.$$
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="Turning-the-computation-around">
+                                        Turning the computation around<a class="anchor-link" href="#Turning-the-computation-around">&#182;</a>
+                                    </h3>
+                                    <p>
+                                        Sometimes, it is the computation of conditional probability itself that we are interested in. Thus, we might rewrite our general multiplication rule in the form $$P(B\,|\,A)  = \frac{P(A \text{ and } B)}{P(A)}.$$
+                                    </p>
+                                    <h4 id="Example">
+                                        Example<a class="anchor-link" href="#Example">&#182;</a>
+                                    </h4>
+                                    <p>
+                                        What is the probability that a card is a heart, given that it's red?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h2 id="Data">
+                                        Data<a class="anchor-link" href="#Data">&#182;</a>
+                                    </h2>
+                                    <p>
+                                        In statistics, we'd often like to compute probabilities from data. For example, here's a contingency table based on our CDC data relating smoking and exercise:
+                                    </p>
+                                    <table border="1" class="dataframe">
+                                        <thead>
+                                            <tr style="text-align: right;">
+                                                <th>exer/smoke</th>
+                                                <th>No</th>
+                                                <th>Yes</th>
+                                                <th>All</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>No</th>
+                                                <td>0.12715</td>
+                                                <td>0.12715</td>
+                                                <td>0.2543</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Yes</th>
+                                                <td>0.40080</td>
+                                                <td>0.34490</td>
+                                                <td>0.7457</td>
+                                            </tr>
+                                            <tr>
+                                                <th>All</th>
+                                                <td>0.52795</td>
+                                                <td>0.47205</td>
+                                                <td>1.0000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>
+                                        From here, it's pretty easy to read off basic probabilities or compute conditional probabilities.
+                                    </p>
+                                    <h3 id="Examples">
+                                        Examples
+                                    </h3>
+                                    <ul>
+                                        <li>What is the probability that a someone from this sample exercises?</li>
+                                        <li>What is the probability that someone from this sample exercises and smokes?
+                                        </li>
+                                        <li>What is the probability that someone smokes, given that they exercise?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h4 id="Answers">
+                                        Answers
+                                    </h4>
+                                    <ul>
+                                        <li>The probability that a someone exercises is $0.7457$.</li>
+                                        <li>The probability that a someone exercises and smokes is $0.34490$.</li>
+                                        <li>
+                                            <p>
+                                                The probability that a someone smokes, given that the exercise is $0.34490$
+                                            </p>
+                                            <p>
+                                                $$P(\text{smoke}|\text{exercise}) = \frac{P(\text{smokes} \cap \text{exercises})}{P(\text{exercises})} = \frac{0.3449}{0.7457} = 0.462518.$$
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="js/reveal.js"></script>
+		<script src="js/notes.js"></script>
+		<script src="js/markdown.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+    </body>
+</html>

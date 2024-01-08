@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>chapter 10</title>
+    <meta name="description" content="Linear Regression Lecture">
+    <meta name="author" content="Joseph Mel Rhoney">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/black.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML-full,Safe"> </script>
+    <script type="text/x-mathjax-config">
+    init_mathjax = function() {
+        if (window.MathJax) {
+                // MathJax loaded
+                MathJax.Hub.Config({
+                TeX: {
+                    equationNumbers: {
+                        autoNumber: "AMS",
+                        useLabelIds: true
+                        }
+                },
+                tex2jax: {
+                    inlineMath: [['$','$'],["\\(","\\)"]],
+                    displayMath: [['$$','$$'],["\\[","\\]"]],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                displayAlign: 'center',
+                CommonHTML: {
+                    linebreaks: {
+                        automatic: true
+                        }
+                },
+                "HTML-CSS": {
+                    linebreaks: {
+                        automatic: true
+                        }
+                }
+                });
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            }
+            }
+    init_mathjax();
+    </script>
+    <style media="screen">
+      section {
+        text-align: left;
+      }
+      .reveal h1 {
+        font-size: 3rem;
+      }
+      .reveal h2 {
+        font-size: 2.6rem;
+      }
+      .reveal h3 {
+        font-size: 2.2rem;
+      }
+      }
+      .reveal h4 {
+        font-size: .8rem;
+      }
+      .reveal p {
+        font-size: 1.2rem;
+      }
+      .reveal blockquote {
+        font-size: 1.2rem;
+      }
+      .reveal li {
+        font-size: 1.2rem;
+      }
+      .reveal figcaption {
+        font-size: 1rem;
+      }
+      .reveal figure {
+        margin: 10px;
+      }
+      .reveal table {
+        width: 100%;
+        font-size: 1rem !important;
+      }
+      .reveal table.centered td {
+        text-align: center;
+      }
+      .reveal table.centered th {
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+      <div class="slides">
+          <section>
+              <img src="images/linearPlot.png" width="400" height="300">
+              <h3>
+                  Linear Models and Regression
+              </h3>
+              <p>
+                  Sometimes, two numerical variables have a noticeable relationship.
+                  Regression is a tool to help find and test the strength that relationship.
+                  In the simplest case, the relationship might be linear so we apply regression to a linear model.
+              </p>
+          </section>
+          <section>
+              <h2>
+                  Linear Models
+              </h2>
+              <div>
+                  <p>
+                      One of the simplest types of relationships between two variables is a <em>linear relationship</em> - say, $$Y = aX+b.$$
+                      In statistics, $X$ and $Y$ are typically random variables so we might ask questions like:
+                  </p>
+                  <ul>
+                      <li>Is there really a linear relationship between $X$ and $Y$?</li>
+                      <li>If so, what are the values of the parameters $a$ and $b$?</li>
+                      <li>What kind of predictions can we make using this relationship?</li>
+                      <li>
+                          How confident can be in those <a href="https://digitalfirst.bfwpub.com/stats_applet/stats_applet_5_correg.html" target="_blank" rel="noopener noreferrer">predictions?</a>
+                      </li>
+                  </ul>
+              </div>
+          </section>
+          <section>
+              <section>
+                  <div class="jp-Cell-inputWrapper">
+                      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mine-type="text/markdown">
+                          <h2>
+                              Lines in the plane
+                          </h2>
+                          <p>
+                              A line is the graph of an equation of the form $y=ax+b$.
+                          </p>
+                          <p>
+                              The defining characteristic of such a graph is that it's <em>slope</em> is constant, i.e. if $y_1=ax_1+b$ and $y_2 = ax_2+b$, then
+                          </p>
+                            $$\frac{\Delta y}{\Delta x} = \frac{y_2-y_1}{x_2-x_1} = \frac{(ax_2+b)-(ax_1+b)}{x_2-x_1} = \frac{a(x_2-x_1)}{x_2-x_1} = a$$
+                          <p>
+                              While that might seem complicated, it ultimately makes it easy to plot the line.
+                          </p>
+                      </div>
+                  </div>
+              </section>
+              <section>
+                  <div class="jp-Cell-inputWrapper">
+                      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                          <h3 >
+                              Plotting a line
+                          </h3>
+                          <p>
+                              We can plot a line simply by plugging in a couple of points.
+                          </p>
+                          <p>
+                              For example, to graph $y=2x+1$, plug in $x=0$ to get $y=1$ - that's one point!
+                          </p>
+                          <p>
+                              Then plug in $x=1$ to get $y=3$ - that's another point!
+                          </p>
+                          <p>
+                              Draw the line through both of those.
+                          </p>
+                      </div>
+                  </div>
+              </section>
+              <section>
+                  <h1>
+                      The plot
+                  </h1>
+                  <div style="height:500px">
+                      <iframe src="https://www.desmos.com/calculator/jc521xapcn?embed" width="800" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+                  </div>
+              </section>
+              <section>
+                  <h1>
+                      An interactive demo
+                  </h1>
+                  <p>
+                      Here is a interactive demo looking at how a and b impact the direction and location of the line.
+                  </p>
+                  <div class="height:500px">
+                      <iframe src="https://www.desmos.com/calculator/jba05sbppb?embed" width="800" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+                  </div>
+              </section>
+              <section>
+                  <h1>
+                      Working with Data
+                  </h1>
+                  <p>
+                      Now that we understand the slope coefficent (a) and the incercept coefficent (b),
+                      let's look at the other information we will get when we use technology to find our line of best fit. We will use the data from the Netflix data set example.
+                  </p>
+                  <p>
+                      Below you will see an example readout from Jamovi:
+                  </p>
+                  <div style="width:800px;">
+                      <div style="width:300px; float:left;">
+                          <img src="images/numericSummary.png" alt="numeric_summary">
+                      </div>
+                      <div style="width:300px; float:right;">
+                          <ul>
+                              <li>
+                                  The slope coefficent (a) is $0.583$ and it is found at the bottom of the estimate column
+                              </li>
+                              <li>The intercept coefficent (b) is $2.998$</li>
+                              <li>
+                                  The $R$ and $R^2$ values are also given. They tell us about the correlation or strength of the linear relationship
+                              </li>
+                              <li>
+                                  In this class we will only study the linear regression model, but the $R$ value measures the strenght of corelation for any model you could use
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div style="clear: both;">
+                  </div>
+              </section>
+              <section>
+                  <div class="jp-Cell-inputWrapper">
+                      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                          <h2 id="Correlation">
+                              Correlation coefficient
+                          </h2>
+                          <p>
+                              The symbol $R$ in the output stands for <em>correlation</em>, which measures the strength of the linear relationship. The correlation is always between −1 and +1 and
+                          </p>
+                          <ul>
+                              <li>A number close to +1 indicates a strong, positive linear relationship,</li>
+                              <li>A number close to −1 indicates a strong, negative linear relationship,</li>
+                              <li>A number close 0 indicates a weak linear relationship.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </section>
+              <section>
+                  <div class="jp-Cell-inputWrapper">
+                      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                          <h2 id="coefficient of determination">
+                              Coefficient of determination
+                          </h2>
+                          <p>
+                              The symbol $R^2$ in the output stands for <em>correlation</em>, which is a statistical measure in a regression model that determines the proportion of variance in the dependent
+                              variable that can be explained by the independent variable. R-squared can take any values between 0 to 1 and
+                          </p>
+                          <ul>
+                              <li>A number close to 1 indicates more variability is explained by the model.,</li>
+                              <li>A number close to 0 indicates the variability is not explained by the model,</li>
+                              <li>
+                                  For example, an r-squared of 60% reveals that 60% of the variability observed in the target variable is explained by the regression model.
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </section>
+              <section>
+                  <div class="jp-Cell-inputWrapper">
+                      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                          <h3 id="Using-a-regression-line">
+                              Using a regression line
+                          </h3>
+                          <p>
+                              In statistics, the forumula for a line will often be generated via software; you just need to interpret it. Thus it will be important for you to be able to plug a value like $x=1.234$ in to a line like $y=-5.8335x+0.8408$ to get a value. In this case:
+                              $$-5.8335\times1.234+0.8408 = −6.357739.$$
+                          </p>
+                      </div>
+                  </div>
+              </section>
+          </section>
+        </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+        });
+    </script>
+    </body>
+</html>

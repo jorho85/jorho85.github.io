@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Introduction to Polynomials</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+			.box {
+    	float:left;
+    	margin-right:20px;
+
+			}
+			.clear {
+    	clear:both;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+            <!-- Slide 1: Introduction -->
+						<section>
+							<section>
+							<h1>Introduction to Polynomials</h1>
+
+					    <p>Polynomials are fundamental mathematical expressions that you'll encounter frequently in pre-calculus and beyond.
+								They are composed of variables and constants combined using addition, subtraction, and multiplication operations.</p>
+
+					    <p>A polynomial typically has the following form:</p>
+
+					    <p class="fragment">\(P(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_2x^2 + a_1x + a_0\)</p>
+
+					    <ul>
+					        <li class="fragment">\(P(x)\) is the polynomial function.</li>
+					        <li class="fragment">\(x\) is the variable or indeterminate.</li>
+					        <li class="fragment">\(a_n, a_{n-1}, \ldots, a_2, a_1, a_0\) are coefficients (constants).</li>
+					        <li class="fragment">\(n\) is a non-negative integer, and it represents the highest degree of the polynomial.</li>
+					    </ul>
+
+					    <p class="fragment">The highest degree term, \(a_nx^n\), is called the leading term, and \(a_n\) is the leading coefficient.</p>
+
+					    <p class="fragment">Polynomials can have various degrees, and they can be used to model real-world phenomena, solve equations, and perform algebraic operations.</p>
+
+					    <p class="fragment">Let's explore polynomials further by looking at the degree of the polynomial</p>
+						</section>
+						<section>
+							<h1>Classifying Polynomials by Degree</h1>
+
+							<p>Polynomials are named and classified based on the degree of the highest power of the variable \(x\) in the polynomial expression. The degree is the exponent of the highest term.</p>
+
+							<p class="fragment">1. Constant Polynomial: Degree \(0\)</p>
+							<p class="fragment">\(P(x) = a_0\) where \(a_0\) is a constant.</p>
+
+							<p class="fragment">2. Linear Polynomial: Degree \(1\)</p>
+							<p class="fragment">\(P(x) = a_1x + a_0\) where \(a_1\) and \(a_0\) are constants and \(a_1 \neq 0\).</p>
+
+							<p class="fragment">3. Quadratic Polynomial: Degree \(2\)</p>
+							<p class="fragment">\(P(x) = a_2x^2 + a_1x + a_0\) where \(a_2\), \(a_1\), and \(a_0\) are constants and \(a_2 \neq 0\).</p>
+
+							<p class="fragment">4. Cubic Polynomial: Degree \(3\)</p>
+							<p class="fragment">\(P(x) = a_3x^3 + a_2x^2 + a_1x + a_0\) where \(a_3\), \(a_2\), \(a_1\), and \(a_0\) are constants and \(a_3 \neq 0\).</p>
+
+						</section>
+					</section>
+
+<section>
+	<section>
+			<h1>Introduction to Linear Functions</h1>
+			<p>Linear equations are an important tool in science and many everyday applications. They allow scientists to describe relationships between two variables in the physical world, make predictions, calculate rates, and make conversions, among other things.</p>
+	</section>
+	<section>
+			<h1>Desmos Graph Example</h1>
+			<iframe src="https://www.desmos.com/calculator/emah245f62" width="800" height="500" frameborder="0"></iframe>
+			<p>What happens to the line when we change $a$? What happens to the line when we change $b$? We are going to call $a$ the <b>slope</b>
+			and we will call $b$ the <b>y-intercept</b>.</p>
+	</section>
+	<section>
+	    <h1>Constant Function</h1>
+
+	    <p>A constant function is a type of mathematical function where the output (dependent variable) is the same for all values of the input (independent variable). In other words, it represents a horizontal line on the coordinate plane.</p>
+
+	    <p class="fragment">- The <strong>domain</strong> of a constant function is the set of all real numbers because you can plug in any value for the independent variable. In interval notation $x \in (-\infty, \infty)$.</p>
+
+	    <p class="fragment">- The <strong>range</strong> of a constant function consists of a single value, which is the constant value of the function. In set notation, the range is expressed as \(\{c\}\), where \(c\) is the constant.</p>
+
+	    <p class="fragment">- Since a constant function has a single constant value for all inputs, it does not have a <strong>maximum</strong> or <strong>minimum</strong> value in the traditional sense. The constant itself is both the maximum and minimum.</p>
+
+	    <p class="fragment">- A constant function is <strong>symmetric</strong> with respect to the y-axis because if you reflect it across the y-axis, it remains unchanged. In other words, \(f(x) = f(-x)\) for all values of \(x\).</p>
+	</section>
+
+	<section>
+	    <h1>Linear Function</h1>
+
+	    <p>A linear function is a fundamental mathematical function that represents a straight line on the coordinate plane. It has the general form:</p>
+
+	    <p class="fragment">\(f(x) = mx + b\)</p>
+
+	    <ul>
+	        <li class="fragment">- The <strong>domain</strong> of a linear function is the set of all real numbers because it covers all possible values of the independent variable \(x\).</li>
+
+	        <li class="fragment">- The <strong>range</strong> of a linear function is also the set of all real numbers because it can produce any real number as the output.</li>
+
+	        <li class="fragment">- A linear function does not have a <strong>maximum</strong> or <strong>minimum</strong> value in the traditional sense because it extends infinitely in both directions.</li>
+
+	        <li class="fragment">- The <strong>slope</strong> (\(m\)) of a linear function determines its steepness. If \(m > 0\), the line rises as \(x\) increases, and if \(m < 0\), the line falls as \(x\) increases.</li>
+
+	        <li class="fragment">- The <strong>y-intercept</strong> (\(b\)) is the value where the line crosses the y-axis. It represents the output (\(f(x)\)) when \(x = 0\).</li>
+
+	        <li class="fragment">- A linear function is <strong>symmetric</strong> with respect to the origin (0,0) if it passes through the origin. In other words, if \(f(x) = -f(-x)\) for all values of \(x\).</li>
+	    </ul>
+	</section>
+	<section>
+		<h1>The Linear Family</h1>
+		<iframe src="https://www.desmos.com/calculator/0uu9a0u0ry" width=100% height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+	</section>
+</section>
+
+
+
+
+					<section>
+						<section>
+							<h1>Representing Linear Functions</h1>
+							<p>Def 2.1 <b>Linear Function</b> a function with a constant rate of change, that is, a polynomial of degree 1.
+								There are several ways to represent a linear function, including word form, function notation, tabular form, and graphical form.
+								The <b>slope-intercept</b> form is the most comon algebric form of a line:</p>
+								$$f(x) = mx + b$$
+								<p>Note that $f(x)$ represents the $y$ values, so you will also see $y=mx+b$. Also, a linear function is a polynomial, we will define the idea of a degree of a
+								polynomial in the next lessson. </p>
+						</section>
+						<section id="fragments">
+							<h2>Example 1: Writing Linear Functions</h2>
+							<p class="fragment">Suppose a maglev train were to travel a long distance, and that the train maintains a constant speed of 83 meters per second for a period of time once it is 250 meters from the station.
+								How can we analyze the train’s distance from the station as a function of time? </p>
+							<p class="fragment">The speed is the rate of change. Recall that a rate of change is a measure of how quickly the dependent variable changes with respect to the independent variable.
+								The rate of change for this example is constant, which means that it is the same for each input value. As the time (input) increases by 1 second,
+								the corresponding distance (output) increases by 83 meters. The train began moving at this constant speed at a distance of 250 meters from the station. So, we can use slope intercept form:</p>
+								<p class="fragment">$$D(x) = 83x + 250$$</p>
+						</section>
+						<section>
+						    <h3>Solving the Equation \(2(4x + 28) = 24\) for $x$</h3>
+
+						    <p>Often we want to find the value of $x$ that satisfies the equation:</p>
+
+						    <p class="fragment">\[2(4x + 28) = 24\]</p>
+
+						    <p class="fragment">Step 1: Distribute the \(2\) on the left side of the equation:</p>
+
+						    <p class="fragment">\[8x + 56 = 24\]</p>
+
+						    <p class="fragment">Step 2: Subtract \(56\) from both sides of the equation to isolate \(8x\):</p>
+
+						    <p class="fragment">\[8x = 24 - 56\]</p>
+
+						    <p class="fragment">Step 3: Simplify the right side:</p>
+
+						    <p class="fragment">\[8x = -32\]</p>
+
+						    <p class="fragment">Step 4: Finally, divide both sides by \(8\) to solve for \(x\):</p>
+
+						    <p class="fragment">\[x = \frac{-32}{8}\]</p>
+
+						    <p class="fragment">Step 5: Simplify further:</p>
+
+						    <p class="fragment">\[x = -4\]</p>
+
+						    <p class="fragment">So, the solution to the equation \(2(4x + 28) = 24\) is \(x = -4\).</p>
+						</section>
+
+<!-- Slide 2: Explanation -->
+<section>
+	  <h1>Calculating the Slope</h1>
+    <h2>Explanation</h2>
+    <p>We want to find the slope (m) of a line passing through two points, (5, 4) and (10, 8).</p>
+    <p>The formula to calculate slope is:</p>
+    <p class="fragment">$$m = \frac{{y_2 - y_1}}{{x_2 - x_1}}$$</p>
+</section>
+
+<!-- Slide 3: Calculation -->
+<section>
+    <h2>Calculation</h2>
+    <p>Given points:</p>
+    <ul>
+        <li class="fragment">\( x_1 = 5 \)</li>
+        <li class="fragment">\( y_1 = 4 \)</li>
+        <li class="fragment">\( x_2 = 10 \)</li>
+        <li class="fragment">\( y_2 = 8 \)</li>
+    </ul>
+    <p class="fragment">Plugging these values into the formula:</p>
+    <p class="fragment">\( m = \frac{{8 - 4}}{{10 - 5}} \)</p>
+    <p class="fragment">\( m = \frac{4}{5} \)</p>
+    <p class="fragment">So, the slope (m) is \(\frac{4}{5}\).</p>
+</section>
+
+<!-- Slide 4: Finding b in y = 5x + b -->
+<section>
+    <h2>Example 3: Finding 'b'</h2>
+    <p>Given the equation \(y = 5x + b\). We want to find the value of 'b' knowing the line passes through the point (2, 1).</p>
+</section>
+
+<!-- Slide 5: Substituting the point (2, 1) -->
+<section>
+    <h2>Substituting the Point (2, 1)</h2>
+    <p>We know that the point (2, 1) lies on the line. So, we can substitute these values into the equation:</p>
+    <p class="fragment">\(1 = 5 \cdot 2 + b\)</p>
+    <p class="fragment">Now, we can solve for 'b'.</p>
+</section>
+
+<!-- Slide 6: Solving for 'b' -->
+<section>
+    <h2>Solving for 'b'</h2>
+    <p class="fragment">\(1 = 10 + b\)</p>
+    <p class="fragment">To isolate 'b', subtract 10 from both sides:</p>
+    <p class="fragment">\(b = 1 - 10\)</p>
+    <p class="fragment">\(b = -9\)</p>
+    <p class="fragment">So, the value of 'b' is -9.</p>
+</section>
+
+<!-- Slide 7: The Final Equation -->
+<section>
+    <h2>The Final Equation</h2>
+    <p>Now that we've found the value of 'b', our equation becomes:</p>
+    <p class="fragment">\(y = 5x - 9\)</p>
+    <p class="fragment">This is the equation of the line passing through the point (2, 1).</p>
+</section>
+
+
+					</section>
+
+					<section>
+						<section>
+							<h1>The other two important polynomials families:</h1>
+						    <h2>Quadratic Function</h2>
+
+						    <p>A quadratic function is a type of mathematical function that represents a parabolic curve on the coordinate plane. It has the general form:</p>
+
+						    <p class="fragment">\(f(x) = ax^2 + bx + c\)</p>
+
+						    <ul>
+						        <li class="fragment">- The <strong>domain</strong> of a quadratic function is the set of all real numbers because it covers all possible values of the independent variable \(x\).</li>
+
+						        <li class="fragment">- The <strong>range</strong> of a quadratic function depends on the leading coefficient (\(a\)). If \(a > 0\), the range is \([k, +\infty)\), where \(k\) is the minimum value of the function. If \(a < 0\), the range is \((-\infty, k]\), where \(k\) is the maximum value of the function.</li>
+
+						        <li class="fragment">- The <strong>maximum</strong> or <strong>minimum</strong> value of a quadratic function depends on the sign of the leading coefficient (\(a\)). If \(a > 0\), the function has a <strong>minimum</strong> value at the vertex. If \(a < 0\), the function has a <strong>maximum</strong> value at the vertex.</li>
+
+						        <li class="fragment">- The vertex of the parabolic curve represents the maximum or minimum point of the quadratic function. The vertex coordinates are given by \((h, k)\), where \(h\) is the x-coordinate of the vertex and \(k\) is the maximum or minimum value.</li>
+
+						        <li class="fragment">- A quadratic function is <strong>symmetric</strong> with respect to its axis of symmetry. The axis of symmetry is a vertical line that passes through the vertex. It is given by \(x = -\frac{b}{2a}\).</li>
+						    </ul>
+						</section>
+						<section>
+						    <h1>Cubic Function</h1>
+
+						    <p>A cubic function is a mathematical function that represents a curve with a single "bump" or "dip" on the coordinate plane. It has the general form:</p>
+
+						    <p class="fragment">\(f(x) = ax^3 + bx^2 + cx + d\)</p>
+
+						    <ul>
+						        <li class="fragment">- The <strong>domain</strong> of a cubic function is the set of all real numbers because it covers all possible values of the independent variable \(x\).</li>
+
+						        <li class="fragment">- The <strong>range</strong> of a cubic function depends on the leading coefficient (\(a\)). If \(a > 0\), the range is \((-\infty, +\infty)\), meaning the function can take any real value. If \(a < 0\), the range is limited, and the function has a maximum and minimum value.</li>
+
+						        <li class="fragment">- The <strong>maximum</strong> or <strong>minimum</strong> value of a cubic function depends on its shape and the sign of the leading coefficient (\(a\)). If \(a > 0\), the function has a <strong>minimum</strong> value at the local minimum point. If \(a < 0\), the function has a <strong>maximum</strong> value at the local maximum point.</li>
+
+						        <li class="fragment">- The cubic function may have one or more <strong>inflection points</strong>, where the curve changes from concave up to concave down (or vice versa). These points can affect the function's shape.</li>
+
+						        <li class="fragment">- The <strong>symmetry</strong> of a cubic function depends on its specific coefficients. In general, cubic functions are not symmetric, but they can exhibit different types of symmetry based on their terms and coefficients.</li>
+						    </ul>
+						</section>
+					</section>
+
+					<section>
+							<section>
+								<h1>X-Axis, Y-Axis, and Origin Symmetry</h1>
+					    <!-- X-Axis Symmetry -->
+							<h2>X-Axis Symmetry</h2>
+					    <div class="fragment">
+					        <p>X-axis symmetry, also known as horizontal symmetry, occurs when a figure or shape is mirror-symmetric with respect to the x-axis.</p>
+					        <p class="fragment">This means that if a point \((x, y)\) is part of the shape, then the point \((x, -y)\) must also be part of the shape.</p>
+					        <p class="fragment">For example, the letter "H" exhibits x-axis symmetry because it looks the same when flipped upside down along the x-axis.</p>
+					    </div>
+							<div class="fragment">
+								<iframe src="https://www.desmos.com/calculator/1a20ohmb6s?embed" width=100% height="250" style="border: 1px solid #ccc" frameborder=0></iframe>
+								<p>A circle is an example of x-axis symmetry because if we fold along the x-axis each part will fall perfectly ontop of the other. No function
+									can have x-axis symmetry, this checking an equation for such symmetry is another test like the vertical line test to check if an equation does
+									represent a function.</p>
+							</div>
+							</section>
+
+							<section>
+					    <!-- Y-Axis Symmetry -->
+							<h2>Y-Axis Symmetry</h2>
+					    <div class="fragment">
+
+					        <p>Y-axis symmetry, also known as vertical symmetry, occurs when a figure or shape is mirror-symmetric with respect to the y-axis.</p>
+					        <p class="fragment">This means that if a point \((x, y)\) is part of the shape, then the point \((-x, y)\) must also be part of the shape.</p>
+					        <p class="fragment">For example, the letter "I" exhibits y-axis symmetry because it looks the same when mirrored along the y-axis.</p>
+					    </div>
+							<div class="fragment">
+								<iframe src="https://www.desmos.com/calculator/qs4nbycvyy?embed" width=100% height="250" style="border: 1px solid #ccc" frameborder=0></iframe>
+								<p>$f(x)=x^2$ is a good example of y-axis symmetry. We can fold down the y-axis and both sides would meet. We can test algebraicly or graphically by replacing $x$ with $(-x)$
+								and then checking to see if we get the same graph or equation.</p>
+							</div>
+							</section>
+
+							<section>
+					    <!-- Origin Symmetry -->
+							<h2>Symmetry about the Origin</h2>
+					    <div class="fragment">
+
+					        <p>Symmetry about the origin, also known as rotational symmetry of order 2, occurs when a figure or shape is mirror-symmetric with respect to both the x-axis and the y-axis, simultaneously.</p>
+					        <p class="fragment">This means that if a point \((x, y)\) is part of the shape, then the points \((-x, -y)\), \((-x, y)\), and \((x, -y)\) must also be part of the shape.</p>
+					        <p class="fragment">For example, a circle exhibits symmetry about the origin because it looks the same when rotated 180 degrees (flipped along both axes).</p>
+					    </div>
+							<div class="fragment">
+								<iframe src="https://www.desmos.com/calculator/60klc23r8r?embed" width=100% height="250" style="border: 1px solid #ccc" frameborder=0></iframe>
+								<p>$f(x)=x^3$ is a good example of origin symmetry. We can rotate 180 degrees and we will be back to where we started. We can test algebraicly or graphically by replacing both $y$ and $x$ with $(-y)$ and $(-x)$
+								and then checking to see if we get the same graph or equation.</p>
+							</div>
+							</section>
+
+					</section>
+
+
+					<!-- Slide N: Review Slide -->
+					<section>
+							<h1>Review</h1>
+							<p>Topics Covered:</p>
+							<ul>
+								  <li>Naming and identifying a polynomial's degree</li>
+									<li>Writing and representing linear functions</li>
+									<li>Calculate the slope from two points</li>
+									<li>Finding the intercept of a linear function with algebra</li>
+									<li>Recognize when and how to re-write linear functions</li>
+									<li>Looking at higher order polynomals and the idea of symmetry</li>
+							</ul>
+							<p>Review Videos:</p>
+							<ul>
+									<li><a href="https://youtu.be/zihsQC0IUd8?si=b2hlg6wGb7cSb5V9" target="_blank">Another example of how to find the slope of a line</a></li>
+									<li><a href="https://youtu.be/LijylpLdfUY?si=YTG9zRUvML0HTyIE" target="_blank">More of symmetry</a></li>
+									<!-- Add more review video links as needed -->
+							</ul>
+					</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>

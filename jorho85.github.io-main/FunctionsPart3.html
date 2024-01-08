@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Functions part 3</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+
+			.box {
+    	float:left;
+    	margin-right:20px;
+
+			}
+			.clear {
+    	clear:both;
+			}
+
+				/* Clear floats after image containers */
+				.row::after {
+  			content: "";
+  			clear: both;
+  			display: table;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Transformations and Absolute Value</h1>
+						<p>In our preparation for calculus, we aspire to understand functions from a wide range of perspectives and to become familiar with a library of basic functions.
+						 As we progress further, we will endeavor to understand a “parent” function as the most fundamental member of a family of functions,
+						 as well as how other similar but more complicated functions are the result of transforming the parent function. </p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Visual Demo of transformations</h2>
+						<iframe src="https://www.desmos.com/calculator/srkuykzlr1" width="100%" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>Vertical Translation of a Function</h2>
+						<p> <b>Def 1.9</b> Given a function $y = f(x)$ and a real number $a$ the transformed function
+						$y = g(x) = f(x) + a$ is a vertical translation of the graph of $f$. That is, every point $(x, f(x))$
+					 on the graph of $f$ gets shifted vertically ot the corresponding point $(x, f(x) + a)$ on the graph of $g$.</p>
+					 <iframe src="https://www.desmos.com/calculator/srkuykzlr1" width="100%" height="300" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>Horizontal Translation of a Function</h2>
+						<p> <b>Def 1.10</b> Given a function $y = f(x)$ and a real number $b$ the transformed function
+						$y = h(x) = f(x - b)$ is a vertical translation of the graph of $f$. That is, every point $(x, f(x))$
+					 on the graph of $f$ gets shifted vertically ot the corresponding point $(x + b, f(x))$ on the graph of $h$.</p>
+					 <iframe src="https://www.desmos.com/calculator/srkuykzlr1" width="100%" height="300" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>Vertical stretches</h2>
+						<p>So far, we have seen the possible effects of adding a constant value to function’s output.
+							Next, we investigate the effects of multiplication the function’s output by a constant.</p>
+						<p> <b>Def 1.11</b> Given a function $y = f(x)$ and real number $c > 0$, the transformed function
+						 $y = v(x) = cf(x)$ is a vertical strech of the graph of $f$. Every point $(x, f(x))$ on the graph of $f$
+						 gets streched vertically to the corresponding point $(x, cf(x))$ on the graph $v$.</p>
+					<p>If $0 < c < 1$, the graph compresses toward the x-axis.</p>
+					<p>If $c > 1$ then $v$ is a stretch of $f$ away from the x-axis.</p>
+					</section>
+					<section>
+						<h2>Demo of stretches</h2>
+						<iframe src="https://www.desmos.com/calculator/srkuykzlr1" width="100%" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>Vertical reflections</h2>
+						<p> <b>Def 1.12</b> Given a function $y = f(x)$ and real number $c < 0$, the transformed function
+						 $y = v(x) = cf(x)$ is a reflection of the graph $f$ across the x-axis followed by a vertical stretch by a factor of $|c|$.</p>
+						 <iframe src="https://www.desmos.com/calculator/srkuykzlr1" width="100%" height="300" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>Order matters</h2>
+						<p>Let $f(x) = x$ and $m(x) = 2f(x + 1) + 5$, what happens 1st? Translation or strech? If we follow order of operations ideas, we would add one first
+							because the + 1 is inside of a parantheses. Next, we would multiply by 2. </p>
+							<iframe src="https://www.desmos.com/calculator/rj9en6iasj?embed" width="100%" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>On Horizontal stretches and compressions</h2>
+						<p>Just like Translations, Horizontal stretches and compressions deal with the y-axis and not the x. Because the definition match the vertical ones,
+							I am not goint to have you wrtie them out. Instead we will look at this demo:</p>
+							<iframe src="https://www.desmos.com/calculator/lgumeggvhz" width="100%" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Parent Functions</h2>
+						<p>In this class, we will be exploring functions—the shapes of their graphs, their unique characteristics, their algebraic formulas,
+							and how to solve problems with them. When learning to read, we start with the alphabet.
+							When learning to do arithmetic, we start with numbers. When working with functions,
+							it is similarly helpful to have a base set of building-block elements. We call these our “parent functions,”
+							which form a set of basic named functions for which we know the graph, formula, and special properties.</p>
+						<p>In unit 2, we will add several parent functions to our personal toolkits. If you would like to make a print out of all the pre-calculus
+						funtions you can find them in our book online here: <a href="https://openstax.org/books/precalculus-2e/pages/1-1-functions-and-function-notation#Table_01_01_14" target="_blank">LINK</a>.</p>
+						<p>The first parent function we will add to our toolkit is the Absolute value function.</p>
+					</section>
+					<section>
+						<h2>Piecewise review</h2>
+						<p>A piecewise function is a function in which more than one formula is used to define the output.
+							Each formula has its own domain, and the domain of the function is the union of all these smaller domains. We notate this idea like this:</p>
+						$$f(x) = \begin{cases}
+          			\text{algebraic formula 1} & \text{domain of forumla 1} \\
+          			\text{algebraic formula 2} & \text{domain of forumla 2} \\
+          			\text{algebraic formula 3} & \text{domain of forumla 3} \\
+       				\end{cases}$$
+							<p>Piecewise functions can be split into as many pieces as necessary.
+								Each piece behaves differently based on the input function for that interval. Pieces may be single points, lines, or curves. </p>
+					</section>
+					<section>
+						<h2>Demo of piecewise function</h2>
+						<iframe src="https://www.desmos.com/calculator/tszcfzgai1" width="100%" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+					</section>
+					<section>
+						<h2>The Absolute Value funtion</h2>
+						<p> <b>Def 1.12</b> The absolute value function can be defined as a piecewise funtion:</p>
+						$$f(x) = \begin{cases}
+						x & x \geq 0 \\
+						-x & x < 0
+						\end{cases}$$
+						<p>The absolute value function is commonly thought of as providing the distance the number is from zero on a number line.
+							Algebraically, for whatever the input value is, the output is the value without regard to sign.</p>
+					</section>
+					<section id="fragments">
+						<h2>Example of writing an interval in absolute value form</h2>
+						<p>Let's say we want to describe all values x within our including a distance of 4 from the number 5.</p>
+						<img src="https://jorho85.github.io/absoexamp.PNG" alt="absoexamp.PNG" class="fragment">
+						<p class="fragment">The distance from x to 5 can be represented using the absoluate value as $|x - 5|$</p>
+						<p class="fragment">This is the same as saying $-4 \leq (x - 5)$ and $(x - 5) \leq 4$, or $1 \leq x$ and $x \leq 9$</p>
+						<p class="fragment">So $|x-5| \leq 4$ is equivalent to $1 \leq x \leq 9$</p>
+					</section>
+					<section>
+						<h2>How to solve an absolute value problem</h2>
+						<ol>
+							<li>Isolate the absoluate value expression. That is move everyting not inside the absolute value to the other side of the equation.</li>
+							<li>Use $|A| = B$ to write $A = B$ and $A = -B$. If $B < 0$ you won't have a solution.</li>
+							<li>Solve both equation for x</li>
+							<li>If you had an inequatility, make sure you graph your answers and find the interval.</li>
+						</ol>
+						<p>Notice that we don't solve for x while there is still an inequatility on our page. We have to break down our problem into its smaller parts.</p>
+					</section>
+					<section id="fragments">
+						<h2>An example</h2>
+						<p>For the function $f(x) = |4x + 1| - 7$ find when $f(x) = 4$</p>
+						<p class="fragment">Let's substitute $4$ for $f(x)$ to get $4 = |4x + 1| - 7$</p>
+						<p class="fragment">Now we isolate the absolute value by adding 7 to both sides to get $11 = |4x + 1|$</p>
+						<p class="fragment">Now we eliminate the absolute value by writing two equations $11 = 4x + 1$ and $-11 = 4x + 1$</p>
+						<p class="fragment">Now solve both for x to get $x = \frac{10}{4} = 2.5$ and $x = -3$, which are both solutions.</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Review and helpful videos</h2>
+					<p> A transformation of a given function $f$ is a process by which the graph may be shifted or stretched to generate a new, related function with fundamentally the same shape. In this section we considered four different ways this can occur: through a horizontal translation (shift), through a reflection across the line
+					$y=0$	(the x-axis), through a vertical scaling (stretch) that multiplies every output of a function by the same constant, and through a vertical translation (shift).
+					Each of these individual processes is itself a transformation, and they may be combined in various ways to create more complicated transformations.</p>
+					<p>A video reviewing transformations: <a href="https://youtu.be/Tmdrjs9xufc?si=jYKUIzg1kAfCHxXL" target="_blank">LINK</a> </p>
+					<p>A video reviewing solving absolute value problems: <a href="https://youtu.be/_cHbhzQVd7Y?si=Y33zQt5uRo5FOdX_" target="_blank">LINK</a> </p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>

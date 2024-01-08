@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>chapter 8</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/black.css">
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+                float: left;
+                width: 33.33%;
+                padding: 5px;
+            }
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+    </head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<div class="jp-Cell-inputWrapper">
+							<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+								<h1 id="Confidence-intervals-for-proportions">
+                                    Confidence Intervals
+                                </h1>
+                                <p>
+                                    In hypothesis tests,
+									the purpose was to make a decision about a parameter, in terms of it
+									being greater than, less than, or not equal to a value. But what if you want to actually
+									know what the parameter is. You need to do estimation. There are two types of
+									estimation – point estimator and confidence interval. (P.263)
+                                </p>
+                                <p>
+                                    For this last chapter we will focus on confidence intervals.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h2 id="Sample-proportions">
+                                    Sample proportions
+                                </h2>
+                                <p>
+                                    Suppose we take a random sample of 100 North Carolinians and check whether
+									they are left handed or right handed. If 13 of them are left handed, we would say that the proportion of them who are left handed is $13\%$.
+									That $13\%$ is a <em>sample proportion</em> $\hat{p}$ that estimates the <em>population proportion</em> $p$.
+                                </p>
+								<p>
+                                    Note that a proportion is a numerical quantity, even though the data is categorical. Thus, we can compute confidence
+									intervals in a very similar way. Just as with sample means, the sampling process leads to a random variable and,
+									if certain assumptions are met, then we can expect that random variable to be normally distributed.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Standard-deviation-for-a-proportion">
+                                    Standard deviation for a proportion
+                                </h3>
+                                <p>
+                                    One notable computational difference between finding confidence intervals for propritions as compared to those for means is how we find the underlying standard deviation. For numerical data, we simply estimate the population standard deviation with standard deviation for the sample. For a sample proportion, if we identify success (being left handed, for example) with a $1$ and failure as a $0$, then (as we know from our discussion of the binomial distribution) the resulting standard deviation is
+                                </p>
+                                $$\sigma = \sqrt{p(1-p)}.$$
+                                <p>
+                                    It follows that the standard error is
+                                </p>
+                                $$SE = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{p(1-p)}{n}}.$$
+                            </div>
+                        </div>
+                        <div class="fragment">
+                            <div class="jp-Cell-inputWrapper">
+                                <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                    <p>
+                                        In the NC left/right handed example  we have $$SE = \sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{0.13\times0.87}{100}} \approx 0.0336303.$$
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Example">
+                                    Example
+                                </h3>
+                                <p>
+                                    Suppose we draw a random sample of 132 people and find that 16 of them have blue eyes. Use this data to write down a $95\%$ confidence interval for the proportion of people with blue eyes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="fragment">
+                            <div class="jp-Cell-inputWrapper">
+                                <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                    <p>
+                                        <em>Solution</em>: We have $\hat{p}=16/132 \approx 0.1212$ and
+                                    </p>
+                                    $$SE(\hat{p}) = \sqrt{(16/132)\times(116/132)/132} \approx 0.02840718.$$
+                                    <p>
+                                        Thus, our confidence interval is
+                                    </p>
+                                    $$0.1212 \pm 2\times0.0284 = [0.0644, 0.178].$$
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h2 id="Margin-of-error">
+                                    Margin of error
+                                </h2>
+                                <p>
+                                    If you read the details of political surveys, you're likely to come across the term "margin of error" at some point. On 2/24/22 the first political story was <a href="https://thehill.com/homenews/campaign/595594-abbott-tops-gop-primary-field-leads-orourke-in-matchup-poll">this one from The Hill</a> which discusses political poles in Texas. In that story, we find
+                                </p>
+                                <blockquote>
+                                    <p>
+                                        Texas Gov. Greg Abbott (R) tops his primary challengers and leads Democrat Beto O’Rourke in the Lone Star State's  2022 gubernatorial race, according to a new poll released Thursday.
+                                    </p>
+                                    <p>
+                                        Abbott currently leads O’Rourke in the poll by seven points, with 52 percent to those surveyed supporting Abbott and 45 percent supporting O’Rourke. Three percent are unsure of their vote.
+                                    </p>
+                                </blockquote>
+                                <p>
+                                    How happy should Governor Abbott be with 52 percent of the survey?
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Margin-of-error-(cont)">
+                                    Margin of error (cont)
+                                </h3>
+                                <p>
+                                    In the same survey we find:
+                                </p>
+                                <blockquote>
+                                    <p>
+                                        The Democratic primary sample surveyed 388 likely voters with a margin of error of plus or minus 4.9 percentage points.
+                                    </p>
+                                    <p>
+                                        The poll surveyed 522 likely voters in the Republican primary with a margin of error of 4.2 percentage points.
+                                    </p>
+                                    <p>
+                                        The general election sample surveyed 1,000 likely voters with a margin of error of plus or minus 3 percentage points.
+                                    </p>
+                                </blockquote>
+                                <p>
+                                    With 52 percent support but a margin of error of $\pm 3\%$, I guess that Governor Abbott looks strong but doesn't have the race locked up.
+                                </p>
+                                <p>
+                                    As students of statistics, we'd like to know more precisely where phrases like "margin of error of plus or minus 3 percentage points" comes from and what it means.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Definition">
+                                    Definition
+                                </h3>
+                                <p>
+                                    When we write a confidence interval as $$s \pm z^* \times SE,$$ Then, $z^* \times SE$ is the <em>margin of error</em>. Geometrically, it's the distance that the interval extends in either direction from the measured statistic $s$.
+                                </p>
+                                <p>
+                                    So, where's the $\pm 3\%$ or $\pm 4.2\%$ or whatever come from?
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Computation">
+                                    Computation
+                                </h3>
+                                <p>
+                                    Suppose we're writing down a confidence interval for a proportion. In this case, approve or disapprove. If the actual proportion is $p$ and our sample size is $n$, then the standard error is
+                                </p>
+                                $$\sqrt{\frac{p(1-p)}{n}}.$$
+                                <p>
+                                    In the Texas poll comparing both Abbott and O'Rourke,  $n = 1000$. Furthermore the <em>biggest</em> that $p(1-p)$ can be is $1/4$. You can see this by taking a look at a graph of $y = p(1-p)$:
+                                </p>
+                            </div>
+                        </div>
+                        <div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide">
+                            <div class="jp-Cell-outputWrapper">
+                                <div class="jp-OutputArea jp-Cell-outputArea">
+                                    <div class="jp-OutputArea-child">
+                                        <iframe src="https://www.desmos.com/calculator/lm0li6e0ns?embed" width="300" height="150" style="border: 1px solid #ccc" frameborder=0></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Finishing-the-computation">
+                                    Finishing the computation
+                                </h3>
+                                <p>
+                                    In the Texas poll, the sample size was 1000. Thus, the standard error is at <em>most</em>
+                                </p>
+                                $$SE \leq \sqrt{\frac{1/4}{1000}} \approx 0.0158.$$
+                                <p>
+                                    Now, for a $95\%$ confidence interval, we could take $z^* = 1.96$ so that our margin of error is at most
+                                </p>
+                                $$ME \leq 1.96\times0.0158 \approx 0.03099.$$
+                                <p>
+                                    There's your 3 percentage  points.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h2 id="Choosing-sample-size">
+                                    Choosing sample size
+                                </h2>
+                                <p>
+                                    Recall that the margin of error generally depends on three things:
+                                </p>
+                                <ul>
+                                    <li>Confidence level,</li>
+                                    <li>underlying standard deviation, and</li>
+                                    <li>the <em>sample size</em>.</li>
+                                </ul>
+                                <p>
+                                    Sometimes, we require a specific confidence level and margin of error and, for a sample proportion, the underling standard deviation $\sqrt{p(1-p)}$ is never larger than $1/2$. Thus, we can  always obtain the desired confidence level and margin of error by choosing sample size large enough.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="The-inequality">
+                                    The inequality
+                                </h3>
+                                <p>
+                                    In order to choose the sample size, we simply set up the inequality
+                                </p>
+                                $$z^*\sqrt{\frac{p(1-p)}{n}} &lt; ME,$$
+                                <p>
+                                    where $z^*$ corresponds to the desired confidence level and $ME$ is the desired confidence level. Since $\sqrt{p(1-p)}&lt;1/2$, this simplfies to
+                                </p>
+                                $$z^*\frac{1/2}{\sqrt{n}} &lt; ME \: \text{ or } \: n&gt;\frac{{z^*}^2}{4ME^2}.$$
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="Example">
+                                    Example
+                                </h3>
+                                <p>
+                                    Suppose we wish to determine the percentage of voters who support our candidate. We'd like a $95\%$ level of confidence to $\pm2\%$ points. What sample size should guarantee this?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="fragment">
+                            <div class="jp-Cell-inputWrapper">
+                                <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                    <p>
+                                        <strong>Simple solution</strong>: For a 95% level of confidence, we might take $z^*=2$ together with the given margin of error $ME=0.02$ to get
+                                    </p>
+                                    $$n&gt;\frac{{z^*}^2}{4ME^2} = \frac{2^2}{2\times0.02^2} = 2500.$$
+                                    <p>
+                                        Thus, a pollster would probably be happy with $n=2500$ folks in the poll.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h3 id="More-precision">
+                                    More precision
+                                </h3>
+                                <p>
+                                    We can get a more precise (possibly smaller) sample size by using more precise estimates to $z^*$. In fact, for the homework, you need three digits of precision for your $z^*$ multiplier. For 90, 95, and 99%, these are
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Conf:
+                                        </th>
+                                        <td>
+                                            90%
+                                        </td>
+                                        <td>
+                                            95%
+                                        </td>
+                                        <td>
+                                            99%
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            $z^*$
+                                        </th>
+                                        <td>
+                                            1.282
+                                        </td>
+                                        <td>
+                                            1.960
+                                        </td>
+                                        <td>
+                                            2.326
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    In the previous problem, we would have:
+                                </p>
+                                $$n&gt;\frac{{z^*}^2}{4ME^2} = \frac{1.960^2}{2\times0.02^2} = 2400.$$
+                                <p>
+                                    Thus, the HW would like to see 2401.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>
+                            How about an example with means:
+                        </h1>
+                        <p>
+                            Let's talk about $z^*$. This was calcualted using our <a href="https://onlinestatbook.com/2/calculators/normal_dist.html">standard normal calculator</a> but this is because we could calculate the standard deviation from a proportion, we are not always so lucky when it comes to the estimating the mean.
+                        </p>
+                        <p>
+                            If we do know the population standard devation we can use the following formula:
+                        </p>
+                        $$ME = z^* \times \frac{\sigma}{\sqrt{n}}$$
+                        <p>
+                            If we do not know the population's standard devation, then we use the sample standard devaion and a t-interval critical value $t^*$:
+                        </p>
+                        $$ME = t^* \times \frac{s}{\sqrt{n}}$$
+                    </section>
+                    <section>
+                        <h1>
+                            How do we get t critical values?
+                        </h1>
+                        <p>
+                            While there are a few calculators out there that can find a critical t value for a few percents and degrees of freedom, this look up table is still the best resouce I can find <a href="https://www.coconino.edu/resources/files/pdfs/academics/sabbatical-reports/kate-kozak/appendix_table.pdf"></a>Link to the table
+                        </p>
+                        <div>
+                            <img src="images/t_intervalLookup.PNG" alt="t_intervalLookup.PNG" style="height: 425px">
+                        </div>
+                        <p>
+                            The real table has more values for df. We find the t-critical value we need by looking up the value accoiated with the df and confidence level from the problem.
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            A example with IQ:
+                        </h1>
+                        <p>
+                            A random sample of 20 IQ scores of famous people was taken information from the website of IQ of Famous People ("IQ of famous," 2013) and then using a random number generator to pick 20 of them. The mean of the sample was $145.4$ and the standard devation 29.27. Find a 98% confidence interval for the mean of the IQ of famous people.
+                        </p>
+                        <p>
+                            We can use our table to find the critical t value for df = 20 - 1 = 19 and confidence level of 98% to get $t^* = 2.539$. Now,
+                        </p>
+                        <div>
+                            $$ME = 2.539 \times \frac{29.27}{\sqrt{20}} = 16.6$$
+                        </div>
+                        <p>
+                            and then the confidence interval would be,
+                        </p>
+                        $$145.4 \pm 16.6 = [128.8, 162].$$
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="js/reveal.js"></script>
+		<script src="js/notes.js"></script>
+		<script src="js/markdown.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>chapter 6</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/black.css">
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.6rem;
+			}
+			.reveal h3 {
+				font-size: 2.2rem;
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+  			float: left;
+			  width: 33.33%;
+  			padding: 5px;
+			}
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section id="fragments">
+                    <h1>
+                        Continous random variables
+                    </h1>
+                    <p>
+                        In chapter 6 we are going to look at continous random variables and their distributions. The focus of this Chapter
+						will be a distribution known as the normal distribution. There are many other continous distribtuons like the continous uniform distribtuion. 
+                    </p>
+                </section>
+                <section>
+                    <h1>
+                        What are continous random variables?
+                    </h1>
+                    <p>
+                        In the last lecture we looked at discrete random variables, now we are moving on to continous random variables.
+                    </p>
+					<ul>
+						<li>Example 1: Choose $X$ the average of all Steeler's home games</li>
+						<li>Example 2: Let X be a very precise measure of a person's height</li>
+						<li>
+                            Example 3: Let X be the standard devation of 10 random household's incomes in the US in 2023.
+                        </li>
+						<li>Example 4: Let X be measure in ounces of the weight of a bolt as on an assembly line</li>
+					</ul>
+					<p>
+                        But, it can be very difficult to actually graph or describle these distribtuons. Fortunally like the descrete examples we studied last time we have a few distributions that we can work out the formula for and we will start with the uniform distributons
+                    </p>
+                </section>
+                <section>
+                    <h1>
+                        The uniform distribution
+                    </h1>
+                    <p>
+                        When the probability is always the same, then this is know as a uniform distribution. The <i>continuous, uiniform distributon</i> is analogous to is discrete counterpart.
+						Suppose you pick a real number between $0$ and $1$ with uniform probability given to all numbers. How could we do this? How does this break our current definiton of probability from Chapter 4?
+                    </p>
+					<p>
+                        Let's start by assuming that the probability that the number lies in the left half of the interval to be equal to the probability that the number lies in the right half. Using the function notation we learned last time we could say
+                    </p>
+                        $$P(X < \frac{1}{2}) = P(X > \frac{1}{2}) = \frac{1}{2}$$
+                    </section>
+                    <section>
+						<h1>
+                            The number line, measure theory and how we handle continuity
+                        </h1>
+						<p>
+                            Let's take the idea of the number line were we only look at the interval [0,1]. If we think of this as our sample space, then we have an infinite number of elements in our sample space. Since we don't want to divide, we will turn to measure theory. In simple terms, measure theory shifts us for looking at how many things are in our sample space to how long is our sample space. So we would say that our interval has length 1. If we want to find the probability that a number was in a interval from $[0,\frac{1}{2}]$ we could work out
+                        </p>
+                        <p>
+                            $$P(\text{the probability a number is picked between zero and one half in the closed interval from zero to one}) =$$
+                        </p>
+                        <p>
+                            $$\frac{\text{the lenght of [0,1/2]}}{\text{the lenght of [0,1]}}$$
+                        </p>
+                        <p>
+                            Example: Suppose we pick a number $X$ uniformly at random from the interval $[−10,10]$. What is the probability that the number lies in the interval $[1,3]$?
+                        </p>
+                    </section>
+                    <section>
+                        <h1>
+                            Solution
+                        </h1>
+                        <p>
+                            We simply divide the length of the sub-interval by the length of the larger interval to get
+                        </p>
+                        <p>
+                            P(1 < X < 3) = 2/20 = 0.100
+                        </p>
+						<p>
+                            We just take the lenght of our interval of success and divided it by the lenght of the total interval.
+                        </p>
+                        <img src="images/uniformdistPic.png" alt="uniformdistPic.PNG">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h1 id="The-normal-distribution">
+                                    The normal distribution
+                                </h1>
+                                <p>
+                                    That brings us to the <em>normal distribution</em> - the most important distribution in elementary statistics!
+                                </p>
+                                <p>
+                                    Suppose we go outside, grab the first person we see and measure their height. Accoring the data in our CDC data set, the average person has a height of about 67.18 inches. I suppose that our randomly grabbed person will have a height of close to that 67.18 inches. In fact, <em>most</em> people have a height of $$67.18 \pm 4 \text{ inches}.$$ Of course, there are people taller than 72 inches and shorter than 62 inches, but the number of folks you find of a certain height grows more sparse as we move away from the mean.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h1 id="The-family-of-normal-distributions">
+                                    The family of normal distributions
+                                </h1>
+                                <p>
+                                    There's more than one normal distribution; there's a whole family of them - each specified by a <em>mean</em> and <em>standard deviation</em>.
+                                </p>
+                                <p>
+                                    All normal distributions have the same basic <em>bell shape</em> and the area under every normal distribution is one.
+                                </p>
+                                <p>
+                                    The mean $\mu$ of a normal distribution tells you where its maximum is.
+                                </p>
+                                <p>
+                                    The standard deviation $\sigma$ of a normal distribution tells you how concentrated it is about its mean.
+                                </p>
+                                <p>
+                                    The <em>standard normal distribution</em> is the specific normal with mean $\mu=0$ and standard deviation $\sigma=1$.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h1 id="The-family-album">
+                                    The family album
+                                </h1>
+                                <p>
+                                    The interactive graphic below shows how the mean and standard deviation determine the corresponding normal distribution.
+                                </p>
+                                <iframe src="https://www.desmos.com/calculator/asqthpauir?embed" width="700px" height="400px" style="border: 1px solid #ccc" frameborder=0></iframe>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>
+                            Generalized normal curve
+                        </h1>
+                        <img src="images/empRule.PNG" alt="empRule.PNG">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h1 id="Standardizing-normals">
+                                    Standardizing normals
+                                </h1>
+                                <p>
+                                    Any normally distributed random variable $X$ (with mean $\mu$ and standard deviation $\sigma$) can be translated to the standard normal $Z$ via the formula
+                                </p>
+                                $$Z = \frac{X-\mu}{\sigma}.$$
+                                <p>
+                                    Given a normally distributed random variable $X$ that obtains the value $x$, the computation
+                                </p>
+                                $$z = \frac{x-\mu}{\sigma}$$<p></p>
+                                <p>
+                                    is called the $Z$-score for $x$.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="jp-Cell-inputWrapper">
+                            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                                <h1 id="The-behavior-of-the-standard-normal">
+                                    The behavior of the standard normal
+                                </h1>
+                                <p>
+                                    Since we can relate <em>any</em> normally distributed random variable to the standard normal, it's of great interest to fully understand the standard normal. There is a statistical rule of thumb for this purpose called <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">the 68-95-99.7 rule</a> that states that
+                                </p>
+                                <ul>
+                                    <li>68% of the population lies within 1 standard deviation of the mean,</li>
+                                    <li>95% of the population lies within 2 standard deviations of the mean, and</li>
+                                    <li>99.7% of the population lies within 3 standard deviations of the mean.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="js/reveal.js"></script>
+		<script src="js/notes.js"></script>
+		<script src="js/markdown.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+    </body>
+</html>
