@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Functions part 2</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/black.css">
+		<style media="screen">
+			section {
+				text-align: left;
+			}
+			.reveal h1 {
+				font-size: 3rem;
+			}
+			.reveal h2 {
+				font-size: 2.2rem;
+			}
+			.reveal h3 {
+				font-size: 2.0rem;
+			}
+			.reveal h4 {
+				font-size: .8rem;
+			}
+			.reveal p {
+				font-size: 1.2rem;
+			}
+			.reveal blockquote {
+				font-size: 1.2rem;
+			}
+			.reveal li {
+				font-size: 1.2rem;
+			}
+			.reveal figcaption {
+				font-size: 1rem;
+			}
+			.reveal figure {
+				margin: 10px;
+			}
+			.reveal table {
+				width: 100%;
+				font-size: 1rem !important;
+			}
+			.reveal table.centered td {
+				text-align: center;
+			}
+			.reveal table.centered th {
+				text-align: center;
+			}
+			.column {
+                float: left;
+                width: 33.33%;
+                padding: 5px;
+            }
+            .box {
+                float:left;
+                margin-right:20px;
+            }
+			.clear {
+                clear:both;
+			}
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+		</style>
+    </head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>
+                            The average rate of change and composition of functions
+                        </h1>
+						<p>
+                            In this section we will find the average rate of change of a function and use graphs to find local and aboslute extrma. We will also explore combining functions using algebraci operations.
+                        </p>
+						<p>
+                            Our motivating questions are:
+                        </p>
+						<ul>
+							<li>What do we mean by the average rate of change of a function on an interval?</li>
+							<li>
+                                What does the average rate of change of a function measure? How do we interpret its meaning in context?
+                            </li>
+							<li>What does it mean to add, subtract, multiply or divide functions?</li>
+							<li>What happens when you input a function into another function?</li>
+						</ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>
+                            Average rate of change
+                        </h2>
+                        <p>
+                            A <b>rate of change</b> describes how an output quantity changes relative to the change in the input quantity. If we use only the beginning and ending data, we would be finding the <b>average rate of change</b> over the specified period of time. To find the average rate of change, we divide the change in the output value by the change in the input value.
+                        </p>
+						<p>
+                            $$\text{Avg rate of change} = \frac{\text{Change in output}}{\text{Change in input}}$$
+                        </p>
+						<p>
+                            Since we are talking about real 2-d functions, we can think of the "change in output" as $y_2 - y_1$, and the "change of input" as $x_2 - x_1$.
+                        </p>
+						<p>
+                            $$\text{Avg rate of change} = \frac{y_2 - y_1}{x_2 - x_1}$$
+                        </p>
+                    </section>
+					<section>
+						<h2>
+                            The technical definition of rate of change
+                        </h2>
+						<p>
+                            Let's look at the more technical definition of average rate of change:
+                        </p>
+						<p>
+                            <b>Def 1.4</b> For a fucntion $f$ defined on the interval [a,b], we define the average rate of change to be: $$AV = \frac{f(b)-f(a)}{b-a}$$
+                        </p>
+						<p>
+                            The word defined implies that the function's domain exist on that interval from [a,b].
+							A rate of change describes how an output quantity changes relative to the change in the input quantity. The units on a rate of change are “output units per input units.” Notice too that this formula can be applied to a function in all of its forms
+							because we only need two points to calculate our average value, $AV$, and they are $(a, f(a))$ and $(b,f(b))$.
+                        </p>
+                    </section>
+					<section id="fragments">
+						<h2>
+                            Example from a algebraic function
+                        </h2>
+						<p>
+                            Give the function $f(x) = \sqrt{x}$ find the average rate of change from 4 to 16. Note that we are fine to evaluate this because $f(x)=\sqrt{x}$ is defiend on $[4,16]$.
+                        </p>
+						<p class="fragment">
+                            $$AV = \frac{f(16) - f(4)}{16 - 4}$$
+                        </p>
+						<p class="fragment">
+                            $$   = \frac{\sqrt{16} - \sqrt{4}}{12}$$
+                        </p>
+						<p class="fragment">
+                            $$   = \frac{4 - 2}{12}$$
+                        </p>
+						<p class="fragment">
+                            $$   = \frac{2}{12} = \frac{1}{6}$$
+                        </p>
+					</section>
+					<section id="fragments">
+						<h2>
+                            An example from a table
+                        </h2>
+						<p>
+                            Since functions represent how an output quantity varies with an input quantity,
+							it is natural to ask about the rate at which the values of the function are changing. For example, the function  $C(t)$ below gives the average cost, in dollars, of a gallon of gasoline  $t$ years after 2000.
+                        </p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>t</th>
+                                    <th>2002</th>
+                                    <th>2004</th>
+                                    <th>2006</th>
+                                    <th>2008</th>
+                                    <th>2010</th>
+                                    <th>2012</th>
+                                    <th>2014</th>
+                                    <th>2016</th>
+                                    <th>2018</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>C(t)</td>
+                                    <td>1.47</td>
+                                    <td>1.94</td>
+                                    <td>2.30</td>
+                                    <td>2.51</td>
+                                    <td>2.64</td>
+                                    <td>3.01</td>
+                                    <td>3.43</td>
+                                    <td>2.14</td>
+                                    <td>2.74</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            If we were interested only in how the gasoline prices changed between 2006 and 2012, we could compute that the cost per gallon had increased from \$2.30 to \$3.01, an increase of \$0.71. While this is interesting, it might be more useful to look at how much the price changed per year. Let's use our rate of change formula:
+                        </p>
+						<p>
+                            <span class="fragment">
+                                $$\frac{\text{change in output}}{\text{change in input}} = \frac{3.01 - 2.30}{2012 - 2006} =$$
+                            </span>
+                            <span class="fragment">
+                                $$\frac{0.71}{6} = 0.12$$
+                            </span>
+                        </p>
+						<p class="fragment">
+                            This would be interpreted as $0.12 increase in the price of gas each year.
+                        </p>
+                    </section>
+					<section>
+						<h2>
+                            An example from a graph
+                        </h2>
+						<p>
+                            Functions are also represented geometrically by graphs. We can think of the x-coordinates as input values. We can think of the y-coordinates as output values. Look at the graph below for example:
+                        </p>
+                        <iframe src="https://www.desmos.com/calculator/uoxlhchmt3?embed" width="100%" height="300" style="border: 1px solid #ccc" frameborder=0></iframe>
+						<p>
+                            Notice that the which points we pick will give a unique slope. For the first two points we would get $m_1 = \frac{-1 - 0}{-1.071 - (-1.426)} \approx -2.82$ but for the 2nd and 3rd point you would get $m_2 = \frac{-0.667 - (-1)}{-0.459 - (-1.071)} \approx 0.545$. Most functions have unique slopes for each point, which is the primary focuse of differential calculus. We will explore two types of functions that have constant slopes, and now you should be able to find the average slope or rate of change for any function.
+                        </p>
+                    </section>
+					<section>
+						<h2>
+                            Using rate of change to talk about trends
+                        </h2>
+						<p>
+                            We have already seen that it is natural to use words such as “increasing” and “decreasing” to describe a function’s behavior. We make the following formal definitions to clarify what it means to say that a function is increasing or decreasing.
+                        </p>
+						<p>
+                            <b>Def. 1.5</b> A function $f$ is an <b>increasing function</b> on the interval $[a,b]$, if for all points $x$ and $y$ in the interval such that for all $x < y$ in must be the case that $f(x) < f(y)$.
+                        </p>
+						<p>
+                            <b>Def. 1.6</b> A function $f$ is a <b>decreasing function</b> on the interval $[a,b]$, if for all points $x$ and $y$ in the interval such that for all $x < y$ in must be the case that $f(x) > f(y)$.
+                            </p>
+						<p>
+                            These seem technical, but what they really boil down to is that if my function is always going up between two numbers on the number line, then it is increase. If my functios is always going down between two numbers it is decreasing.
+                        </p>
+                    </section>
+					<section>
+						<h2>
+                            Local extrema
+                        </h2>
+						<p>
+                            To locate the local maxima and minima from a graph, we need to observe the graph to determine where the graph attains its highest and lowest points, respectively, within an open interval. Like the summit of a roller coaster, the graph of a function is higher at a local maximum than at nearby points on both sides. The graph will also be lower at a local minimum than at neighboring points. Figure 5 illustrates these ideas for a local maximum.
+                        </p>
+                        <img src="images/extrema.PNG" alt="extrema.PNG" height="300px" width="100%">
+                        <p>
+                            <b>Def 1.7</b> A function $f$ has a local maximum at a point $b$ in an open interval $(a,c)$ if $f(b) \geq f(x)$ for every point $x \neq b$ in the interval. A function $f$ has a local minimum at a point $b$ in an open interval $(a,c)$ if $f(b) \leq f(x)$ for every point $x \neq b$ in the interval.
+                        </p>
+                    </section>
+                </section>
+                <section>
+					<section>
+						<h1>
+                            Function composition and algebraic operations
+                        </h1>
+						<p>
+                            In this section we are going to look at the general idea of combining function,
+							first by using algebra and then by using functions as inputs to functions. Let's start by looking at the general algebra defined for functions:
+                        </p>
+                        <p>
+                            Given two functions $f$ and $g$:
+                        </p>
+                        <p>
+                            $$(f+g)(x) = f(x) + g(x)$$
+                        </p>
+                        <p>
+                            $$(f-g)(x) = f(x) - g(x)$$
+                        </p>
+                        <p>
+                            $$(f*g)(x) = f(x) * g(x)$$
+                        </p>
+                        <p>
+                            $$(f/g)(x) = \frac{f(x)}{g(x)}$$
+                        </p>
+                        <p>
+                            Notice that there is nothing strange about combining functions using algebra, the real trick comes with working out the actual algebra. Let's look at a quick example on the next slide.
+                        </p>
+                    </section>
+					<section id="fragments">
+						<h2>
+                            Example of algebraic operation on given functions
+                        </h2>
+						<p>
+                            Given $f(x)= x^2 + 3x - 1$ and $g(x) = e^{x} + 2x^2$, find $(f+g)(x)$
+                        </p>
+						<p>
+                            <span class="fragment">
+                                $$(f+g)(x) = f(x) + g(x) =$$
+                            </span>
+                            <span class="fragment">
+                                $$x^2 + 3x - 1 + e^{x} + 2x^2 = e^{x} + 3x^2 - 1$$
+                            </span>
+                        </p>
+						<p class="fragment">
+                            Notice that we only had one term that could combine algebraicly.
+                        </p>
+                    </section>
+					<section id="fragments">
+						<h2>
+                            Another example of algebraic operation on given functions
+                        </h2>
+						<p>
+                            Given $f(x)= x + 3$ and $g(x) = 2x^3$, find $(f*g)(x)$
+                        </p>
+						<p>
+                            <span class="fragment">
+                                $$(f*g)(x) = f(x) * g(x) =$$
+                            </span>
+                            <span class="fragment">
+                                $$(x + 3)(2x^3) = $$
+                            </span>
+                            <span class="fragment">
+                                $$2x^4 + 6x^3$$
+                            </span>
+                        </p>
+						<p class="fragment">
+                            These really are as easy as writing out the problem and doing as much algebraic clean up as you can. Notice that with division that there will not be a lot of clean up to do right now.
+                        </p>
+					</section>
+					<section id="fragments">
+						<h2>
+                            Composition of a function motivating example
+                        </h2>
+						<p>
+                            Suppose we wanted to calculate how much it costs to heat a house on a particular day of the year. The cost to heat a house will depend on the average daily temperature, and the average daily temperature depends on the particular day of the year. Notice how we have just defined two relationships: The temperature depends on the day, and the cost depends on the temperature. Using descriptive variables, we can notate these two functions.
+                        </p>
+						<p class="fragment">
+                            The first function, $C(T)$, gives the cost $C$ of heating a house when the average daily temperature is $T$ degrees Celsius, and the second, $T(d)$, gives the average daily temperature on day $d$ of the year in some city. If we wanted to determine the cost of heating the house on the $5^{th}$ day of the year, we could do this by linking our two functions together, an idea called composition of functions. Using the function $T(d)$, we could evaluate $T(5)$ to determine the average daily temperature on day $5$. We could then use that temperature as the input to the $C(T)$ function to find the cost to heat the house on the $5^{th}$ day of the year: $C(T(5))$
+                        </p>
+                        <p class="fragment">
+                            I guess we need another definition...
+                        </p>
+					</section>
+					<section id="fragments">
+						<h2>
+                            Definition of the composition of functions
+                        </h2>
+						<p>
+                            In defintions around functions you will often see $f:A \rightarrow B$, this is just so we know the domain and range without having to write
+							a specific algebraic expression. Remember for most of our functions $A$ will be all real numbers.
+                        </p>
+						<p class="fragment">
+                            if $f$ and $g$ are functions such that $g: A \rightarrow B$ and $f: B \rightarrow C$ we define the <b>composition of $f$ and $g$</b> to be the new function $h:A \rightarrow C$ given by: $$h(x) = f(g(x))$$
+                        </p>
+						<p class="fragment">
+                            We sometimes call the $g$ “inner function” and $f$ the “outer function”. Notice from the definition, our new function has the domain of the inner funtion, and range of the outer function.
+                        </p>
+					</section>
+					<section id="fragments">
+						<h2>
+                            Example from table
+                        </h2>
+                        <style type="text/css">
+                            .tg {
+                                border-collapse:collapse;
+                                border-spacing:0;
+                            }
+                            .tg td {
+                                border-color:black;
+                                border-style:solid;
+                                border-width:1px;
+                                font-family:Arial, sans-serif;
+                                font-size:14px;
+                                overflow:hidden;
+                                padding:10px 5px;
+                                word-break:normal;
+                            }
+                            .tg th {
+                                border-color:black;
+                                border-style:solid;
+                                border-width:1px;
+                                font-family:Arial, sans-serif;
+                                font-size:14px;
+                                font-weight:normal;
+                                overflow:hidden;
+                                padding:10px 5px;
+                                word-break:normal;
+                            }
+                            .tg .tg-0lax {
+                                text-align:left;
+                                vertical-align:top
+                            }
+                        </style>
+                        <table class="tg">
+                            <thead>
+                                <tr>
+                                    <th class="tg-0lax">$x$<br></th>
+                                    <th class="tg-0lax">1</th>
+                                    <th class="tg-0lax">2</th>
+                                    <th class="tg-0lax">3</th>
+                                    <th class="tg-0lax">4</th>
+                                    <th class="tg-0lax">5</th>
+                                    <th class="tg-0lax">6</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tg-0lax">$g(x)$</td>
+                                    <td class="tg-0lax">0</td>
+                                    <td class="tg-0lax">2</td>
+                                    <td class="tg-0lax">4</td>
+                                    <td class="tg-0lax">6</td>
+                                    <td class="tg-0lax">3</td>
+                                    <td class="tg-0lax">1</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">$f(x)$</td>
+                                    <td class="tg-0lax">1<br></td>
+                                    <td class="tg-0lax">3</td>
+                                    <td class="tg-0lax">5</td>
+                                    <td class="tg-0lax">6<br></td>
+                                    <td class="tg-0lax">4</td>
+                                    <td class="tg-0lax">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="fragment">
+                            Find $(f + g)(5)$ and $(f o g)(5)$:
+                        </p>
+                        <p class="fragment">
+                            <span class="fragment">
+                                $(f + g)(5) =$
+                            </span>
+                            <span class="fragment">
+                                $f(5) + g(5) = 3 + 4 = 7$
+                            </span>
+                        </p>
+                        <p class="fragment">
+                            <span class="fragment">
+                                $(f o g)(5) =$
+                            </span>
+                            <span class="fragment">
+                                $f(g(5)) = f(3) = 5$
+                            </span>
+                        </p>
+                        <p class="fragment">
+                            Notice that with composition, I needed to evaluate g first then f. With arithmitic we can evaluate immediately and just work with the numbers!
+                        </p>
+                    </section>
+                    <section id="fragments">
+                        <h2>
+                            Example when given two equations
+                        </h2>
+						<p>
+                            Suppose $f(x) = \sqrt{3x + 10}$  and $g(x) = \frac{1}{7x + 10}$, find $(f o g)(x)$
+                        </p>
+						<p class="fragment">
+                            $$(f o g)(x) = f(g(x))$$
+                        </p>
+						<p class="fragment">
+                            $$ = f(\frac{1}{7x + 10})$$
+                        </p>
+						<p class="fragment">
+                            $$ = \sqrt{3(\frac{1}{7x + 10}) + 10}$$
+                        </p>
+						<p class="fragment">
+                            Notice that for MOM, quzzes and exams you do not need to simplify, but for those who want the challenge, our answer simplifies to:
+                        </p>
+						<p class="fragment">
+                            $$\sqrt{\frac{70x + 103}{7x + 10}}$$
+                        </p>
+                    </section>
+                </section>
+                <section>
+					<h1>
+                        Summary and helpful things
+                    </h1>
+					<h4>
+                        Summary
+                    </h4>
+					<p>
+                        Given any function we can find it's rate of change using $$\text{Avg rate of change} = \frac{y_2 - y_1}{x_2 - x_1}$$
+                    </p>
+					<p>
+                        This rate of change is related to the slope of the function, and tells us if the function is increasing or decreasing on the interval
+                    </p>
+					<p>
+                        Another example video of finding average rate of change: <a href="https://youtu.be/f_Q0qlwlclQ">LINK</a>
+                    </p>
+					<p>
+                        We can combine functions using standard arithmitic or we can compose funtions with other functions
+                    </p>
+					<p>
+                        Here is another example of function composition: <a href="https://youtu.be/ZFPkQkURSxk" target="_blank">LINK</a>
+                    </p>
+                </section>
+            </div>
+        </div>
+        <script src="js/reveal.js"></script>
+		<script src="js/notes.js"></script>
+		<script src="js/markdown.js"></script>
+		<script src="js/highlight.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+			});
+		</script>
+    </body>
+</html>
