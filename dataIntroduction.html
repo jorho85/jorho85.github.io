@@ -59,325 +59,102 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Getting and explaing data</h1>
-					<h2>from Studies or Experiments</h2>
-					<p>
-						Last time, we learned some data basics with a focus on data tables, which neatly organize data into rows of observations and columns of variables.
-						Today, we'll take a <span class='it'>brief</span> look tpyes of studies and describing data numerically and graphically.
-					</p>
-					<p>
-						This is all based on chapters 2 and 3 in the book.
-					</p>
+					<h1>Chapter 2 Graphing data</h1>
+					<p>In chapter 2 we will look at graphing data by constructing a frequency table. We will also look at the idea of a box plot, but we will wait till chapter 3
+					to learn how to calculate the 5 number summary necessary to make a box plot.</p>
+					<p>In both chapters 2 and 3 our main goal is to talk about the center and spread of our data. With the graphs we want to visualize these ideas for our data set,
+					while in chapter 3 we will look at calculating statistics that quantify the idea of center and spread.</p>
 				</section>
 
 				<section>
 					<section>
-						<h2>Observational studies vs controlled experiments</h2>
-						<p>There are two main techniques to systematically collect data:</p>
-						<ul>
-						   <li>Observational studies and</li>
-						   <li>Controlled experiments</li>
-						</ul>
+    				<h2>Introduction to Frequency Tables</h2>
+    				<p>Frequency tables are tools used in statistics to organize data into a table format that shows the frequency of various outcomes in a sample.
+							Each entry in a frequency table contains the frequency or count of occurrences of values within a particular group or interval.</p>
+    				<p>Today, we'll explore how to create and interpret frequency tables for numerical data, focusing on key concepts such as class width, class limits, and boundaries.</p>
+ 					</section>
+					<section>
+					    <h2>Numerical Data Frequency Table</h2>
+					    <p>The frequency table for numerical data groups data into classes or intervals. Below is an example of such a table, showing the distribution of student ages:</p>
+					    <img src="frequencyTable.PNG" alt="Frequency table of student ages">
 					</section>
 					<section>
-						<h3>Observational studies</h3>
-						<p>An <em>observational study</em> is one where the data collection does not interfere with how the data arises. Examples include</p>
-						<ul>
-						   <li>Surveys,</li>
-						   <li>Review of records,</li>
-						   <li>Simple measurements</li>
-						</ul>
+					    <h2>Key Concepts in Numerical Frequency Tables</h2>
+					    <ul>
+					        <li><strong>Class Width</strong>: The difference between the upper and lower boundaries of any class. Formula: \( \text{Class Width} = \text{Upper Bound} - \text{Lower Bound} \)</li>
+					        <li><strong>Class Limits</strong>: The smallest and largest data value that can belong to a class. Example from our table: 15-18, 19-22, etc.</li>
+					        <li><strong>Class Boundaries</strong>: These are used to eliminate gaps between classes for continuous data.
+										They are calculated by taking the average between the upper limit of one class and the lower limit of the next. Example: 18.5 is the boundary between 18 and 19.</li>
+					        <li><strong>Class Midpoints</strong>: The point in the middle of the class interval, calculated as \( \text{Midpoint} = \frac{\text{Lower Limit} + \text{Upper Limit}}{2} \).
+										Example for the first class: 16.5.</li>
+					    </ul>
 					</section>
 					<section>
-						<h3>Controlled experiments</h3>
-						<p>
-							In an <em>experiment</em>, researchers actively work with the samples applying treatments and observing effects.
-						</p>
-						<ul>
-							<li>
-								Often (if not always), the intention is to explore a relationship or even a causal effect between two variable.
-							</li>
-							<li>
-								For that reason, it's often important to distinguish between an <em>explanatory variable</em> and a <em>response variable</em>.
-							</li>
-						</ul>
+							<h2>Example of a Categorical Frequency Table</h2>
+							<p>Categorical frequency tables group data based on attribute or category rather than numerical intervals. Here's an example:</p>
+							<table border="1" style="color: white;">
+									<caption>Favorite Color of Students</caption>
+									<thead>
+											<tr>
+													<th>Color</th>
+													<th>Frequency</th>
+											</tr>
+									</thead>
+									<tbody>
+											<tr>
+													<td>Blue</td>
+													<td>10</td>
+											</tr>
+											<tr>
+													<td>Green</td>
+													<td>7</td>
+											</tr>
+											<tr>
+													<td>Red</td>
+													<td>8</td>
+											</tr>
+									</tbody>
+							</table>
+							<p>This type of table is best visualized using a bar plot, where each category is represented as a bar whose height reflects the frequency of responses.</p>
 					</section>
-				</section>
+					<section>
+    				<h2>Calculating Relative Frequency</h2>
+    				<p>Relative frequency is a measure of the number of times a particular value or class occurs relative to the total number of occurrences in a dataset.
+							It helps in understanding the proportion or percentage of observations within a specific category compared to the entire sample.</p>
 
-				<section>
-					<section>
-						<h2>An observational example</h2>
-						<p>
-							Suppose we are interested in the following question:
-						</p>
-						<blockquote>
-							Does caffeine consumed through coffee affect GPA among CCCTI students?
-						</blockquote>
+    				<h3>Formula for Relative Frequency</h3>
+    				<p>The relative frequency of a category is calculated using the formula:</p>
+    				<p style="text-align: center;"><strong>Relative Frequency = \( \frac{\text{Frequency of the category}}{\text{Total frequency of all categories}} \)</strong></p>
+    				<p>Where:</p>
+    					<ul>
+        				<li><strong>Frequency of the category</strong> is the number of times a particular value or class appears in the dataset.</li>
+        				<li><strong>Total frequency of all categories</strong> is the sum of the frequencies of all classes or values in the dataset.</li>
+    					</ul>
 					</section>
 					<section>
-						<h3>The observational approach</h3>
-						<p>
-							To perform an observational study, we might select 14 CCCTI students and interview them. We might ask a number of questions but two questions key to the study would be:
-						</p>
-						<ul>
-							<li>How much caffeinated coffee do you drink (in cups)?</li>
-							<li>What is your GPA?</li>
-						</ul>
-					</section>
-					<section>
-						<h3>The resulting data</h3>
-						<p>
-							If we interview 14 of the 3876 students at CCCTI, we might generate a table that looks something like so:
-						</p>
-						<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-oklf{border-color:inherit;font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;font-size:12px;
-  text-align:left;vertical-align:top}
-.tg .tg-ruuw{font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;font-size:12px;text-align:left;
-  vertical-align:top}
-</style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-oklf">ID<br></th>
-    <th class="tg-oklf">Daily Coffee intake (cups)<br></th>
-    <th class="tg-oklf">Current GPA<br></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-oklf">1<br></td>
-    <td class="tg-oklf">2</td>
-    <td class="tg-oklf">4.0</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">2</td>
-    <td class="tg-ruuw">1</td>
-    <td class="tg-ruuw">4.0</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">3</td>
-    <td class="tg-ruuw">1</td>
-    <td class="tg-ruuw">4.0</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">4</td>
-    <td class="tg-ruuw">4</td>
-    <td class="tg-ruuw">3.8</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">5</td>
-    <td class="tg-ruuw">2</td>
-    <td class="tg-ruuw">3.3</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">6</td>
-    <td class="tg-ruuw">3</td>
-    <td class="tg-ruuw">3.1</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">7</td>
-    <td class="tg-ruuw">2</td>
-    <td class="tg-ruuw">2.8</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">8</td>
-    <td class="tg-ruuw">4</td>
-    <td class="tg-ruuw">3.1</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">9</td>
-    <td class="tg-ruuw">7</td>
-    <td class="tg-ruuw">2.3</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">10<br></td>
-    <td class="tg-ruuw">0</td>
-    <td class="tg-ruuw">3.1</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">11</td>
-    <td class="tg-ruuw">1</td>
-    <td class="tg-ruuw">4.0</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">12</td>
-    <td class="tg-ruuw">4</td>
-    <td class="tg-ruuw">1.8</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">13</td>
-    <td class="tg-ruuw">2</td>
-    <td class="tg-ruuw">2.1</td>
-  </tr>
-  <tr>
-    <td class="tg-ruuw">14</td>
-    <td class="tg-ruuw">3</td>
-    <td class="tg-ruuw">3.7</td>
-  </tr>
-</tbody>
-</table>
-					</section>
-					<section>
-						<h3>Visualization</h3>
-						<p>We might visualize the data with a <span class="it">scatter plot</span>.</p>
-						<div style="text-align: center">
-							<img src="image1.PNG" alt=""  width="700" height="500">
-						</div>
-					</section>
-					<section>
-						<h3>Analysis</h3>
-						<p>
-							The numbers and picture kinda <span class="it">appear</span> to support the idea that caffeinated coffee consumption improves GPA.
-							Of course, we ultimately hope to be able to quantify that type of analysis more precisely.
-						</p>
-					</section>
-				</section>
+    				<h3>Example</h3>
+    				<p>Consider a dataset with the following values for a variable representing the colors of cars in a parking lot: Red (15), Blue (25), Green (10), Yellow (5).</p>
+    				<p>The total frequency is \( 15 + 25 + 10 + 5 = 55 \).</p>
+    				<p>The relative frequency for Red cars is \( \frac{15}{55} \approx 0.273 \) or 27.3%.</p>
 
-				<section>
-					<section>
-						<h3>Sample/population for the coffee example</h3>
-						<p>
-							In the coffee example (where we interviewed 14 of the 3876 students at CCCTI),
-						</p>
-						<ul>
-							<li>
-								The <em>sample</em> is the 14 students we interviewed.
-							</li>
-							<li>
-								The <em>population</em> is the set of all 3876 CCCTI students. <br />
-								<span class="it">(The extent to which the conclusion might extend to all college students anywhere might be a point of discussion and further research.)</span>
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Statistic/parameter for the coffee example</h3>
-						<p>
-							Suppose we find that, of the 14 students in our sample, the students drink 2.57 cups of coffee a day on average.
-						</p>
-						<ul>
-							<li>
-								That average number 2.57 computed from the sample is a <em>statistic</em>.
-							</li>
-							<li>
-								If we could somehow determine the average number of cups of coffee consumed by <em>all</em> 3876 CCCTI students, that number would be a <em>parameter</em>.
-							</li>
-						</ul>
-						<p>
-							Typically, it's not necessarily feasible to compute a parameter from an entire population. Thus, we <em>estimate</em> population parameters from sample statistics. A key question is:
-						</p>
-						<blockquote>
-							How close can we expect a computed statistic to be to the corresponding population parameter?
-						</blockquote>
-					</section>
-				</section>
+    				<h3>Graphical Representation: Pie Chart</h3>
+    				<p>Relative frequencies are best visualized using a pie chart, where each slice represents a category's proportion relative to the whole.
+							This type of chart is particularly effective in showing the size of each category at a glance, making it easy to compare proportions.</p>
+    				<div style="text-align: center;">
+        				<img src="Interpretingpiechart.PNG" alt="Pie chart showing the distribution of favorite movies">
+        				<p>Figure: Pie chart showing the distribution of favorite movies</p>
+    				</div>
 
-				<section>
+    				<p>Using pie charts, it's easier to communicate the relative importance of categories, making them ideal for presentations and reports where understanding the proportionate distribution of data is essential.</p>
+ 					</section>
 					<section>
-						<h2>Some important issues</h2>
-						<ul>
-							<li>Confounding variables</li>
-							<li>Causation vs correlation</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Confounding variables</h3>
-						<p>
-							A <em>confounding variable</em> is a variable (often unknown) that influences two or more other variables and causes a spurious association.
-						</p>
-						<p>
-							In the coffee GPA example, a confounding variable might be the amount of time the student studies. If they study a lot, the might find themselves drinking more coffee <em>and</em> increase their GPA.
-						</p>
-						<p>
-							The term <em>lurking variable</em> is a synonym for confounding variable.
-						</p>
-					</section>
-					<section>
-						<h3>Causation vs correlation</h3>
-						<p>
-							In statistics, we are often interested in the effect of one variable on another. In the context of the coffee study - does the consumption of caffeinated coffee improve GPA?
-						</p>
-						<p>
-							Due to the potential presence of unknown confounding variables, whether there is a relationship between two variables - and <em>not</em> whether there is a causal relationship.
-						</p>
-						<p>
-							This is sometimes phrased as
-						</p>
-						<blockquote>
-							correlation does not imply causation.
-						</blockquote>
-						<p>
-							To establish a causal relationship, you've really got to set up and experiment.
-						</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>An experimental example</h2>
-						<p>
-							In an experiment (more specifically, a <em>controlled experiment</em>), researchers actively work with the samples applying treatments and controls and observing effects.
-						</p>
-						<p>
-							Let's outline an experimental approach to our another GPA question:
-						</p>
-						<blockquote>
-							Does 8 or more hours of sleep each night affect GPA among college students?
-						</blockquote>
-					</section>
-					<section>
-						<h3>The experimental approach</h3>
-						<p>
-							To explore this question via a controlled experiment, we would start with a large, simple random sample of participating college students. We would <em>randomly</em>
-							assign the each student into one of two groups:
-						</p>
-						<ul>
-							<li>The treatment group, who would be required get 8 or more hours of sleep each night and</li>
-							<li>the control group, who would get less than 8 or at least they are not required to get 8 hours.</li>
-						</ul>
-						<p>
-							After some pre-specified amount of time, we would check and compare the grades earned by the two groups.
-						</p>
-					</section>
-					<section>
-						<h3>Results</h3>
-						<p>
-							If there were 250 participants in our sample, perhaps our results might look something like so:
-						</p>
-						<table class="centered" style="width: 250px">
-							<tr>
-								<th></th><th>Treatment</th> <th>Control</th>
-							</tr>
-							<tr>
-								<th>N</th><td>119</td><td>131</td>
-							</tr>
-							<tr>
-								<th>GPA</th><td>3.7</td><td>2.9</td>
-							</tr>
-						</table>
-						<p>
-							This looks like it might be compelling evidence that 8 hours of sleep boosts GPA. We would ultimately like to be able to quantify that statement.
-						</p>
-					</section>
-					<section>
-						<h3>Some key principles of experiments</h3>
-						<ul>
-						   <li>
-						      <strong>Control</strong>: We split the group of patients into two groups:
-						      <ul>
-						         <li>A treatment group that receives the treatment</li>
-						         <li>A control group that receives a placebo.</li>
-						      </ul>
-						   </li>
-						   <li><strong>Randomization</strong>: The groups should be chosen <em>randomly</em> to prevent bias and to even out confounding factors.</li>
-						   <li><strong>Replication</strong>: The results should be reproducible</li>
-						</ul>
-						<p>If we find differences between the groups we can examine whether they
-							are <a href="https://marksmath.org/classes/Spring2022Stat185/tools/basic_data_explorer.html" target="_blank" rel="noopener noreferrer"><em>statistically significant</em></a> or not.</p>
+					    <h2>Visualizing Data from Frequency Tables</h2>
+					    <p>Visual representations of data help in understanding the distribution and trends:</p>
+					    <ul>
+					        <li><strong>Histogram</strong>: Used for numerical data. It uses bars to show the frequency of data points within each class interval.</li>
+					        <li><strong>Bar Plot</strong>: Used for categorical data. Each category is represented by a bar, and the height of the bar indicates the frequency of occurrences.</li>
+					    </ul>
+							<p>Let's go look at our data explore for more examples: <a href="https://observablehq.com/d/c1664769dae02044" target="_blank" rel="noopener noreferrer"><em>Datapage link</em></a>.</p>
 					</section>
 				</section>
 
