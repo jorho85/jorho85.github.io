@@ -72,17 +72,27 @@
 			<div class="slides">
 				<section>
 					<section>
-						<div class="jp-Cell-inputWrapper">
-							<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-								<h1 id="Confidence-intervals-for-proportions">Confidence Intervals</h1><p>In hypothesis tests,
-									the purpose was to make a decision about a parameter, in terms of it
-									being greater than, less than, or not equal to a value. But what if you want to actually
-									know what the parameter is. You need to do estimation. There are two types of
-									estimation – point estimator and confidence interval. (P.263)</p>
-									<p>For this last chapter we will focus on confidence intervals.</p>
-								</div>
-							</div>
-						</section>
+						<h2>Inferential statistics (Confidence Intervals)</h2>
+						<p>Often in statistics we want to answer a simple yes or no question, or make guesses about how large or small something might be. The the two key tools we will use
+						to answer these kinds of questions are <b>hypothesis testing</b> and <b>confidence intervals</b></p>
+						<ul>
+							<li> <b>Hypothesis Testing:</b> making a yes or no decision on a population parameter based on a given sample from that population</li>
+							<li> <b>Confidence Interval:</b> estimating a range or value of a populations' parameter(s) based on a statistic(s) from a sample</li>
+						</ul>
+						<p>Notice how both require you to use a information from a sample to calculate the answer. In this unit we will look at confidence intervals and hypothesis test for means and proportions.</p>
+					</section>
+					<section>
+						<h1>Confidence Intervals</h1>
+											<p>A confidence interval is a range of values, derived from a data sample, that is used to estimate an unknown population parameter. The interval has an associated confidence level that quantifies the level of confidence that the parameter lies within the interval. For example, a 95% confidence interval suggests that we can be 95% confident that the population parameter lies within the interval.</p>
+											<p>Uses of Confidence Intervals:</p>
+											<ul>
+												<li><b>Estimating Population Parameters:</b> Confidence intervals provide a range of plausible values for population parameters such as the mean or proportion.</li>
+												<li><b>Assessing Reliability:</b> Confidence intervals give an idea of the reliability and precision of sample estimates. Narrow intervals suggest more precise estimates, while wider intervals suggest less precision.</li>
+												<li><b>Comparing Groups:</b> Confidence intervals can be used to compare differences between groups. If the confidence intervals for two groups do not overlap, this suggests a significant difference between the groups.</li>
+												<li><b>Making Informed Decisions:</b> By providing a range of possible values, confidence intervals help in making informed decisions and assessing risks.</li>
+											</ul>
+											<p>Confidence intervals are commonly used in many fields including healthcare, business, and social sciences, where they help in making predictions and guiding policy decisions.</p>
+					</section>
 					</section>
 
 					<section>
@@ -286,7 +296,8 @@
 				<section>
 					<h1>How about an example with means:</h1>
 					<p>Let's talk about $z^*$. This was calcualted using our <a href="https://onlinestatbook.com/2/calculators/normal_dist.html">standard normal calculator</a> but this is because we could calculate the
-					standard deviation from a proportion, we are not always so lucky when it comes to the estimating the mean.</p>
+					standard deviation from a proportion, we are not always so lucky when it comes to the estimating the mean. In our section on hypothesis testing I will go into more detail about the student t distribution.
+					For now let's just focus on how we calculate these valeus.</p>
 					<p>If we do know the population standard devation we can use the following formula:</p>
 					$$ME = z^* \times \frac{\sigma}{\sqrt{n}}$$
 					<p>If we do not know the population's standard devation, then we use the sample standard devaion and a t-interval critical value $t^*$:</p>
