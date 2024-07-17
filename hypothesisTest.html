@@ -85,7 +85,7 @@
 
 <section>
   <h3>What is a Hypothesis?</h3>
-  <p>A hypothesis is a statement about a population parameter that we want to test. It usually comes in two forms:</p>
+  <p>A hypothesis is a statement about a population parameter that we want to test. It always comes in two forms:</p>
   <ul>
     <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> This is the default assumption or status quo. It's a statement of no effect or no difference.</li>
     <li><strong>Alternative Hypothesis (H<sub>a</sub>):</strong> This is what you want to prove. It's a statement that there is an effect or a difference.</li>
@@ -96,8 +96,8 @@
   <h3>Types of Hypothesis Tests</h3>
   <p>There are several types of hypothesis tests, depending on the nature of the data and the hypotheses:</p>
   <ul>
-    <li><strong>One-Sample Z-test:</strong> Used when the population variance is known and the sample size is large.</li>
-    <li><strong>One-Sample t-test:</strong> Used when the population variance is unknown and the sample size is small.</li>
+    <li><strong>One-Sample Z-test:</strong> Used when the population variance is known or can be calculated and the sample size is large.</li>
+    <li><strong>One-Sample t-test:</strong> Used when the population variance is unknown and/or the sample size is small.</li>
     <li><strong>Two-Sample t-test:</strong> Used to compare the means of two independent groups.</li>
     <li><strong>Chi-Square Test:</strong> Used for categorical data to test the relationship between two variables.</li>
   </ul>
@@ -118,7 +118,7 @@
 				<section>
 					<section>
 						<h1>The basics</h1>
-						<p> What kinds of questions can Hypothesis test help with: </p>
+						<p> What kinds of questions can Hypothesis test help us with in this course: </p>
 						<ul>
 							<li>Does my bank have higher complains of identiy theft?</li>
 							<li>Do polyphenols reduce inflimation markers in macropages?</li>
@@ -238,6 +238,29 @@
 						<p>Then we can use that value in our standard normal calculator just like we did in the last problem. In fact the only different in these test will typically be the calculation of the
 							test statistic.</p>
 					</section>
+					<section>
+						<h1>Using a t-critical Value</h1>
+						<p>Now let's assume we do not know the population standard deviation. Instead, we use the sample standard deviation \(s = 30\) days.</p>
+						<p>We need to use the t-distribution because we are estimating the population standard deviation from our sample. The formula for the t-statistic is:</p>
+						$$t = \frac{\bar{x} - \mu}{s / \sqrt{n}}$$
+						<p>Where</p>
+						<ul>
+							<li>\(\bar{x} = 490\)</li>
+							<li>\(\mu = 500\)</li>
+							<li>\(s = 30\)</li>
+							<li>\(n = 300\)</li>
+						</ul>
+						<p>So, we calculate:</p>
+						$$t = \frac{490 - 500}{30 / \sqrt{300}} = \frac{-10}{1.732} \approx -5.77$$
+						<p>We then compare this t-statistic to the critical t-value from the t-distribution table with \(df = n - 1 = 299\) degrees of freedom at the desired level of significance (e.g., \(\alpha = 0.05\)).</p>
+						<p>If our calculated t-statistic is beyond the critical value, we reject the null hypothesis.</p>
+					</section>
+					<section>
+						<h1>Finding the t-critical Value</h1>
+						<p>Using a t-table or an online calculator, we find the critical value for a one-tailed test at \(\alpha = 0.05\) and \(df = 299\) to be approximately \(t_{0.05, 299} \approx -1.645\).</p>
+						<p>Since \(-5.77 < -1.645\), we reject the null hypothesis, indicating that the average battery life is indeed less than 500 days.</p>
+					</section>
+				</section>
 				</section>
 
 			</div>
