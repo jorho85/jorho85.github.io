@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAT 171 | Graphing Polynomials and Rational Functions</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
+  <style>
+    /* Theme. Change these colors to reuse the deck for another lesson. */
+    :root {
+      --paper: #f9f7f2;
+      --ink: #152a38;
+      --muted: #425967;
+      --teal: #00655e;
+      --teal-light: #e1efea;
+      --rust: #9a3f2d;
+      --rust-light: #faeae2;
+      --line: #c7d4d2;
+      --graph-paper: #ffffff;
+      --r-background-color: var(--paper);
+      --r-main-font: "Segoe UI", system-ui, sans-serif;
+      --r-main-font-size: 30px;
+      --r-main-color: var(--ink);
+      --r-heading-font: "Segoe UI", system-ui, sans-serif;
+      --r-heading-color: var(--ink);
+      --r-heading-text-transform: none;
+      --r-heading-letter-spacing: -.035em;
+      --r-link-color: var(--teal);
+    }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { padding: 10px 24px 14px; box-sizing: border-box; }
+    .reveal h1 { font-size: 2.45em; line-height: 1.03; margin: .14em 0 .3em; }
+    .reveal h2 { font-size: 1.73em; line-height: 1.08; margin: 0 0 .37em; }
+    .reveal h3 { font-size: 1.02em; letter-spacing: -.02em; margin: 0 0 .48em; }
+    .reveal p { margin: .55em 0; }
+    .reveal :is(ul,ol) { margin-left: 1.12em; }
+    .reveal li { margin-bottom: .28em; }
+    .reveal .eyebrow {
+      color: var(--teal);
+      font-weight: 800;
+      font-size: .51em;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin: 0 0 1em;
+    }
+    .reveal .rat .eyebrow { color: var(--rust); }
+    .reveal .small { font-size: .77em; }
+    .reveal .muted { color: var(--muted); }
+    .reveal .lede { font-size: 1.07em; max-width: 28em; color: var(--muted); }
+    .reveal .eq { font-size: 1.18em; margin: .4em 0 .65em; }
+    .reveal .eq.compact { font-size: 1.04em; }
+    .reveal .katex { font-size: 1.08em; }
+    .reveal .katex-display { margin: .45em 0; }
+    .reveal .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .reveal .cols > * { min-width: 0; }
+    .reveal .plot-cols { grid-template-columns: 1fr 1.1fr; align-items: center; }
+    .reveal .hero { grid-template-columns: 1.13fr .87fr; align-items: center; }
+    .reveal .card {
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+    }
+    .reveal .card > :first-child { margin-top: 0; }
+    .reveal .card > :last-child { margin-bottom: 0; }
+    .reveal .stack { display: grid; gap: 13px; }
+    .reveal .callout {
+      background: var(--teal-light);
+      border-left: 5px solid var(--teal);
+      border-radius: 5px 12px 12px 5px;
+      padding: .53em .78em;
+      margin: .68em 0 0;
+    }
+    .reveal .rat .callout { background: var(--rust-light); border-left-color: var(--rust); }
+    .reveal .features { display: grid; gap: .38em; margin: 0; }
+    .reveal .features div { padding-bottom: .34em; border-bottom: 1px solid var(--line); }
+    .reveal .features div:last-child { border: 0; padding-bottom: 0; }
+    .reveal .features dt { color: var(--teal); font-weight: 750; font-size: .72em; margin-bottom: .14em; }
+    .reveal .features dd { margin: 0; font-size: .86em; }
+    .reveal .compact-features { gap: .26em; }
+    .reveal .compact-features div { padding-bottom: .25em; }
+    .reveal .compact-features dd { font-size: .76em; }
+    .reveal .rat .features dt { color: var(--rust); }
+    .reveal table { width: 100%; border-collapse: collapse; font-size: .82em; }
+    .reveal table :is(th,td) { padding: .42em .55em; border-bottom: 1px solid var(--line); }
+    .reveal table thead { background: var(--teal-light); }
+    .reveal .rat table thead { background: var(--rust-light); }
+    .reveal table :is(th,td):first-child { text-align: left; }
+    .reveal figure { margin: 0; }
+    .reveal figcaption { color: var(--muted); font-size: .60em; margin-top: .42em; }
+    .reveal svg.plot { display: block; width: 100%; max-height: 378px; border: 1px solid var(--line); border-radius: 13px; background: var(--graph-paper); }
+    .reveal .paired svg.plot { max-height: 235px; }
+    .plot .gridline { stroke: #dce6e4; stroke-width: 1; }
+    .plot .axis { stroke: #526a76; stroke-width: 1.55; }
+    .plot .curve { fill: none; stroke: var(--teal); stroke-width: 3.8; stroke-linecap: round; stroke-linejoin: round; }
+    .plot.rational .curve { stroke: var(--rust); }
+    .plot .guide { stroke: #754d8b; stroke-width: 2; stroke-dasharray: 7 6; }
+    .plot .point { fill: var(--teal); stroke: #fff; stroke-width: 1.5; }
+    .plot.rational .point { fill: var(--rust); }
+    .plot .hole { fill: #fff; stroke: var(--rust); stroke-width: 3; }
+    .plot text { font: 14px "Segoe UI", system-ui, sans-serif; fill: #3c5260; }
+    .plot .label { font-weight: 750; paint-order: stroke; stroke: #fff; stroke-width: 4; stroke-linejoin: round; }
+    .plot .guide-label { fill: #624174; }
+    .reveal .slide-number { background: var(--ink); border-radius: 5px; }
+    .reveal .controls { color: var(--teal); }
+    .reveal .progress { color: var(--teal); }
+    .reveal a { text-decoration: underline; text-underline-offset: .14em; }
+    .reveal .slides :focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+    .fallback { padding: 12px 20px; color: var(--ink); background: var(--rust-light); }
+    .plain-deck { height: auto; overflow: auto; }
+    .plain-deck .reveal, .plain-deck .reveal .slides { position: static; width: auto; height: auto; }
+    .plain-deck .reveal .slides > section { display: block; position: static; max-width: 1100px; margin: 20px auto; border-bottom: 1px solid var(--line); }
+    .plain-deck .notes { display: none; }
+  </style>
+</head>
+<body>
+  <!--
+    EDITING IN VS CODE
+    1. Each <section> is one slide. Duplicate one to reuse its layout.
+    2. Write inline math as \( ... \) and display math as \[ ... \].
+    3. Add class="fragment" to reveal an answer on the next advance.
+    4. Put presenter cues in <aside class="notes">. Press S for speaker view.
+    5. Match each data-plot name to its graph settings near the end.
+    6. Upload this single file to GitHub Pages or another static host.
+       Rename it index.html to use it as the landing page of a folder.
+       Reveal.js and KaTeX load from jsDelivr. Graphs are drawn by this file.
+  -->
+  <div class="reveal">
+    <main class="slides">
+
+      <section id="start">
+        <div class="cols hero">
+          <div>
+            <p class="eyebrow">MAT 171 / Precalculus Algebra</p>
+            <h1>Graphing Polynomials and Rational Functions</h1>
+            <p class="lede">Use factors to predict where graphs cross, turn, or have a missing point.</p>
+            <p class="small muted">Use the arrow keys to advance. Reveal answers as you go.</p>
+          </div>
+          <div class="stack paired">
+            <figure>
+              <svg class="plot" data-plot="cubic" role="img" aria-label="Cubic graph crossing the x-axis at negative two and touching it at one"></svg>
+            </figure>
+            <figure>
+              <svg class="plot" data-plot="holeLine" role="img" aria-label="An increasing line with an open circle at negative two, negative one"></svg>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">Plan for about 50 minutes. Use the warm-up to reactivate factoring, then spend roughly 12 minutes on polynomials, 10 minutes on the cancellation discussion, 15 minutes on asymptotes and the worked rational, and the remaining time on the exit problem. The slide about repeated factors and missing range values can be used as an extension.</aside>
+      </section>
+
+      <section id="warm-up">
+        <p class="eyebrow">01 / Warm-up</p>
+        <h2>Factor first, then find the intercepts</h2>
+        <p class="eq">\(f(x)=x^2+3x+2\)</p>
+        <div class="cols">
+          <div class="card">
+            <ol>
+              <li>Factor \(f(x)\).</li>
+              <li>Find both \(x\)-intercepts.</li>
+              <li>Find the \(y\)-intercept.</li>
+            </ol>
+          </div>
+          <div class="card fragment">
+            <p>\(f(x)=(x+1)(x+2)\)</p>
+            <p>The \(x\)-intercepts are \((-1,0)\) and \((-2,0)\).</p>
+            <p>The \(y\)-intercept is \((0,2)\).</p>
+          </div>
+        </div>
+        <p class="callout small fragment">Keep this factored form. We’ll use it again when we put a factor in the denominator.</p>
+        <aside class="notes">Give students one minute individually. Ask why setting a product equal to zero lets us solve two simpler equations. Ask what changes if we set x equal to zero instead.</aside>
+      </section>
+
+      <section id="read-a-graph">
+        <p class="eyebrow">02 / Graph vocabulary</p>
+        <h2>Six features to read from a graph</h2>
+        <div class="cols">
+          <dl class="features card">
+            <div><dt>\(x\)-intercepts</dt><dd>Where does the graph meet the \(x\)-axis? Set \(y=0\).</dd></div>
+            <div><dt>\(y\)-intercept</dt><dd>Where does it meet the \(y\)-axis? Set \(x=0\), if allowed.</dd></div>
+            <div><dt>Domain</dt><dd>Which \(x\)-values are possible inputs?</dd></div>
+          </dl>
+          <dl class="features card">
+            <div><dt>Range</dt><dd>Which \(y\)-values actually occur?</dd></div>
+            <div><dt>Increasing and decreasing</dt><dd>As you move left to right, where does \(y\) rise or fall? Give \(x\)-intervals.</dd></div>
+            <div><dt>End behavior</dt><dd>What does \(y\) do as \(x\to-\infty\) and as \(x\to\infty\)?</dd></div>
+          </dl>
+        </div>
+        <p class="callout small">A quick graph check. Sweep a vertical line for domain and a horizontal line for range.</p>
+        <aside class="notes">Use your hand to sweep across the screen in each direction. Throughout the lesson, list increase and decrease on separate open intervals split at turns and excluded inputs.</aside>
+      </section>
+
+      <section id="polynomial-ends">
+        <p class="eyebrow">03 / Polynomials</p>
+        <h2>The leading term controls the ends</h2>
+        <p>Every polynomial has domain \(\mathbb R\) and a smooth, continuous graph. For a nonconstant polynomial, use its highest-degree term to predict the tails.</p>
+        <table>
+          <thead><tr><th scope="col">Degree</th><th scope="col">Leading coefficient</th><th scope="col">Left tail</th><th scope="col">Right tail</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Even</th><td>Positive</td><td>\(\uparrow\)</td><td>\(\uparrow\)</td></tr>
+            <tr><th scope="row">Even</th><td>Negative</td><td>\(\downarrow\)</td><td>\(\downarrow\)</td></tr>
+            <tr><th scope="row">Odd</th><td>Positive</td><td>\(\downarrow\)</td><td>\(\uparrow\)</td></tr>
+            <tr><th scope="row">Odd</th><td>Negative</td><td>\(\uparrow\)</td><td>\(\downarrow\)</td></tr>
+          </tbody>
+        </table>
+        <p class="callout small">Try \(g(x)=-2x^5+7x^2-1\). <span class="fragment">Left up and right down.</span></p>
+        <aside class="notes">Ask students to trace the tails of x squared and x cubed in the air, then reflect each one. An odd-degree polynomial has all real outputs by continuity. An even-degree polynomial has a global minimum or maximum, depending on the sign of the leading coefficient.</aside>
+      </section>
+
+      <section id="polynomial-factors">
+        <p class="eyebrow">04 / Polynomials</p>
+        <h2>Where does the graph cross or bounce?</h2>
+        <p class="eq compact">\(p(x)=x^3-3x+2=(x+2)(x-1)^2\)</p>
+        <div class="cols plot-cols">
+          <div class="stack small">
+            <div class="card">
+              <p><strong>Odd multiplicity</strong> makes the graph cross the axis.</p>
+              <p><strong>Even multiplicity</strong> makes it touch the axis and turn back.</p>
+            </div>
+            <div class="card fragment">
+              <p>\((-2,0)\) crosses. The factor occurs once.</p>
+              <p>\((1,0)\) bounces. The factor occurs twice.</p>
+              <p>The \(y\)-intercept is \((0,2)\).</p>
+            </div>
+          </div>
+          <figure class="fragment">
+            <svg class="plot" data-plot="cubic" role="img" aria-label="Cubic graph crossing at negative two, passing through zero comma two, and touching the x-axis at one"></svg>
+            <figcaption>On either side of the double zero, the graph is above the axis.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Start with the factored form so students can focus on graphing. If asked how to factor the cubic, show x³−3x+2=(x³−x)−2(x−1)=x(x−1)(x+1)−2(x−1), then factor the remaining quadratic. Ask for a sign check on both sides of each zero.</aside>
+      </section>
+
+      <section id="polynomial-features">
+        <p class="eyebrow">05 / Polynomials</p>
+        <h2>Read turning points and range</h2>
+        <div class="cols plot-cols">
+          <dl class="features">
+            <div><dt>Function</dt><dd>\(p(x)=(x+2)(x-1)^2\)</dd></div>
+            <div><dt>Domain and range</dt><dd>Both \((-\infty,\infty)\)</dd></div>
+            <div><dt>Increasing</dt><dd>\((-\infty,-1)\) and \((1,\infty)\)</dd></div>
+            <div><dt>Decreasing</dt><dd>\((-1,1)\)</dd></div>
+            <div><dt>End behavior</dt><dd>\(p(x)\to-\infty\) as \(x\to-\infty\)<br>\(p(x)\to\infty\) as \(x\to\infty\)</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="cubicTurns" role="img" aria-label="Cubic graph with a local maximum at negative one comma four and a local minimum at one comma zero"></svg>
+            <figcaption>The local high is \((-1,4)\). The local low is \((1,0)\).</figcaption>
+          </figure>
+        </div>
+        <p class="callout small">The turning points split the rise and fall intervals. The opposite tails give every real output.</p>
+        <aside class="notes">Read turning point x-values from the labeled graph. Students can use a graphing tool to locate turning points in other examples. The zeros give intercepts, but a zero is only an interval boundary when the graph switches direction there. Point out that the graph crosses at −2 while continuing to increase.</aside>
+      </section>
+
+      <section id="polynomial-practice">
+        <p class="eyebrow">06 / Predict, then check</p>
+        <h2>Both tails rise. How low can it go?</h2>
+        <p class="eq">\(q(x)=x^4-2x^2+1\)</p>
+        <div class="cols plot-cols">
+          <div class="stack small">
+            <div class="card">
+              <p>Factor. Predict intercepts and tails. Use the graph to read the range and the intervals of increase and decrease.</p>
+            </div>
+            <div class="card fragment" data-fragment-index="1">
+              <p>\(q(x)=(x-1)^2(x+1)^2\)</p>
+              <p>The intercepts are \((-1,0),(1,0),(0,1)\).</p>
+              <p>Domain \(\mathbb R\). Range \([0,\infty)\).</p>
+              <p>Increasing on \((-1,0)\) and \((1,\infty)\).</p>
+              <p>Decreasing on \((-\infty,-1)\) and \((0,1)\).</p>
+            </div>
+          </div>
+          <figure class="fragment" data-fragment-index="0">
+            <svg class="plot" data-plot="quartic" role="img" aria-label="Quartic with two minimum points at x equals negative one and one, and a local maximum at zero comma one"></svg>
+            <figcaption>Both tails rise to \(+\infty\). The square \((x^2-1)^2\) reaches \(0\) and is always nonnegative.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Allow two minutes for pairs to see a perfect-square trinomial in x². Reveal the graph before the written answers, then ask why zero is included in the range.</aside>
+      </section>
+
+      <section id="rational-domain" class="rat">
+        <p class="eyebrow">07 / Rational functions</p>
+        <h2>Start with the original denominator</h2>
+        <p>A rational function is a quotient of polynomials. Its domain excludes every zero of the <strong>original</strong> denominator.</p>
+        <div class="cols">
+          <div class="card">
+            <h3>Before simplifying</h3>
+            <p>Factor the denominator and write down each excluded input.</p>
+          </div>
+          <div class="card">
+            <h3>After simplifying</h3>
+            <p>Keep those exclusions. Use the reduced formula to predict what happens near each one.</p>
+          </div>
+        </div>
+        <p class="callout">At an excluded input, the graph can approach a finite height or grow without bound in magnitude.</p>
+        <aside class="notes">Ask whether an excluded input by itself tells us the shape of the graph. Use the next slide to test their prediction.</aside>
+      </section>
+
+      <section id="cancel-discussion" class="rat">
+        <p class="eyebrow">08 / Think, then discuss</p>
+        <h2>Does the cancellation work at every input?</h2>
+        <p class="eq">\(A(x)=\dfrac{x^2+3x+2}{x+2}=\dfrac{(x+1)(x+2)}{x+2}\)</p>
+        <div class="cols">
+          <div class="card">
+            <ol>
+              <li>Which factor divides out?</li>
+              <li>What does \(A(-2)\) give in the original fraction? What does \(x+1\) give there?</li>
+              <li>Can you divide out \(x+1\) here? What happens at \(x=-1\)?</li>
+            </ol>
+          </div>
+          <div class="card fragment">
+            <p>\(A(x)=x+1\) for \(x\ne-2\).</p>
+            <p>\(A(-2)\) is undefined. The line gives \(-1\) there.</p>
+            <p>\(x+1\) remains in the numerator. \(A(-1)=0\), so \((-1,0)\) is an intercept.</p>
+          </div>
+        </div>
+        <aside class="notes">Give pairs time to answer before advancing. Ask what (x+2)/(x+2) equals when x = −2. Students should say undefined, since the fraction is 0/0 there. Then ask why (x+1) survives and what denominator would actually allow that factor to divide out.</aside>
+      </section>
+
+      <section id="cancel-comparison" class="rat">
+        <p class="eyebrow">09 / Change the denominator</p>
+        <h2>Which factor makes which hole?</h2>
+        <div class="cols paired">
+          <figure class="card">
+            <p class="eq compact">\(A(x)=\dfrac{(x+1)(x+2)}{x+2}\)</p>
+            <svg class="plot" data-plot="holeLine" role="img" aria-label="Graph of A, line y equals x plus one with a hole at negative two comma negative one"></svg>
+            <figcaption>\(y=x+1\) with a hole at \((-2,-1)\).</figcaption>
+          </figure>
+          <figure class="card fragment">
+            <p class="eq compact">\(B(x)=\dfrac{(x+1)(x+2)}{x+1}\)</p>
+            <svg class="plot" data-plot="otherLine" role="img" aria-label="Graph of B, line y equals x plus two with a hole at negative one comma one"></svg>
+            <figcaption>\(y=x+2\) with a hole at \((-1,1)\).</figcaption>
+          </figure>
+        </div>
+        <p class="callout small fragment">For \(A\), \(-1\) is an allowed input and a zero. For \(B\), \(-1\) is an excluded input.</p>
+        <aside class="notes">Cover the right panel initially. Ask students to predict what happens if the denominator is x+1 instead, then show it. Have them explain why the graphs use different lines and why each open circle belongs at the height of its own reduced formula.</aside>
+      </section>
+
+      <section id="hole-features" class="rat">
+        <p class="eyebrow">10 / Read the graph with a hole</p>
+        <h2>A missing input can cost a range value</h2>
+        <div class="cols plot-cols">
+          <dl class="features">
+            <div><dt>Formula and domain</dt><dd>\(A(x)=x+1,\ x\ne-2\). The domain is \(\mathbb R\setminus\{-2\}\).</dd></div>
+            <div><dt>Range</dt><dd>\(\mathbb R\setminus\{-1\}\). Only \(x=-2\) could give \(y=-1\).</dd></div>
+            <div><dt>Intercepts</dt><dd>\((-1,0)\) and \((0,1)\)</dd></div>
+            <div><dt>Increasing</dt><dd>\((-\infty,-2)\) and \((-2,\infty)\). No decreasing intervals.</dd></div>
+            <div><dt>End behavior</dt><dd>\(A(x)\to-\infty\) on the left and \(A(x)\to\infty\) on the right.</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="holeLinePoints" role="img" aria-label="Increasing line with a hole at negative two comma negative one and intercepts at negative one comma zero and zero comma one"></svg>
+            <figcaption>The open circle marks a hole. This graph has no vertical or horizontal asymptote.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Clarify that the line increases across any pair of allowed inputs. The list reports separate continuous intervals, so it splits at the hole. For another example, remove x=1 from y=x². The output y=1 stays in the range because x=−1 still gives it. Ask students to predict whether the missing output can be recovered before giving that example.</aside>
+      </section>
+
+      <section id="vertical-asymptote" class="rat">
+        <p class="eyebrow">11 / Near an excluded input</p>
+        <h2>Hole or vertical asymptote?</h2>
+        <div class="cols plot-cols">
+          <div class="stack small">
+            <div class="card">
+              <p>If the reduced formula accepts the excluded input, it gives the height of the <strong>hole</strong>.</p>
+              <p>If the reduced denominator is still zero there, a <strong>vertical asymptote</strong> occurs. The graph grows without bound in magnitude on at least one side.</p>
+            </div>
+            <div class="card">
+              <p>\(g(x)=\dfrac{1}{x+2}\)</p>
+              <p>\(g(x)\to-\infty\) as \(x\to-2^-\)<br>\(g(x)\to\infty\) as \(x\to-2^+\)</p>
+            </div>
+          </div>
+          <figure>
+            <svg class="plot" data-plot="reciprocal" role="img" aria-label="Reciprocal graph with branches that fall to negative infinity on the left of x equals negative two and rise to positive infinity on the right"></svg>
+            <figcaption>The dashed vertical line is \(x=-2\). The minus and plus superscripts specify the side of approach.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Have students plug in −2.1 and −1.9 to justify which side goes up. Both the punctured line and this reciprocal exclude −2, but their graphs behave differently as x approaches that value. If a denominator has a squared factor remaining, both sides can approach the same infinity.</aside>
+      </section>
+
+      <section id="horizontal-asymptote" class="rat">
+        <p class="eyebrow">12 / Far left and far right</p>
+        <h2>Horizontal asymptotes describe end behavior</h2>
+        <p>If the outputs approach a number \(L\) as \(x\) heads far left or far right, the line \(y=L\) is a horizontal asymptote.</p>
+        <table>
+          <thead><tr><th scope="col">Degrees after simplification</th><th scope="col">Horizontal asymptote</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Numerator degree is smaller</th><td>\(y=0\)</td><td>\(\frac{1}{x+2}\)</td></tr>
+            <tr><th scope="row">Degrees are equal</th><td>\(y=\dfrac{\text{leading coefficient on top}}{\text{leading coefficient on bottom}}\)</td><td>\(\frac{2x+1}{x-3}\ \Rightarrow\ y=2\)</td></tr>
+            <tr><th scope="row">Numerator degree is larger</th><td>No horizontal asymptote</td><td>\(\frac{x^2}{x-1}\)</td></tr>
+          </tbody>
+        </table>
+        <p class="callout small">A graph can cross a horizontal asymptote. For \(h(x)=1+\frac{x}{x^2+1}\), both tails approach \(1\), and \(h(0)=1\).</p>
+        <aside class="notes">For the equal-degree example, divide top and bottom by x to see (2+1/x)/(1−3/x) approach 2. For the crossing example, the added term has the sign of x, so the graph crosses y=1 at x=0. Slant asymptotes can be a later lesson. If asked about a constant reduced function, its graph has that constant height on its domain and its end limit is that same constant.</aside>
+      </section>
+
+      <section id="rational-worked-setup" class="rat">
+        <p class="eyebrow">13 / Worked rational example</p>
+        <h2>Factor, record exclusions, and classify them</h2>
+        <p class="eq">\(R(x)=\dfrac{x^2+x-6}{x^2-4}\)</p>
+        <div class="cols">
+          <div class="card">
+            <h3>Predict the graph</h3>
+            <ol>
+              <li>Factor the top and bottom.</li>
+              <li>Record the excluded \(x\)-values.</li>
+              <li>Find a hole or vertical asymptote for each excluded value.</li>
+            </ol>
+          </div>
+          <div class="card fragment">
+            <p>\(\dfrac{(x+3)(x-2)}{(x+2)(x-2)}=\dfrac{x+3}{x+2},\quad x\ne\pm2\)</p>
+            <p>Hole at \(\left(2,\frac54\right)\)</p>
+            <p>Vertical asymptote at \(x=-2\)</p>
+          </div>
+        </div>
+        <aside class="notes">Ask students which familiar factoring strategy they use for each polynomial. Give them time to work before revealing. Emphasize the difference between 2, which disappears from the reduced denominator, and −2, which remains.</aside>
+      </section>
+
+      <section id="rational-worked-sketch" class="rat">
+        <p class="eyebrow">14 / Worked rational example</p>
+        <h2>Use intercepts and asymptotes to sketch</h2>
+        <div class="cols plot-cols">
+          <dl class="features">
+            <div><dt>Domain</dt><dd>\(\mathbb R\setminus\{-2,2\}\)</dd></div>
+            <div><dt>Intercepts</dt><dd>\((-3,0)\) and \(\left(0,\tfrac32\right)\)</dd></div>
+            <div><dt>Asymptotes and hole</dt><dd>\(x=-2\), \(y=1\), and a hole at \(\left(2,\tfrac54\right)\)</dd></div>
+            <div><dt>End behavior</dt><dd>\(R(x)\to1\) from below as \(x\to-\infty\)<br>\(R(x)\to1\) from above as \(x\to\infty\)</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="workedRational" role="img" aria-label="Rational graph with a vertical asymptote at negative two, horizontal asymptote at one, intercepts at negative three comma zero and zero comma three halves, and a hole at two comma five fourths"></svg>
+            <figcaption>Rewrite \(R(x)=1+\frac1{x+2}\) on its domain to see which side of \(y=1\) each branch occupies.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">For the x-intercept, solve the reduced numerator equal to zero and check the original domain. For the y-intercept, substitute zero. Before drawing the curves, have students predict the sign of 1/(x+2) and which branch goes down near −2. The open circle and dashed lines are explicit here because calculators can hide holes or appear to join branches.</aside>
+      </section>
+
+      <section id="rational-worked-range" class="rat">
+        <p class="eyebrow">15 / Worked rational example</p>
+        <h2>Check every branch and every missing output</h2>
+        <div class="cols plot-cols">
+          <dl class="features">
+            <div><dt>Increasing</dt><dd>None</dd></div>
+            <div><dt>Decreasing</dt><dd>\((-\infty,-2)\), \((-2,2)\), and \((2,\infty)\)</dd></div>
+            <div><dt>Why is \(y=1\) missing?</dt><dd>\(\frac1{x+2}\) can never equal zero.</dd></div>
+            <div><dt>Why is \(y=\frac54\) missing?</dt><dd>\(1+\frac1{x+2}=\frac54\) gives only \(x=2\), an excluded input.</dd></div>
+            <div><dt>Range</dt><dd>\(\mathbb R\setminus\left\{1,\frac54\right\}\)</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="workedRational" role="img" aria-label="Both branches fall from left to right, with an open circle dividing the branch to the right of the vertical asymptote"></svg>
+            <figcaption>The hole splits the list of decreasing intervals on the right branch.</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">To prove the range is complete, solve y=1+1/(x+2) for x. For y≠1 this gives x=1/(y−1)−2. This x can never be −2 and equals 2 only when y=5/4. Thus all other outputs occur. Have students compare this reasoning with the horizontal sweep from slide 3.</aside>
+      </section>
+
+      <section id="quick-check" class="rat">
+        <p class="eyebrow">16 / Optional extension</p>
+        <h2>Two exceptions worth checking</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>One copy of the factor remains</h3>
+            <p class="eq compact">\(\dfrac{x+1}{(x+1)^2}\)</p>
+            <p>At \(x=-1\), is there a hole or a vertical asymptote?</p>
+            <p class="fragment small"><strong>Vertical asymptote.</strong> The reduced denominator is still \(x+1\).</p>
+          </div>
+          <div class="card">
+            <h3>Another input gives the same output</h3>
+            <p class="eq compact">\(\dfrac{x^2(x-1)}{x-1}\)</p>
+            <p>There is a hole at \((1,1)\). Is \(1\) still in the range?</p>
+            <p class="fragment small"><strong>Yes.</strong> The original function is defined at \(x=-1\), where it also gives \(1\).</p>
+          </div>
+        </div>
+        <aside class="notes">These checks work well for early finishers. Ask how students would draw a hole on an axis if the reduced formula gives zero at an excluded input. For example, (x+1)²/(x+1) has a hole at (−1,0) and no x-intercept.</aside>
+      </section>
+
+      <section id="exit-ticket" class="rat">
+        <p class="eyebrow">17 / Exit ticket</p>
+        <h2>Sketch one on your own</h2>
+        <p class="eq">\(T(x)=\dfrac{x^2-x-6}{x^2-9}\)</p>
+        <div class="cols">
+          <div class="card">
+            <h3>From the formula</h3>
+            <ol>
+              <li>Factor and write the domain.</li>
+              <li>Find the \(x\)- and \(y\)-intercepts, if they exist.</li>
+              <li>Locate any hole and asymptotes.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>From your sketch</h3>
+            <ol start="4">
+              <li>Describe the end behavior.</li>
+              <li>Give the range and the increasing and decreasing intervals.</li>
+            </ol>
+          </div>
+        </div>
+        <p class="callout small">Explain one feature using a factor in the original formula.</p>
+        <aside class="notes">Allow four to five minutes. If students are stuck, suggest writing the reduced expression as 1−1/(x+3). Keep the next slide hidden until students have committed to a sketch.</aside>
+      </section>
+
+      <section id="exit-answer" class="rat">
+        <p class="eyebrow">18 / Exit ticket debrief</p>
+        <h2>Check your sketch</h2>
+        <p class="eq compact">\(T(x)=\dfrac{(x-3)(x+2)}{(x-3)(x+3)}=1-\dfrac1{x+3},\quad x\ne\pm3\)</p>
+        <div class="cols plot-cols">
+          <dl class="features compact-features">
+            <div><dt>Domain and range</dt><dd>\(\mathbb R\setminus\{-3,3\}\) and \(\mathbb R\setminus\left\{\frac56,1\right\}\)</dd></div>
+            <div><dt>Intercepts</dt><dd>\((-2,0)\) and \(\left(0,\frac23\right)\)</dd></div>
+            <div><dt>Asymptotes and hole</dt><dd>\(x=-3\), \(y=1\), and a hole at \(\left(3,\frac56\right)\)</dd></div>
+            <div><dt>Increasing and decreasing</dt><dd>Increasing on \((-\infty,-3)\), \((-3,3)\), \((3,\infty)\). No decreasing intervals.</dd></div>
+            <div><dt>End behavior</dt><dd>\(T(x)\to1\) from above on the left and from below on the right.</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="exitRational" role="img" aria-label="Increasing branches with a vertical asymptote at negative three, a horizontal asymptote at one, and a hole at three comma five sixths"></svg>
+          </figure>
+        </div>
+        <aside class="notes">Ask students to compare this graph with R. The negative reciprocal term reverses which side of the horizontal asymptote each branch lies on. If students list 5/6 as an excluded input, ask them to identify the coordinates of the hole and which coordinate belongs to each set.</aside>
+      </section>
+
+      <section id="review">
+        <p class="eyebrow">19 / Review</p>
+        <h2>What can you tell before you graph?</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>Polynomials</h3>
+            <p>Find intercepts and their multiplicities. Use the leading term for the tails. Test the sign between zeros to place the curve. Use turns and tails to read increasing and decreasing intervals and range.</p>
+          </div>
+          <div class="card">
+            <h3>Rational functions</h3>
+            <p>Record domain exclusions before canceling. Use the reduced formula for holes, vertical asymptotes, and end behavior. Check whether any missing height occurs elsewhere.</p>
+          </div>
+        </div>
+        <p class="small muted">Optional reading and practice from OpenStax</p>
+        <ul class="small">
+          <li><a href="https://openstax.org/books/precalculus-2e/pages/3-4-graphs-of-polynomial-functions">Graphs of Polynomial Functions</a></li>
+          <li><a href="https://openstax.org/books/precalculus-2e/pages/3-7-rational-functions">Rational Functions</a></li>
+        </ul>
+        <aside class="notes">For a final verbal check, ask what the degree tells you about the tails and what the original denominator tells you about the domain.</aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script>
+    // Edit functions, windows, markers and annotations here.
+    // window = [xMin, xMax, yMin, yMax]. split = excluded inputs.
+    // points = [x, y, optional label, x-label offset, y-label offset].
+    const cubic = {
+      window: [-3, 3, -4, 7],
+      step: [1, 2],
+      fn: x => (x + 2) * (x - 1) ** 2,
+      points: [[-2, 0, '(−2, 0)', -10, 24], [1, 0, '(1, 0)', 9, 23], [0, 2, '(0, 2)', 11, 3]]
+    };
+    const holeLine = {
+      rational: true,
+      window: [-5, 4, -4, 5],
+      fn: x => x + 1,
+      split: [-2],
+      hole: [-2, -1, '(−2, −1)', -12, 25]
+    };
+    const workedRational = {
+      rational: true,
+      window: [-7, 7, -2, 4],
+      step: [2, 1],
+      fn: x => 1 + 1 / (x + 2),
+      split: [-2, 2],
+      vertical: -2,
+      horizontal: 1,
+      hole: [2, 1.25, '(2, 5/4)', 11, -12],
+      points: [[-3, 0, '(−3, 0)', -56, 21], [0, 1.5, '(0, 3/2)', 9, -19]]
+    };
+    const graphs = {
+      cubic,
+      cubicTurns: {
+        ...cubic,
+        points: [[-1, 4, '(−1, 4)', -30, -12], [1, 0, '(1, 0)', 10, 23]]
+      },
+      quartic: {
+        window: [-2, 2, -1, 5],
+        fn: x => (x * x - 1) ** 2,
+        points: [[-1, 0, '(−1, 0)', -32, 23], [1, 0, '(1, 0)', -22, 23], [0, 1, '(0, 1)', 10, -10]]
+      },
+      holeLine,
+      holeLinePoints: {
+        ...holeLine,
+        points: [[-1, 0, '(−1, 0)', 8, 22], [0, 1, '(0, 1)', 11, -8]]
+      },
+      otherLine: {
+        rational: true,
+        window: [-5, 4, -4, 5],
+        fn: x => x + 2,
+        split: [-1],
+        hole: [-1, 1, '(−1, 1)', -15, -14]
+      },
+      reciprocal: {
+        rational: true,
+        window: [-6, 4, -5, 5],
+        fn: x => 1 / (x + 2),
+        split: [-2],
+        vertical: -2
+      },
+      workedRational,
+      exitRational: {
+        rational: true,
+        window: [-8, 8, -1, 3],
+        step: [2, 1],
+        fn: x => 1 - 1 / (x + 3),
+        split: [-3, 3],
+        vertical: -3,
+        horizontal: 1,
+        hole: [3, 5 / 6, '(3, 5/6)', 11, 17],
+        points: [[-2, 0, '(−2, 0)', -20, 23], [0, 2 / 3, '(0, 2/3)', 11, 19]]
+      }
+    };
+
+    // Shared SVG renderer. Sampling each interval separately keeps branches apart.
+    function drawPlot(svg, graph, index) {
+      const ns = 'http://www.w3.org/2000/svg';
+      const [xMin, xMax, yMin, yMax] = graph.window;
+      const [xStep, yStep] = graph.step || [1, 1];
+      const area = { left: 42, right: 484, top: 18, bottom: 268 };
+      const xPx = x => area.left + (x - xMin) / (xMax - xMin) * (area.right - area.left);
+      const yPx = y => area.bottom - (y - yMin) / (yMax - yMin) * (area.bottom - area.top);
+      const numberText = value => String(value).replace('-', '−');
+
+      function add(parent, tag, attrs, label) {
+        const element = document.createElementNS(ns, tag);
+        for (const [name, value] of Object.entries(attrs)) element.setAttribute(name, value);
+        if (label !== undefined) element.textContent = label;
+        parent.append(element);
+        return element;
+      }
+      function line(parent, x1, y1, x2, y2, className) {
+        add(parent, 'line', { x1, y1, x2, y2, class: className });
+      }
+      function label(parent, x, y, value, className = '', anchor = 'start') {
+        add(parent, 'text', { x, y, class: className, 'text-anchor': anchor }, value);
+      }
+
+      svg.setAttribute('viewBox', '0 0 510 300');
+      svg.classList.toggle('rational', Boolean(graph.rational));
+      const defs = add(svg, 'defs', {});
+      const clipId = 'plot-window-' + index;
+      const clip = add(defs, 'clipPath', { id: clipId });
+      add(clip, 'rect', {
+        x: area.left, y: area.top, width: area.right - area.left, height: area.bottom - area.top
+      });
+
+      const axes = add(svg, 'g', { 'aria-hidden': 'true' });
+      for (let x = Math.ceil(xMin / xStep) * xStep; x <= xMax; x += xStep) {
+        line(axes, xPx(x), area.top, xPx(x), area.bottom, 'gridline');
+        if (x !== 0) label(axes, xPx(x), area.bottom + 19, numberText(x), '', 'middle');
+      }
+      for (let y = Math.ceil(yMin / yStep) * yStep; y <= yMax; y += yStep) {
+        line(axes, area.left, yPx(y), area.right, yPx(y), 'gridline');
+        label(axes, area.left - 8, yPx(y) + 5, numberText(y), '', 'end');
+      }
+      line(axes, area.left, yPx(0), area.right, yPx(0), 'axis');
+      line(axes, xPx(0), area.top, xPx(0), area.bottom, 'axis');
+      label(axes, area.right + 9, yPx(0) + 4, 'x', 'label');
+      label(axes, xPx(0) + 8, area.top + 10, 'y', 'label');
+
+      const curves = add(svg, 'g', { 'clip-path': 'url(#' + clipId + ')', 'aria-hidden': 'true' });
+      if (graph.vertical !== undefined) {
+        const x = xPx(graph.vertical);
+        line(curves, x, area.top, x, area.bottom, 'guide');
+      }
+      if (graph.horizontal !== undefined) {
+        const y = yPx(graph.horizontal);
+        line(curves, area.left, y, area.right, y, 'guide');
+      }
+
+      const boundaries = [xMin, ...(graph.split || []), xMax];
+      for (let i = 0; i < boundaries.length - 1; i++) {
+        const start = boundaries[i];
+        const end = boundaries[i + 1];
+        const epsilon = (end - start) / 40000;
+        const left = i === 0 ? start : start + epsilon;
+        const right = i === boundaries.length - 2 ? end : end - epsilon;
+        const coordinates = [];
+        for (let j = 0; j <= 280; j++) {
+          const x = left + (right - left) * j / 280;
+          const rawY = yPx(graph.fn(x));
+          const y = Math.max(area.top - 4000, Math.min(area.bottom + 4000, rawY));
+          coordinates.push(xPx(x).toFixed(2) + ',' + y.toFixed(2));
+        }
+        add(curves, 'polyline', { class: 'curve', points: coordinates.join(' ') });
+      }
+
+      const marks = add(svg, 'g', { 'aria-hidden': 'true' });
+      if (graph.vertical !== undefined) {
+        label(marks, xPx(graph.vertical) + 8, area.top + 13, 'x = ' + numberText(graph.vertical), 'label guide-label');
+      }
+      if (graph.horizontal !== undefined) {
+        label(marks, area.right - 6, yPx(graph.horizontal) - 9, 'y = ' + numberText(graph.horizontal), 'label guide-label', 'end');
+      }
+      function mark([x, y, caption, dx = 9, dy = -9], className, radius) {
+        add(marks, 'circle', { cx: xPx(x), cy: yPx(y), r: radius, class: className });
+        if (caption) label(marks, xPx(x) + dx, yPx(y) + dy, caption, 'label');
+      }
+      for (const point of graph.points || []) mark(point, 'point', 4.7);
+      if (graph.hole) mark(graph.hole, 'hole', 6.1);
+    }
+
+    document.querySelectorAll('[data-plot]').forEach((svg, index) => {
+      drawPlot(svg, graphs[svg.dataset.plot], index);
+    });
+
+    if (window.Reveal) {
+      const plugins = [window.RevealMath?.KaTeX, window.RevealNotes].filter(Boolean);
+      Reveal.initialize({
+        width: 1200,
+        height: 675,
+        margin: 0.065,
+        maxScale: 2,
+        hash: true,
+        controls: true,
+        progress: true,
+        slideNumber: 'c/t',
+        transition: 'fade',
+        katex: { version: '0.16.22' },
+        plugins
+      });
+    } else {
+      document.body.classList.add('plain-deck');
+      const notice = document.createElement('p');
+      notice.className = 'fallback';
+      notice.textContent = 'Slide controls could not load. Reconnect to the internet and refresh to restore the presentation.';
+      document.body.prepend(notice);
+    }
+  </script>
+</body>
+</html>

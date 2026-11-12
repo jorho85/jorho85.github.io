@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAT 171 | Exponents and Logarithms</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
+  <style>
+    /* Theme. Change these colors to reuse the deck for another lesson. */
+    :root {
+      --paper: #f9f7f2;
+      --ink: #152a38;
+      --muted: #425967;
+      --teal: #00655e;
+      --teal-light: #e1efea;
+      --rust: #9a3f2d;
+      --rust-light: #faeae2;
+      --line: #c7d4d2;
+      --graph-paper: #ffffff;
+      --r-background-color: var(--paper);
+      --r-main-font: "Segoe UI", system-ui, sans-serif;
+      --r-main-font-size: 30px;
+      --r-main-color: var(--ink);
+      --r-heading-font: "Segoe UI", system-ui, sans-serif;
+      --r-heading-color: var(--ink);
+      --r-heading-text-transform: none;
+      --r-heading-letter-spacing: -.035em;
+      --r-link-color: var(--teal);
+    }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { padding: 10px 24px 14px; box-sizing: border-box; }
+    .reveal h1 { font-size: 2.45em; line-height: 1.03; margin: .14em 0 .3em; }
+    .reveal h2 { font-size: 1.73em; line-height: 1.08; margin: 0 0 .37em; }
+    .reveal h3 { font-size: 1.02em; letter-spacing: -.02em; margin: 0 0 .48em; }
+    .reveal p { margin: .55em 0; }
+    .reveal :is(ul,ol) { margin-left: 1.12em; }
+    .reveal li { margin-bottom: .28em; }
+    .reveal .eyebrow {
+      color: var(--teal);
+      font-weight: 800;
+      font-size: .51em;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin: 0 0 1em;
+    }
+    .reveal .logs .eyebrow { color: var(--rust); }
+    .reveal .small { font-size: .77em; }
+    .reveal .muted { color: var(--muted); }
+    .reveal .lede { font-size: 1.07em; max-width: 28em; color: var(--muted); }
+    .reveal .eq { font-size: 1.18em; margin: .4em 0 .65em; }
+    .reveal .eq.compact { font-size: 1.04em; }
+    .reveal .katex { font-size: 1.08em; }
+    .reveal .katex-display { margin: .45em 0; }
+    .reveal .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .reveal .cols > * { min-width: 0; }
+    .reveal .plot-cols { grid-template-columns: 1fr 1.1fr; align-items: center; }
+    .reveal .hero { grid-template-columns: 1.13fr .87fr; align-items: center; }
+    .reveal .card {
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+    }
+    .reveal .card > :first-child { margin-top: 0; }
+    .reveal .card > :last-child { margin-bottom: 0; }
+    .reveal .stack { display: grid; gap: 13px; }
+    .reveal .callout {
+      background: var(--teal-light);
+      border-left: 5px solid var(--teal);
+      border-radius: 5px 12px 12px 5px;
+      padding: .53em .78em;
+      margin: .68em 0 0;
+    }
+    .reveal .logs .callout { background: var(--rust-light); border-left-color: var(--rust); }
+    .reveal .features { display: grid; gap: .38em; margin: 0; }
+    .reveal .features div { padding-bottom: .34em; border-bottom: 1px solid var(--line); }
+    .reveal .features div:last-child { border: 0; padding-bottom: 0; }
+    .reveal .features dt { color: var(--teal); font-weight: 750; font-size: .72em; margin-bottom: .14em; }
+    .reveal .features dd { margin: 0; font-size: .86em; }
+    .reveal .logs .features dt { color: var(--rust); }
+    .reveal table { width: 100%; border-collapse: collapse; font-size: .82em; }
+    .reveal table :is(th,td) { padding: .42em .55em; border-bottom: 1px solid var(--line); }
+    .reveal table thead { background: var(--teal-light); }
+    .reveal .logs table thead { background: var(--rust-light); }
+    .reveal table :is(th,td):first-child { text-align: left; }
+    .reveal figure { margin: 0; }
+    .reveal figcaption { color: var(--muted); font-size: .60em; margin-top: .42em; }
+    .reveal svg.plot { display: block; width: 100%; max-height: 378px; border: 1px solid var(--line); border-radius: 13px; background: var(--graph-paper); }
+    .plot .gridline { stroke: #dce6e4; stroke-width: 1; }
+    .plot .axis { stroke: #526a76; stroke-width: 1.55; }
+    .plot .curve { fill: none; stroke: var(--teal); stroke-width: 3.8; stroke-linecap: round; stroke-linejoin: round; }
+    .plot .curve.log { stroke: var(--rust); }
+    .plot .label.log { fill: var(--rust); stroke: #fff; }
+    .plot .guide { stroke: #754d8b; stroke-width: 2; stroke-dasharray: 7 6; }
+    .plot .point { fill: var(--teal); stroke: #fff; stroke-width: 1.5; }
+    .plot .point.log { fill: var(--rust); }
+    .plot text { font: 14px "Segoe UI", system-ui, sans-serif; fill: #3c5260; }
+    .plot .label { font-weight: 750; paint-order: stroke; stroke: #fff; stroke-width: 4; stroke-linejoin: round; }
+    .plot .guide-label { fill: #624174; }
+    .reveal .slide-number { background: var(--ink); border-radius: 5px; }
+    .reveal .controls { color: var(--teal); }
+    .reveal .progress { color: var(--teal); }
+    .reveal a { text-decoration: underline; text-underline-offset: .14em; }
+    .reveal .slides :focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+    .fallback { padding: 12px 20px; color: var(--ink); background: var(--rust-light); }
+    .plain-deck { height: auto; overflow: auto; }
+    .plain-deck .reveal, .plain-deck .reveal .slides { position: static; width: auto; height: auto; }
+    .plain-deck .reveal .slides > section { display: block; position: static; max-width: 1100px; margin: 20px auto; border-bottom: 1px solid var(--line); }
+    .plain-deck .notes { display: none; }
+  </style>
+</head>
+<body>
+  <!--
+    EDITING IN VS CODE
+    1. Each <section> is one slide. Duplicate one to reuse its layout.
+    2. Write inline math as \( ... \) and display math as \[ ... \].
+    3. Add class="fragment" to reveal an answer on the next advance.
+    4. Put presenter cues in <aside class="notes">. Press S for speaker view.
+    5. Match each data-plot name to its graph settings near the end.
+    6. Upload this single file to GitHub Pages or another static host.
+       Rename it index.html to use it as the landing page of a folder.
+       Reveal.js and KaTeX load from jsDelivr. Graphs are drawn by this file.
+  -->
+  <div class="reveal">
+    <main class="slides">
+
+      <section id="start">
+        <div class="cols hero">
+          <div>
+            <p class="eyebrow">MAT 171 / Precalculus Algebra</p>
+            <h1>Exponents and Logarithms</h1>
+            <p class="lede">Evaluate powers, read a logarithm as an exponent, and use both to solve equations.</p>
+            <p class="small muted">Use the arrow keys to advance and reveal answers.</p>
+          </div>
+          <figure>
+            <svg class="plot" data-plot="inverse" role="img" aria-label="The graphs of y equals two to the x and y equals log base two of x reflect across the dashed line y equals x."></svg>
+          </figure>
+        </div>
+        <aside class="notes">Plan for about 50 minutes. Allow 6 minutes for review, 8 for the inverse relationship and domain, 12 for properties and change of base, 17 for solving equations, and 5 for the exit ticket. Use the substitution example and the population model as time allows.</aside>
+      </section>
+
+      <section id="exponent-rules">
+        <p class="eyebrow">01 / Warm-up</p>
+        <h2>Recall the exponent rules</h2>
+        <p>For \(a>0\), simplify each example before revealing the answers.</p>
+        <table>
+          <thead><tr><th scope="col">Rule</th><th scope="col">General form</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Multiply or divide<br>with a common base</th><td>\(a^ma^n=a^{m+n}\), \(\dfrac{a^m}{a^n}=a^{m-n}\)</td><td>\(\dfrac{2^7}{2^3}\) <span class="fragment" data-fragment-index="0">\(=2^4=16\)</span></td></tr>
+            <tr><th scope="row">Raise a power to a power</th><td>\((a^m)^n=a^{mn}\)</td><td>\((3^2)^3\) <span class="fragment" data-fragment-index="0">\(=3^6\)</span></td></tr>
+            <tr><th scope="row">Zero and negative exponents</th><td>\(a^0=1\), \(a^{-n}=\dfrac{1}{a^n}\)</td><td>\(2^{-3}\) <span class="fragment" data-fragment-index="0">\(=\dfrac18\)</span></td></tr>
+            <tr><th scope="row">Fractional exponent</th><td>\(a^{m/n}=\sqrt[n]{a^m}\) for \(n\ge2\) an integer</td><td>\(16^{3/4}\) <span class="fragment" data-fragment-index="0">\(=8\)</span></td></tr>
+          </tbody>
+        </table>
+        <aside class="notes">Allow 90 seconds. Ask what 3 to the sixth equals and how 16 to the three-fourths can be evaluated by taking the fourth root first. Connect multiplying powers to adding exponents, which students will see again in the product rule for logarithms.</aside>
+      </section>
+
+      <section id="evaluate">
+        <p class="eyebrow">02 / Warm-up</p>
+        <h2>Evaluate an exponential function</h2>
+        <div class="cols plot-cols">
+          <div>
+            <p class="eq">\(f(x)=2^x\)</p>
+            <table>
+              <thead><tr><th scope="col">\(x\)</th><th scope="col">\(f(x)\)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">\(-2\)</th><td><span class="fragment" data-fragment-index="0">\(2^{-2}=\dfrac14\)</span></td></tr>
+                <tr><th scope="row">\(0\)</th><td><span class="fragment" data-fragment-index="0">\(2^0=1\)</span></td></tr>
+                <tr><th scope="row">\(\tfrac12\)</th><td><span class="fragment" data-fragment-index="0">\(2^{1/2}=\sqrt2\)</span></td></tr>
+                <tr><th scope="row">\(3\)</th><td><span class="fragment" data-fragment-index="0">\(2^3=8\)</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figure class="fragment" data-fragment-index="0">
+            <svg class="plot" data-plot="exponential" role="img" aria-label="An increasing graph of y equals two to the x, passing through zero comma one and three comma eight, with all outputs positive."></svg>
+            <figcaption>The outputs are positive for every real input.</figcaption>
+          </figure>
+        </div>
+        <p class="callout small fragment">Now reverse the question. What input gives the output \(8\)? What input gives the output \(7\)?</p>
+        <aside class="notes">The first answer is 3. Have students bracket the second answer between 2 and 3 because 4 &lt; 7 &lt; 8. A logarithm gives a name to that exact input.</aside>
+      </section>
+
+      <section id="log-definition" class="logs">
+        <p class="eyebrow">03 / Logarithms</p>
+        <h2>A logarithm answers “what exponent?”</h2>
+        <p class="eq">\(\log_b A=c\quad\Longleftrightarrow\quad b^c=A\)</p>
+        <p class="small muted">Base \(b>0\) with \(b\ne1\), argument \(A>0\), and output \(c\in\mathbb R\).</p>
+        <div class="cols">
+          <div class="card">
+            <h3>Read the equation both ways</h3>
+            <p>\(\log_2 8=3\) because \(2^3=8\).</p>
+            <p>\(\log_2 7\) is the exponent on \(2\) that gives \(7\).</p>
+          </div>
+          <div class="card">
+            <h3>Try it</h3>
+            <p>Evaluate \(\log_3(1/9)\).</p>
+            <p class="fragment">\(\log_3(1/9)=-2\) because \(3^{-2}=1/9\).</p>
+          </div>
+        </div>
+        <aside class="notes">Ask students to point to the base, argument, and output in each form. Emphasize that a log can have a negative output even though its argument is positive. For a quick follow-up ask for log base 9 of 3.</aside>
+      </section>
+
+      <section id="inverse-graphs" class="logs">
+        <p class="eyebrow">04 / Inverse functions</p>
+        <h2>The input and output swap</h2>
+        <div class="cols plot-cols">
+          <dl class="features">
+            <div><dt>\(y=2^x\)</dt><dd>Domain \(\mathbb R\), range \((0,\infty)\)<br>\(y\)-intercept \((0,1)\), asymptote \(y=0\)</dd></div>
+            <div><dt>\(y=\log_2 x\)</dt><dd>Domain \((0,\infty)\), range \(\mathbb R\)<br>\(x\)-intercept \((1,0)\), asymptote \(x=0\)</dd></div>
+            <div><dt>Inverse identities</dt><dd>\(\log_b(b^x)=x\) for every real \(x\)<br>\(b^{\log_b A}=A\) for \(A>0\)</dd></div>
+          </dl>
+          <figure>
+            <svg class="plot" data-plot="inverse" role="img" aria-label="The exponential point two comma four reflects to the logarithm point four comma two across y equals x."></svg>
+            <figcaption>The reflection across \(y=x\) sends \((2,4)\) to \((4,2)\).</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">Ask which exponential feature becomes the vertical asymptote of the logarithm. Both curves shown are increasing because the base is 2. With a base between 0 and 1 the two inverse curves are both decreasing and keep their respective domains and ranges.</aside>
+      </section>
+
+      <section id="common-natural" class="logs">
+        <p class="eyebrow">05 / Notation and domain</p>
+        <h2>Read the base and check the argument</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>Common and natural logarithms</h3>
+            <p>\(\log x=\log_{10}x\), so \(\log(1000)=3\).</p>
+            <p>\(\ln x=\log_e x\), so \(\ln(e^{-2})=-2\).</p>
+          </div>
+          <div class="card">
+            <h3>Which inputs are allowed?</h3>
+            <p>Find the domain of \(h(x)=\ln(2x-6)\).</p>
+            <p class="fragment">\(2x-6>0\Rightarrow x>3\). The domain is \((3,\infty)\).</p>
+          </div>
+        </div>
+        <p class="callout small">Every real logarithm needs a positive argument. In particular, \(\log_b 0\) is undefined.</p>
+        <aside class="notes">Ask students whether x = 2 is allowed in the example. The input to the whole function is positive, but the expression inside the log is negative. Also point out that solving equations later will require checking every original argument.</aside>
+      </section>
+
+      <section id="log-laws" class="logs">
+        <p class="eyebrow">06 / Logarithm properties</p>
+        <h2>Products, quotients, and powers</h2>
+        <p>Use a common base \(b>0\), \(b\ne1\), with \(M,N>0\).</p>
+        <table>
+          <thead><tr><th scope="col">Rule</th><th scope="col">Identity</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Product</th><td>\(\log_b(MN)=\log_b M+\log_b N\)</td><td>\(\log_2(4\cdot8)=2+3=5\)</td></tr>
+            <tr><th scope="row">Quotient</th><td>\(\log_b\!\left(\dfrac MN\right)=\log_b M-\log_b N\)</td><td>\(\log_2(8/4)=3-2=1\)</td></tr>
+            <tr><th scope="row">Power</th><td>\(\log_b(M^r)=r\log_b M\)</td><td>\(\log_2(4^3)=3\cdot2=6\)</td></tr>
+          </tbody>
+        </table>
+        <p class="callout small fragment">Test addition. \(\log_2(4+4)=3\), while \(\log_2 4+\log_2 4=4\).</p>
+        <aside class="notes">Derive the product rule by writing M=b^m and N=b^n. Their product is b^(m+n), so its logarithm is m+n. Ask which exponent rule corresponds to each other row. Have students explain the addition counterexample before advancing.</aside>
+      </section>
+
+      <section id="expand" class="logs">
+        <p class="eyebrow">07 / Practice with properties</p>
+        <h2>Expand one logarithm</h2>
+        <p>Assume \(x>0\) and \(y>0\). Expand and simplify.</p>
+        <p class="eq">\(\displaystyle\log_3\!\left(\frac{9x^2}{\sqrt y}\right)\)</p>
+        <div class="card">
+          <p class="fragment">\(\displaystyle\log_3(9x^2)-\log_3(y^{1/2})\) <span class="small muted">by the quotient rule</span></p>
+          <p class="fragment">\(\displaystyle\log_3 9+2\log_3 x-\tfrac12\log_3 y\) <span class="small muted">by the product and power rules</span></p>
+          <p class="fragment">\(\displaystyle 2+2\log_3 x-\tfrac12\log_3 y\) <span class="small muted">since \(3^2=9\)</span></p>
+        </div>
+        <aside class="notes">Give students a minute to choose the first operation. Ask what sign the logarithm of the denominator should get. The positivity assumptions let us expand log of x squared as 2 log x without changing the allowed inputs under those assumptions.</aside>
+      </section>
+
+      <section id="condense" class="logs">
+        <p class="eyebrow">08 / Practice with properties</p>
+        <h2>Condense several logarithms into one</h2>
+        <p>Use the original domain \(x>0\).</p>
+        <p class="eq">\(2\ln x+\ln(x+1)-\ln 4\)</p>
+        <div class="cols">
+          <div class="card fragment">
+            <h3>Move the coefficient into the exponent</h3>
+            <p>\(\ln(x^2)+\ln(x+1)-\ln 4\)</p>
+          </div>
+          <div class="card fragment">
+            <h3>Combine using multiplication and division</h3>
+            <p class="eq compact">\(\displaystyle \ln\!\left(\frac{x^2(x+1)}4\right),\quad x>0\)</p>
+          </div>
+        </div>
+        <p class="callout small fragment">Test \(x=-\tfrac12\). The condensed formula accepts it, but the original term \(\ln x\) excludes it. Keep \(x>0\).</p>
+        <aside class="notes">Ask which rule they must reverse first. The condensed formula alone is defined for some negative inputs, so carry the original restriction forward whenever solving an equation.</aside>
+      </section>
+
+      <section id="change-of-base" class="logs">
+        <p class="eyebrow">09 / Change of base</p>
+        <h2>Evaluate a logarithm in any valid base</h2>
+        <p class="eq">\(\displaystyle\log_b A=\frac{\ln A}{\ln b}=\frac{\log A}{\log b}\)</p>
+        <div class="cols">
+          <div class="card">
+            <h3>Example</h3>
+            <p>\(\displaystyle\log_5 18=\frac{\ln 18}{\ln 5}\approx1.796\)</p>
+            <p class="small muted">Check the size. \(5^1<18<5^2\).</p>
+          </div>
+          <div class="card fragment">
+            <h3>Why it works</h3>
+            <p>If \(t=\log_b A\), then \(b^t=A\).</p>
+            <p>Taking \(\ln\) gives \(t\ln b=\ln A\).</p>
+            <p>Divide by \(\ln b\).</p>
+          </div>
+        </div>
+        <p class="small muted">More generally, \(\log_b A=\frac{\log_c A}{\log_c b}\) for any \(c>0\) with \(c\ne1\).</p>
+        <aside class="notes">Recall that the original base b is positive and different from 1. Therefore ln b is defined and nonzero. Have students check the approximation with common logs as well.</aside>
+      </section>
+
+      <section id="equation-strategy">
+        <p class="eyebrow">10 / Solving equations</p>
+        <h2>Choose a first move</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>Variable in the exponent</h3>
+            <ul class="small">
+              <li>Isolate the power.</li>
+              <li>Match bases when possible, then set the exponents equal.</li>
+              <li>Otherwise, take a log of both positive sides.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Variable inside a logarithm</h3>
+            <ul class="small">
+              <li>Write the restrictions from all original arguments.</li>
+              <li>Isolate or combine logs of the same base.</li>
+              <li>Rewrite in exponential form or equate arguments of equal same-base logs.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="callout small">One-to-one functions give the same output only when their inputs match. That’s why the same-base steps work.</p>
+        <aside class="notes">For b^u=b^v, equate u and v. For log base b of U equal to log base b of V, equate U and V only where both arguments are positive. The case of an isolated power equal to zero or a negative number has no real solution.</aside>
+      </section>
+
+      <section id="same-base">
+        <p class="eyebrow">11 / Exponential equations</p>
+        <h2>Rewrite both sides with the same base</h2>
+        <p class="eq">\(4^{x+1}=8^{2x-1}\)</p>
+        <div class="card stack">
+          <p class="fragment">\((2^2)^{x+1}=(2^3)^{2x-1}\)</p>
+          <p class="fragment">\(2^{2(x+1)}=2^{3(2x-1)}\)</p>
+          <p class="fragment">\(2x+2=6x-3\quad\Rightarrow\quad x=\dfrac54\)</p>
+        </div>
+        <p class="callout small fragment">At \(x=\tfrac54\), both rewritten exponents equal \(\tfrac92\).</p>
+        <aside class="notes">Have students suggest a common base before revealing the first line. Use the power-of-a-power rule from the warm-up. Check by substituting x=5/4 into the two exponents after rewriting.</aside>
+      </section>
+
+      <section id="take-logs">
+        <p class="eyebrow">12 / Exponential equations</p>
+        <h2>Isolate the power, then take logs</h2>
+        <p class="eq">\(4\cdot3^{2x-1}=28\)</p>
+        <div class="card stack">
+          <p class="fragment">\(3^{2x-1}=7\)</p>
+          <p class="fragment">\(\ln(3^{2x-1})=\ln 7\quad\Rightarrow\quad (2x-1)\ln 3=\ln 7\)</p>
+          <p class="fragment">\(\displaystyle x=\frac{1+\ln 7/\ln 3}{2}\approx1.386\)</p>
+        </div>
+        <p class="callout small">Keep the exact expression until the last step. Here, the power of \(3\) must equal \(7\), between \(3\) and \(9\).</p>
+        <aside class="notes">Ask students why the coefficient 4 is divided out before taking logs. The equivalent exact result is (1 + log base 3 of 7)/2. Since 2x−1 is between 1 and 2, x should be between 1 and 1.5.</aside>
+      </section>
+
+      <section id="log-equations" class="logs">
+        <p class="eyebrow">13 / Logarithmic equations</p>
+        <h2>Rewrite or equate arguments</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>One isolated logarithm</h3>
+            <p>\(2\ln(x-1)=6\)</p>
+            <div class="fragment small">
+              <p>Original domain \(x>1\).</p>
+              <p>\(\ln(x-1)=3\Rightarrow x-1=e^3\).</p>
+              <p>\(x=1+e^3\) is in the domain.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Equal logarithms, same base</h3>
+            <p>\(\log_4(2x+1)=\log_4(x+5)\)</p>
+            <div class="fragment small">
+              <p>Both arguments are positive for \(x>-\tfrac12\).</p>
+              <p>\(2x+1=x+5\Rightarrow x=4\).</p>
+              <p>Both arguments equal \(9\) at \(x=4\).</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Invite students to name the base e on the left. On the right, explicitly intersect the two conditions 2x+1>0 and x+5>0. Both equations have an exact answer without a calculator.</aside>
+      </section>
+
+      <section id="extraneous" class="logs">
+        <p class="eyebrow">14 / Logarithmic equations</p>
+        <h2>Combine the logs and check both candidates</h2>
+        <p class="eq compact">\(\log_2 x+\log_2(x-2)=3\)</p>
+        <div class="cols">
+          <div class="card">
+            <h3>Solve within the original domain</h3>
+            <p class="fragment small">Both arguments must be positive, so \(x>2\).</p>
+            <p class="fragment small">\(\log_2[x(x-2)]=3\Rightarrow x(x-2)=8\).</p>
+            <p class="fragment small">\((x-4)(x+2)=0\Rightarrow x=4\) or \(x=-2\).</p>
+          </div>
+          <div class="card fragment">
+            <h3>Check the original equation</h3>
+            <p class="small">At \(x=4\), \(\log_2 4+\log_2 2=2+1=3\).</p>
+            <p class="small">At \(x=-2\), both original arguments are negative. This candidate is extraneous.</p>
+            <p class="small"><strong>Solution</strong> \(x=4\)</p>
+          </div>
+        </div>
+        <aside class="notes">Pause after the quadratic roots. At −2 the product equals 8, but the individual factors are −2 and −4. Have students explain how the combined formula can appear valid there while the original equation is undefined.</aside>
+      </section>
+
+      <section id="quotient-practice" class="logs">
+        <p class="eyebrow">15 / Partner practice</p>
+        <h2>What does the subtraction become?</h2>
+        <p class="eq">\(\log_3(x+9)-\log_3(x-1)=1\)</p>
+        <div class="cols">
+          <div class="card">
+            <ol>
+              <li>Write the original domain.</li>
+              <li>Combine the logarithms.</li>
+              <li>Solve and check your answer.</li>
+            </ol>
+          </div>
+          <div class="card fragment small">
+            <p>The domain is \(x>1\).</p>
+            <p>\(\displaystyle\log_3\!\left(\frac{x+9}{x-1}\right)=1\Rightarrow\frac{x+9}{x-1}=3\).</p>
+            <p>\(x+9=3(x-1)\Rightarrow x=6\).</p>
+            <p>At \(x=6\), both arguments are positive and their ratio is \(3\).</p>
+          </div>
+        </div>
+        <aside class="notes">Give pairs about two minutes. Ask which restriction lets them multiply both sides by x−1. To check directly, 15 and 5 are positive and log base 3 of their ratio is 1.</aside>
+      </section>
+
+      <section id="quadratic-extension">
+        <p class="eyebrow">16 / Optional extension</p>
+        <h2>Look for a hidden quadratic</h2>
+        <p class="eq">\(4^x-5\cdot2^x+4=0\)</p>
+        <div class="card stack">
+          <p class="fragment">\(4^x=(2^x)^2\). Let \(u=2^x\).</p>
+          <p class="fragment">\(u^2-5u+4=(u-1)(u-4)=0\).</p>
+          <p class="fragment">\(2^x=1\) or \(2^x=4\), so \(x=0\) or \(x=2\).</p>
+        </div>
+        <p class="callout small">An exponential substitution \(u=2^x\) requires \(u>0\).</p>
+        <aside class="notes">Use this if time allows. Connect the substitution to factoring quadratics students already know. Ask how they would handle a negative u candidate. Verify both solutions in the original equation.</aside>
+      </section>
+
+      <section id="growth-model">
+        <p class="eyebrow">17 / Application</p>
+        <h2>Use a logarithm to find when</h2>
+        <p>A model for a lab culture is \(P(t)=240(1.5)^t\), where \(t\) is time in hours since the start. When does the model predict \(1{,}000\) cells?</p>
+        <div class="card fragment">
+          <p>\(240(1.5)^t=1000\quad\Rightarrow\quad (1.5)^t=\dfrac{25}{6}\)</p>
+          <p>\(\displaystyle t=\frac{\ln(25/6)}{\ln(1.5)}\approx3.520\)</p>
+          <p class="small muted">The model reaches \(1{,}000\) cells about \(3.52\) hours after the start.</p>
+        </div>
+        <aside class="notes">Let students set up the equation before revealing. Check with P(3)=810 and P(4)=1215, so the answer should fall between three and four hours. This is an illustrative model with continuous time.</aside>
+      </section>
+
+      <section id="exit-ticket">
+        <p class="eyebrow">18 / Exit ticket</p>
+        <h2>Choose a rule and show your first step</h2>
+        <div class="card">
+          <ol>
+            <li>Expand \(\displaystyle \ln\!\left(\frac{4x^3}{y}\right)\) for \(x,y>0\).</li>
+            <li>Solve \(2^{3x}=11\). Give the exact answer and an approximation to three decimal places.</li>
+            <li>Solve \(\ln(x-1)+\ln(x-3)=\ln 15\). State the original domain and check your candidates.</li>
+          </ol>
+        </div>
+        <aside class="notes">Give students four to five minutes before showing the solution. Ask them to label the rule used in the first line of each problem. If time is short, use the third problem as the whole exit ticket.</aside>
+      </section>
+
+      <section id="exit-solutions" class="logs">
+        <p class="eyebrow">19 / Exit ticket debrief</p>
+        <h2>Check your steps</h2>
+        <div class="stack small">
+          <div class="card fragment"><p><strong>1. Expand.</strong> \(\ln 4+3\ln x-\ln y\)</p></div>
+          <div class="card fragment"><p><strong>2. Take logs.</strong> \(3x\ln 2=\ln 11\Rightarrow x=\dfrac{\ln 11}{3\ln 2}\approx1.153\).</p></div>
+          <div class="card fragment">
+            <p><strong>3. Combine and check.</strong> The original domain is \(x>3\).</p>
+            <p>\((x-1)(x-3)=15\Rightarrow (x-6)(x+2)=0\).</p>
+            <p>The domain excludes \(-2\). At \(x=6\), the arguments are \(5\) and \(3\), with product \(15\). So \(x=6\) is the solution.</p>
+          </div>
+        </div>
+        <aside class="notes">Ask students to compare their first steps. In the second problem any valid log base gives the same result. In the third, solving the resulting quadratic produces candidates and the original domain decides which to keep.</aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script>
+    // Edit graph functions, windows and labels here.
+    // Each window is [xMin, xMax, yMin, yMax].
+    const exponential = { fn: x => 2 ** x };
+    const logarithm = { fn: x => Math.log2(x), from: 0.002, css: 'log' };
+    const graphs = {
+      inverse: {
+        window: [-3, 6, -3, 6],
+        square: true,
+        diagonal: true,
+        series: [exponential, logarithm],
+        points: [[2, 4, '(2, 4)', 9, 14], [4, 2, '(4, 2)', 4, 17, 'log']],
+        labels: [[1.55, 5.35, '2ˣ'], [4.4, 2.65, 'log₂ x', 'log']]
+      },
+      exponential: {
+        window: [-4, 4, -1, 10],
+        step: [1, 2],
+        series: [exponential],
+        points: [[0, 1, '(0, 1)', 10, -8], [3, 8, '(3, 8)', 10, 7]]
+      }
+    };
+
+    // Draw every curve only over its plotted input interval.
+    function drawPlot(svg, graph, index) {
+      const ns = 'http://www.w3.org/2000/svg';
+      const [xMin, xMax, yMin, yMax] = graph.window;
+      const [xStep, yStep] = graph.step || [1, 1];
+      const area = { left: 42, right: graph.square ? 292 : 484, top: 18, bottom: 268 };
+      const xPx = x => area.left + (x - xMin) / (xMax - xMin) * (area.right - area.left);
+      const yPx = y => area.bottom - (y - yMin) / (yMax - yMin) * (area.bottom - area.top);
+      const numberText = value => String(value).replace('-', '−');
+
+      function add(parent, tag, attrs, label) {
+        const element = document.createElementNS(ns, tag);
+        for (const [name, value] of Object.entries(attrs)) element.setAttribute(name, value);
+        if (label !== undefined) element.textContent = label;
+        parent.append(element);
+        return element;
+      }
+      function line(parent, x1, y1, x2, y2, className) {
+        add(parent, 'line', { x1, y1, x2, y2, class: className });
+      }
+      function label(parent, x, y, value, className = '', anchor = 'start') {
+        add(parent, 'text', { x, y, class: className, 'text-anchor': anchor }, value);
+      }
+
+      svg.setAttribute('viewBox', graph.square ? '0 0 326 300' : '0 0 510 300');
+      const defs = add(svg, 'defs', {});
+      const clipId = 'plot-window-' + index;
+      const clip = add(defs, 'clipPath', { id: clipId });
+      add(clip, 'rect', {
+        x: area.left, y: area.top, width: area.right - area.left, height: area.bottom - area.top
+      });
+
+      const axes = add(svg, 'g', { 'aria-hidden': 'true' });
+      for (let x = Math.ceil(xMin / xStep) * xStep; x <= xMax; x += xStep) {
+        line(axes, xPx(x), area.top, xPx(x), area.bottom, 'gridline');
+        if (x !== 0) label(axes, xPx(x), area.bottom + 19, numberText(x), '', 'middle');
+      }
+      for (let y = Math.ceil(yMin / yStep) * yStep; y <= yMax; y += yStep) {
+        line(axes, area.left, yPx(y), area.right, yPx(y), 'gridline');
+        label(axes, area.left - 8, yPx(y) + 5, numberText(y), '', 'end');
+      }
+      line(axes, area.left, yPx(0), area.right, yPx(0), 'axis');
+      line(axes, xPx(0), area.top, xPx(0), area.bottom, 'axis');
+      label(axes, area.right + 9, yPx(0) + 4, 'x', 'label');
+      label(axes, xPx(0) + 8, area.top + 10, 'y', 'label');
+
+      const curves = add(svg, 'g', { 'clip-path': 'url(#' + clipId + ')', 'aria-hidden': 'true' });
+      if (graph.diagonal) {
+        line(curves, xPx(xMin), yPx(xMin), xPx(xMax), yPx(xMax), 'guide');
+      }
+
+      for (const curve of graph.series) {
+        const start = curve.from ?? xMin;
+        const end = curve.to ?? xMax;
+        const coordinates = [];
+        for (let j = 0; j <= 360; j++) {
+          const x = start + (end - start) * j / 360;
+          coordinates.push(xPx(x).toFixed(2) + ',' + yPx(curve.fn(x)).toFixed(2));
+        }
+        add(curves, 'polyline', { class: 'curve ' + (curve.css || ''), points: coordinates.join(' ') });
+      }
+
+      const marks = add(svg, 'g', { 'aria-hidden': 'true' });
+      if (graph.diagonal) {
+        label(marks, xPx(5.5), yPx(5.5) - 9, 'y = x', 'label guide-label', 'end');
+      }
+      for (const [x, y, caption, dx = 9, dy = -9, css = ''] of graph.points || []) {
+        add(marks, 'circle', { cx: xPx(x), cy: yPx(y), r: 4.7, class: 'point ' + css });
+        label(marks, xPx(x) + dx, yPx(y) + dy, caption, 'label ' + css);
+      }
+      for (const [x, y, caption, css = ''] of graph.labels || []) {
+        label(marks, xPx(x), yPx(y), caption, 'label ' + css);
+      }
+    }
+
+    document.querySelectorAll('[data-plot]').forEach((svg, index) => {
+      drawPlot(svg, graphs[svg.dataset.plot], index);
+    });
+
+    if (window.Reveal) {
+      const plugins = [window.RevealMath?.KaTeX, window.RevealNotes].filter(Boolean);
+      Reveal.initialize({
+        width: 1200,
+        height: 675,
+        margin: 0.065,
+        maxScale: 2,
+        hash: true,
+        controls: true,
+        progress: true,
+        slideNumber: 'c/t',
+        transition: 'fade',
+        katex: { version: '0.16.22' },
+        plugins
+      });
+    } else {
+      document.body.classList.add('plain-deck');
+      const notice = document.createElement('p');
+      notice.className = 'fallback';
+      notice.textContent = 'Slide controls could not load. Reconnect to the internet and refresh to restore the presentation.';
+      document.body.prepend(notice);
+    }
+  </script>
+</body>
+</html>
